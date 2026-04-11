@@ -14,12 +14,11 @@
         
         body { 
             font-family: 'Montserrat', sans-serif; 
-            /* Арын фон зургийг SB-1.png болгож солив */
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
                         url('./SB-1.png') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
-            background-color: #f8fafc; /* Зураг ачаалагдахгүй үеийн нөөц өнгө */
+            background-color: #f8fafc;
         }
 
         .glass { 
@@ -85,6 +84,11 @@
             75% { transform: translateX(8px); }
         }
         .shake { animation: shake 0.4s ease-in-out; }
+
+        .search-glass {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--ru-blue);
+        }
     </style>
 </head>
 <body class="pb-20">
@@ -92,7 +96,6 @@
 <div id="app" class="max-w-5xl mx-auto px-4 pt-8">
     <header class="text-center mb-10">
         <div class="logo-container">
-            <!-- logo.png файл олдсонгүй бол handleLogoError ажиллана -->
             <img src="./logo.png" alt="Сургуулийн Лого" class="school-logo" id="mainLogo" onerror="handleLogoError(this)">
         </div>
         
@@ -102,7 +105,7 @@
         <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full shadow-sm"></div>
         
         <nav class="flex flex-wrap justify-center gap-3">
-            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Толь бичиг</button>
+            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Үг сурах</button>
             <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Дасгал</button>
             <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Цээжилсэн</button>
         </nav>
@@ -112,7 +115,6 @@
 </div>
 
 <script>
-    // Лого олдохгүй үед ажиллах функц
     function handleLogoError(img) {
         const container = img.parentElement;
         container.innerHTML = `
@@ -122,112 +124,113 @@
         `;
     }
 
-    // Өгөгдлийн сан - 100 үйл үг
+    // Өгөгдлийн сан - Удирдлага (управление) нэмэгдсэн
     const verbs = [
-        { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь" },
-        { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть" },
-        { id: 3, pair: "Брать / Взять", mn: "Авах", raw: "Брать" },
-        { id: 4, pair: "Возвраща́ть / Верну́ть", mn: "Буцаах", raw: "Возвращать" },
-        { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать" },
-        { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться" },
-        { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать" },
-        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять" },
-        { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать" },
-        { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать" },
-        { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить" },
-        { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить" },
-        { id: 13, pair: "Грани́чить / —", mn: "Хиллэх", raw: "Граничить" },
-        { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать" },
-        { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать" },
-        { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать" },
-        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить" },
-        { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть" },
-        { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить" },
-        { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить" },
-        { id: 21, pair: "Загиба́ть / Загну́ть", mn: "Нугалах, эргүүлэх", raw: "Загибать" },
-        { id: 22, pair: "Загова́ривать / Заговори́ть", mn: "Ярьж эхлэх", raw: "Заговорить" },
-        { id: 23, pair: "Занима́ться / Заня́ться", mn: "Хичээллэх, оролдох", raw: "Заниматься" },
-        { id: 24, pair: "Знать / Узна́ть", mn: "Мэдэх", raw: "Знать" },
-        { id: 25, pair: "Игра́ть / Поигра́ть", mn: "Тоглох", raw: "Играть" },
-        { id: 26, pair: "Изуча́ть / Изучи́ть", mn: "Судлах", raw: "Изучать" },
-        { id: 27, pair: "Име́ть / —", mn: "Эзэмших, байх", raw: "Иметь" },
-        { id: 28, pair: "Пуга́ться / Испуга́ться", mn: "Айх", raw: "Испугаться" },
-        { id: 29, pair: "Исчеза́ть / Исче́знуть", mn: "Алга болох", raw: "Исчезнуть" },
-        { id: 30, pair: "Ката́ться / Поката́ться", mn: "Гулгах, давхих", raw: "Кататься" },
-        { id: 31, pair: "Купа́ться / Покупа́ться", mn: "Усанд орох, сэлэх", raw: "Купаться" },
-        { id: 32, pair: "Покупа́ть / Купи́ть", mn: "Худалдаж авах", raw: "Купить" },
-        { id: 33, pair: "Лечи́ть / Вы́лечить", mn: "Эмчлэх", raw: "Лечить" },
-        { id: 34, pair: "Люби́ть / Полюби́ть", mn: "Хайрлах, дурлах", raw: "Любить" },
-        { id: 35, pair: "Мечта́ть / Помечта́ть", mn: "Мөрөөдөх", raw: "Мечтать" },
-        { id: 36, pair: "Мочь / Смочь", mn: "Чадах", raw: "Мочь" },
-        { id: 37, pair: "Надева́ть / Наде́ть", mn: "Өмсөх", raw: "Надеть" },
-        { id: 38, pair: "Начина́ть / Нача́ть", mn: "Эхлэх", raw: "Начинать" },
-        { id: 39, pair: "Находи́ться / Найти́сь", mn: "Байрлах, олдох", raw: "Находиться" },
-        { id: 40, pair: "Нравиться / Понра́виться", mn: "Таалагдах", raw: "Нравиться" },
-        { id: 41, pair: "Овладева́ть / Овладе́ть", mn: "Эзэмших", raw: "Овладеть" },
-        { id: 42, pair: "Объясня́ть / Объясни́ть", mn: "Тайлбарлах", raw: "Объяснить" },
-        { id: 43, pair: "Означа́ть / —", mn: "Утга илэрхийлэх", raw: "Означать" },
-        { id: 44, pair: "Окружа́ть / Окружи́ть", mn: "Хүрээлэх", raw: "Окружать" },
-        { id: 45, pair: "Оставля́ть / Оста́вить", mn: "Үлдээх", raw: "Оставить" },
-        { id: 46, pair: "Отва́ривать / Отвари́ть", mn: "Чанах", raw: "Отваривать" },
-        { id: 47, pair: "Отвеча́ть / Отве́тить", mn: "Хариулах", raw: "Отвечать" },
-        { id: 48, pair: "Отдава́ть / Отда́ть", mn: "Буцааж өгөх", raw: "Отдать" },
-        { id: 49, pair: "Отдыха́ть / Отдохну́ть", mn: "Амрах", raw: "Отдыхать" },
-        { id: 50, pair: "Открыва́ться / Откры́ться", mn: "Нээгдэх", raw: "Открываться" },
-        { id: 51, pair: "Относи́ться / Отнести́сь", mn: "Хандлага гаргах", raw: "Относиться" },
-        { id: 52, pair: "Охраня́ть / Охрани́ть", mn: "Хамгаалах, манах", raw: "Охранять" },
-        { id: 53, pair: "Пасти́ / Спасти́", mn: "Маллах, хариулах", raw: "Пасти" },
-        { id: 54, pair: "Перестава́ть / Переста́ть", mn: "Болих, зогсох", raw: "Перестать" },
-        { id: 55, pair: "Петь / Спеть", mn: "Дуулах", raw: "Петь" },
-        { id: 56, pair: "Писа́ть / Написа́ть", mn: "Бичих", raw: "Писать" },
-        { id: 57, pair: "Пить / Вы́пить", mn: "Уух", raw: "Пить" },
-        { id: 58, pair: "Плани́ровать / Заплани́ровать", mn: "Төлөвлөх", raw: "Планировать" },
-        { id: 59, pair: "Побежда́ть / Победи́ть", mn: "Ялах", raw: "Победить" },
-        { id: 60, pair: "Дружить / Подружи́ться", mn: "Найзлах", raw: "Подружиться" },
-        { id: 61, pair: "Погиба́ть / Поги́бнуть", mn: "Амь үрэгдэх", raw: "Погибнуть" },
-        { id: 62, pair: "Покупа́ть / Купи́ть", mn: "Худалдан авах", raw: "Покупать" },
-        { id: 63, pair: "Помога́ть / Помо́чь", mn: "Туслах", raw: "Помогать" },
-        { id: 64, pair: "Понима́ть / Поня́ть", mn: "Ойлгох", raw: "Понимать" },
-        { id: 65, pair: "Поступа́ть / Поступи́ть", mn: "Орох (сургуульд)", raw: "Поступать" },
-        { id: 66, pair: "Приглаша́ть / Пригласи́ть", mn: "Урих", raw: "Приглашать" },
-        { id: 67, pair: "Приходи́ть / Прийти́", mn: "Ирэх", raw: "Прийти" },
-        { id: 68, pair: "Применя́ть / Примени́ть", mn: "Хэрэглэх", raw: "Применять" },
-        { id: 69, pair: "Проводи́ть / Провести́", mn: "Өнгөрүүлэх, дамжуулах", raw: "Проводить" },
-        { id: 70, pair: "Путеше́ствовать / —", mn: "Аялах", raw: "Путешествовать" },
-        { id: 71, pair: "Рабо́тать / Порабо́тать", mn: "Ажиллах", raw: "Работать" },
-        { id: 72, pair: "Развива́ть / Разви́ть", mn: "Хөгжүүлэх", raw: "Развивать" },
-        { id: 73, pair: "Разраба́тывать / Разрабо́тать", mn: "Боловсруулах", raw: "Разрабатывать" },
-        { id: 74, pair: "Расска́зывать / Рассказа́ть", mn: "Ярьж өгөх", raw: "Рассказывать" },
-        { id: 75, pair: "Рисова́ть / Нарисова́ть", mn: "Зурах", raw: "Рисовать" },
-        { id: 76, pair: "Сиде́ть / Посиде́ть", mn: "Суух", raw: "Сидеть" },
-        { id: 77, pair: "Символизи́ровать / —", mn: "Бэлгэдэх", raw: "Символизировать" },
-        { id: 78, pair: "Слу́шать / Послу́шать", mn: "Сонсох", raw: "Слушать" },
-        { id: 79, pair: "Смотре́ть / Посмотре́ть", mn: "Үзэх, харах", raw: "Смотреть" },
-        { id: 80, pair: "Собира́ть / Собра́ть", mn: "Цуглуулах", raw: "Собирать" },
-        { id: 81, pair: "Собира́ться / Собра́ться", mn: "Цуглах, төлөвлөх", raw: "Собираться" },
-        { id: 82, pair: "Сове́товать / Посове́товать", mn: "Зөвлөх", raw: "Советовать" },
-        { id: 83, pair: "Создава́ть / Созда́ть", mn: "Бүтээх", raw: "Создавать" },
-        { id: 84, pair: "Составля́ть / Соста́вить", mn: "Зохиох, бүрдүүлэх", raw: "Составить" },
-        { id: 85, pair: "Состоя́ть / —", mn: "Бүрдэх", raw: "Состоять" },
-        { id: 86, pair: "Спать / Поспа́ть", mn: "Унтах", raw: "Спать" },
-        { id: 87, pair: "Спра́шивать / Спроси́ть", mn: "Асуух", raw: "Спрашивать" },
-        { id: 88, pair: "Станови́ться / Стать", mn: "Болох", raw: "Стать" },
-        { id: 89, pair: "Стро́ить / Постро́ить", mn: "Барих", raw: "Строить" },
-        { id: 90, pair: "Суши́ть / Вы́сушить", mn: "Хатаах", raw: "Сушить" },
-        { id: 91, pair: "Ви́деть / Уви́деть", mn: "Харах", raw: "Увидеть" },
-        { id: 92, pair: "Удивля́ться / Удиви́ться", mn: "Гайхах", raw: "Удивляться" },
-        { id: 93, pair: "Узнава́ть / Узна́ть", mn: "Мэдэж авах", raw: "Узнать" },
-        { id: 94, pair: "Уме́ть / Суме́ть", mn: "Чадах", raw: "Уметь" },
-        { id: 95, pair: "Уча́ствовать / —", mn: "Оролцох", raw: "Участвовать" },
-        { id: 96, pair: "Учи́ться / Научи́ться", mn: "Суралцах", raw: "Учиться" },
-        { id: 97, pair: "Ходи́ть / Пойти́", mn: "Явах (хөлөөр)", raw: "Ходить" },
-        { id: 98, pair: "Хоте́ть / Захоте́ть", mn: "Хүсэх", raw: "Хотеть" },
-        { id: 99, pair: "Чита́ть / Прочита́ть", mn: "Унших", raw: "Читать" },
-        { id: 100, pair: "Экономи́ть / Сэкономи́ть", mn: "Хэмнэх", raw: "Экономить" }
+        { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь", upr: "(кого? что?)" },
+        { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть", upr: "(чем?)" },
+        { id: 3, pair: "Брать / Взять", mn: "Авах", raw: "Брать", upr: "(что? у кого?)" },
+        { id: 4, pair: "Возвраща́ть / Верну́ть", mn: "Буцаах", raw: "Возвращать", upr: "(что? кому?)" },
+        { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать", upr: "(кого?)" },
+        { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться", upr: "(с кем?)" },
+        { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать", upr: "(что? из чего?)" },
+        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
+        { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
+        { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать", upr: "(перед кем?)" },
+        { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить", upr: "(что? кому? о ком?)" },
+        { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить", upr: "(что? для кого?)" },
+        { id: 13, pair: "Грани́чить / —", mn: "Хиллэх", raw: "Граничить", upr: "(с чем?)" },
+        { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать", upr: "(что? кому?)" },
+        { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать", upr: "(что?)" },
+        { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать", upr: "(о ком? о чём?)" },
+        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить", upr: "(куда? на чём?)" },
+        { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть", upr: "(что?)" },
+        { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить", upr: "(что?)" },
+        { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить", upr: "(где? с кем?)" },
+        { id: 21, pair: "Загиба́ть / Загну́ть", mn: "Нугалах, эргүүлэх", raw: "Загибать", upr: "(что?)" },
+        { id: 22, pair: "Загова́ривать / Заговори́ть", mn: "Ярьж эхлэх", raw: "Заговорить", upr: "(с кем?)" },
+        { id: 23, pair: "Занима́ться / Заня́ться", mn: "Хичээллэх, оролдох", raw: "Заниматься", upr: "(чем?)" },
+        { id: 24, pair: "Знать / Узна́ть", mn: "Мэдэх", raw: "Знать", upr: "(что? о ком?)" },
+        { id: 25, pair: "Игра́ть / Поигра́ть", mn: "Тоглох", raw: "Играть", upr: "(во что? на чём?)" },
+        { id: 26, pair: "Изуча́ть / Изучи́ть", mn: "Судлах", raw: "Изучать", upr: "(что?)" },
+        { id: 27, pair: "Име́ть / —", mn: "Эзэмших, байх", raw: "Иметь", upr: "(что?)" },
+        { id: 28, pair: "Пуга́ться / Испуга́ться", mn: "Айх", raw: "Пугаться", upr: "(кого? чего?)" },
+        { id: 29, pair: "Исчеза́ть / Исче́знуть", mn: "Алга болох", raw: "Исчезнуть", upr: "(откуда?)" },
+        { id: 30, pair: "Ката́ться / Поката́ться", mn: "Гулгах, давхих", raw: "Кататься", upr: "(на чём?)" },
+        { id: 31, pair: "Купа́ться / Покупа́ться", mn: "Усанд орох, сэлэх", raw: "Купаться", upr: "(где?)" },
+        { id: 32, pair: "Покупа́ть / Купи́ть", mn: "Худалдаж авах", raw: "Купить", upr: "(что? у кого?)" },
+        { id: 33, pair: "Лечи́ть / Вы́лечить", mn: "Эмчлэх", raw: "Лечить", upr: "(кого? от чего?)" },
+        { id: 34, pair: "Люби́ть / Полюби́ть", mn: "Хайрлах, дурлах", raw: "Любить", upr: "(кого? что?)" },
+        { id: 35, pair: "Мечта́ть / Помечта́ть", mn: "Мөрөөдөх", raw: "Мечтать", upr: "(о чём?)" },
+        { id: 36, pair: "Мочь / Смочь", mn: "Чадах", raw: "Мочь", upr: "(сделать что?)" },
+        { id: 37, pair: "Надева́ть / Наде́ть", mn: "Өмсөх", raw: "Надеть", upr: "(что? на кого?)" },
+        { id: 38, pair: "Начина́ть / Нача́ть", mn: "Эхлэх", raw: "Начинать", upr: "(что?)" },
+        { id: 39, pair: "Находи́ться / Найти́сь", mn: "Байрлах, олдох", raw: "Находиться", upr: "(где?)" },
+        { id: 40, pair: "Нравиться / Понра́виться", mn: "Таалагдах", raw: "Нравиться", upr: "(кому?)" },
+        { id: 41, pair: "Овладева́ть / Овладе́ть", mn: "Эзэмших", raw: "Овладеть", upr: "(чем?)" },
+        { id: 42, pair: "Объясня́ть / Объясни́ть", mn: "Тайлбарлах", raw: "Объяснить", upr: "(что? кому?)" },
+        { id: 43, pair: "Означа́ть / —", mn: "Утга илэрхийлэх", raw: "Означать", upr: "(что?)" },
+        { id: 44, pair: "Окружа́ть / Окружи́ть", mn: "Хүрээлэх", raw: "Окружать", upr: "(кого? чем?)" },
+        { id: 45, pair: "Оставля́ть / Оста́вить", mn: "Үлдээх", raw: "Оставить", upr: "(что? где?)" },
+        { id: 46, pair: "Отва́ривать / Отвари́ть", mn: "Чанах", raw: "Отваривать", upr: "(что?)" },
+        { id: 47, pair: "Отвеча́ть / Отве́тить", mn: "Хариулах", raw: "Отвечать", upr: "(на что? кому?)" },
+        { id: 48, pair: "Отдава́ть / Отда́ть", mn: "Буцааж өгөх", raw: "Отдать", upr: "(что? кому?)" },
+        { id: 49, pair: "Отдыха́ть / Отдохну́ть", mn: "Амрах", raw: "Отдыхать", upr: "(где?)" },
+        { id: 50, pair: "Открыва́ться / Откры́ться", mn: "Нээгдэх", raw: "Открываться", upr: "(перед кем?)" },
+        { id: 51, pair: "Относи́ться / Отнести́сь", mn: "Хандлага гаргах", raw: "Относиться", upr: "(к кому?)" },
+        { id: 52, pair: "Охраня́ть / Охрани́ть", mn: "Хамгаалах, манах", raw: "Охранять", upr: "(кого? что?)" },
+        { id: 53, pair: "Пасти́ / Спасти́", mn: "Маллах, хариулах", raw: "Пасти", upr: "(кого?)" },
+        { id: 54, pair: "Перестава́ть / Переста́ть", mn: "Болих, зогсох", raw: "Перестать", upr: "(делать что?)" },
+        { id: 55, pair: "Петь / Спеть", mn: "Дуулах", raw: "Петь", upr: "(что?)" },
+        { id: 56, pair: "Писа́ть / Написа́ть", mn: "Бичих", raw: "Писать", upr: "(что? кому?)" },
+        { id: 57, pair: "Пить / Вы́пить", mn: "Уух", raw: "Пить", upr: "(что?)" },
+        { id: 58, pair: "Плани́ровать / Заплани́ровать", mn: "Төлөвлөх", raw: "Планировать", upr: "(что?)" },
+        { id: 59, pair: "Побежда́ть / Победи́ть", mn: "Ялах", raw: "Побеждать", upr: "(кого? в чём?)" },
+        { id: 60, pair: "Дружить / Подружи́ться", mn: "Найзлах", raw: "Подружиться", upr: "(с кем?)" },
+        { id: 61, pair: "Погиба́ть / Поги́бнуть", mn: "Амь үрэгдэх", raw: "Погибнуть", upr: "(где?)" },
+        { id: 62, pair: "Покупа́ть / Купи́ть", mn: "Худалдан авах", raw: "Покупать", upr: "(что?)" },
+        { id: 63, pair: "Помога́ть / Помо́чь", mn: "Туслах", raw: "Помогать", upr: "(кому?)" },
+        { id: 64, pair: "Понима́ть / Поня́ть", mn: "Ойлгох", raw: "Понимать", upr: "(кого? что?)" },
+        { id: 65, pair: "Поступа́ть / Поступи́ть", mn: "Орох (сургуульд)", raw: "Поступать", upr: "(куда?)" },
+        { id: 66, pair: "Приглаша́ть / Пригласи́ть", mn: "Урих", raw: "Приглашать", upr: "(кого? куда?)" },
+        { id: 67, pair: "Приходи́ть / Прийти́", mn: "Ирэх", raw: "Прийти", upr: "(куда? к кому?)" },
+        { id: 68, pair: "Применя́ть / Примени́ть", mn: "Хэрэглэх", raw: "Применять", upr: "(что?)" },
+        { id: 69, pair: "Проводи́ть / Провести́", mn: "Өнгөрүүлэх, дамжуулах", raw: "Проводить", upr: "(что?)" },
+        { id: 70, pair: "Путеше́ствовать / —", mn: "Аялах", raw: "Путешествовать", upr: "(где? по чему?)" },
+        { id: 71, pair: "Рабо́тать / Порабо́тать", mn: "Ажиллах", raw: "Работать", upr: "(кем? где?)" },
+        { id: 72, pair: "Развива́ть / Разви́ть", mn: "Хөгжүүлэх", raw: "Развивать", upr: "(что?)" },
+        { id: 73, pair: "Разраба́тывать / Разрабо́тать", mn: "Боловсруулах", raw: "Разрабатывать", upr: "(что?)" },
+        { id: 74, pair: "Расска́зывать / Рассказа́ть", mn: "Ярьж өгөх", raw: "Рассказывать", upr: "(что? о ком?)" },
+        { id: 75, pair: "Рисова́ть / Нарисова́ть", mn: "Зурах", raw: "Рисовать", upr: "(что? чем?)" },
+        { id: 76, pair: "Сиде́ть / Посиде́ть", mn: "Суух", raw: "Сидеть", upr: "(где? на чём?)" },
+        { id: 77, pair: "Символизи́ровать / —", mn: "Бэлгэдэх", raw: "Символизировать", upr: "(что?)" },
+        { id: 78, pair: "Слу́шать / Послу́шать", mn: "Сонсох", raw: "Слушать", upr: "(кого? что?)" },
+        { id: 79, pair: "Смотре́ть / Посмотре́ть", mn: "Үзэх, харах", raw: "Смотреть", upr: "(что? на кого?)" },
+        { id: 80, pair: "Собира́ть / Собра́ть", mn: "Цуглуулах", raw: "Собирать", upr: "(что?)" },
+        { id: 81, pair: "Собира́ться / Собра́ться", mn: "Цуглах, төлөвлөх", raw: "Собираться", upr: "(куда?)" },
+        { id: 82, pair: "Сове́товать / Посове́товать", mn: "Зөвлөх", raw: "Советовать", upr: "(кому?)" },
+        { id: 83, pair: "Создава́ть / Созда́ть", mn: "Бүтээх", raw: "Создавать", upr: "(что?)" },
+        { id: 84, pair: "Составля́ть / Соста́вить", mn: "Зохиох, бүрдүүлэх", raw: "Составить", upr: "(что?)" },
+        { id: 85, pair: "Состоя́ть / —", mn: "Бүрдэх", raw: "Состоять", upr: "(из чего?)" },
+        { id: 86, pair: "Спать / Поспа́ть", mn: "Унтах", raw: "Спать", upr: "(где?)" },
+        { id: 87, pair: "Спра́шивать / Спроси́ть", mn: "Асуух", raw: "Спрашивать", upr: "(кого? о чём?)" },
+        { id: 88, pair: "Станови́ться / Стать", mn: "Болох", raw: "Становиться", upr: "(кем? чем?)" },
+        { id: 89, pair: "Стро́ить / Постро́ить", mn: "Барих", raw: "Строить", upr: "(что?)" },
+        { id: 90, pair: "Суши́ть / Вы́сушить", mn: "Хатаах", raw: "Сушить", upr: "(что?)" },
+        { id: 91, pair: "Ви́деть / Уви́деть", mn: "Харах", raw: "Увидеть", upr: "(кого? что?)" },
+        { id: 92, pair: "Удивля́ться / Удиви́ться", mn: "Гайхах", raw: "Удивляться", upr: "(кому? чему?)" },
+        { id: 93, pair: "Узнава́ть / Узна́ть", mn: "Мэдэж авах", raw: "Узнать", upr: "(что? о ком?)" },
+        { id: 94, pair: "Уме́ть / Суме́ть", mn: "Чадах", raw: "Уметь", upr: "(сделать что?)" },
+        { id: 95, pair: "Уча́ствовать / —", mn: "Оролцох", raw: "Участвовать", upr: "(в чём?)" },
+        { id: 96, pair: "Учи́ться / Научи́ться", mn: "Суралцах", raw: "Учиться", upr: "(чему? где?)" },
+        { id: 97, pair: "Ходи́ть / Пойти́", mn: "Явах (хөлөөр)", raw: "Ходить", upr: "(куда?)" },
+        { id: 98, pair: "Хоте́ть / Захоте́ть", mn: "Хүсэх", raw: "Хотеть", upr: "(чего? что?)" },
+        { id: 99, pair: "Чита́ть / Прочита́ть", mn: "Унших", raw: "Читать", upr: "(что?)" },
+        { id: 100, pair: "Экономи́ть / Сэкономи́ть", mn: "Хэмнэх", raw: "Экономить", upr: "(на чём?)" }
     ];
 
     let currentTab = 'dict';
     let currentPage = 1;
+    let searchQuery = '';
     let learnedIds = new Set(JSON.parse(localStorage.getItem('learnedVerbs')) || []);
     let gameMode = null; 
     let gameState = {};
@@ -244,6 +247,7 @@
         currentTab = tab;
         gameMode = null;
         currentPage = 1;
+        searchQuery = '';
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         const activeTab = document.getElementById(`tab-${tab}`);
         if(activeTab) activeTab.classList.add('active');
@@ -273,10 +277,36 @@
     }
 
     function renderDictionary(el) {
+        // Хайлтын хэсэг
+        const searchDiv = document.createElement('div');
+        searchDiv.className = 'max-w-2xl mx-auto mb-10';
+        searchDiv.innerHTML = `
+            <div class="relative">
+                <input type="text" id="searchInput" value="${searchQuery}" placeholder="Үг хайх (Орос эсвэл Монгол)..." 
+                    class="w-full p-5 pl-14 rounded-2xl search-glass font-bold text-slate-700 outline-none shadow-xl focus:ring-4 focus:ring-blue-100 transition-all"
+                    oninput="handleSearch(this.value)">
+                <svg class="w-6 h-6 absolute left-5 top-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        `;
+        el.appendChild(searchDiv);
+
+        // Хайлтаар шүүх
+        const filteredVerbs = verbs.filter(v => 
+            v.pair.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            v.mn.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
         const itemsPerPage = 10;
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        const currentVerbs = verbs.slice(start, end);
+        const currentVerbs = filteredVerbs.slice(start, end);
+
+        if (currentVerbs.length === 0) {
+            el.innerHTML += `<div class="text-center p-10 text-slate-400 italic">Үг олдсонгүй...</div>`;
+            return;
+        }
 
         const list = document.createElement('div');
         list.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-8';
@@ -285,9 +315,10 @@
             list.innerHTML += `
                 <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center ${isLearned ? 'border-l-green-500' : ''}">
                     <div class="flex-1">
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 flex-wrap">
                             <span class="text-[10px] text-slate-400 font-bold bg-slate-100 px-1.5 py-0.5 rounded">#${v.id}</span>
                             <div class="text-blue-900 font-black text-lg">${v.pair}</div>
+                            <span class="text-xs font-bold text-red-500 italic ml-1">${v.upr}</span>
                         </div>
                         <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
                     </div>
@@ -304,14 +335,26 @@
         });
         el.appendChild(list);
 
-        const pagination = document.createElement('div');
-        pagination.className = 'flex flex-wrap justify-center items-center gap-2 mt-10';
-        for (let i = 1; i <= 10; i++) {
-            pagination.innerHTML += `
-                <button onclick="changePage(${i})" class="w-10 h-10 rounded-lg glass text-sm font-bold ${currentPage === i ? 'bg-blue-900 text-white shadow-lg' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>
-            `;
+        // Хуудаслалт (Зөвхөн хайлтгүй үед эсвэл олон илэрцтэй үед)
+        if (filteredVerbs.length > itemsPerPage) {
+            const totalPages = Math.ceil(filteredVerbs.length / itemsPerPage);
+            const pagination = document.createElement('div');
+            pagination.className = 'flex flex-wrap justify-center items-center gap-2 mt-10';
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+                    <button onclick="changePage(${i})" class="w-10 h-10 rounded-lg glass text-sm font-bold ${currentPage === i ? 'bg-blue-900 text-white shadow-lg' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>
+                `;
+            }
+            el.appendChild(pagination);
         }
-        el.appendChild(pagination);
+    }
+
+    function handleSearch(val) {
+        searchQuery = val;
+        currentPage = 1;
+        render();
+        // Хайлт хийсний дараа фокус хадгалах
+        document.getElementById('searchInput').focus();
     }
 
     function changePage(p) {
@@ -377,7 +420,10 @@
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
                     </button>
                 </div>
-                <h2 class="text-4xl font-black text-center text-slate-800 mb-10 tracking-tight leading-tight">${item.pair}</h2>
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl font-black text-slate-800 tracking-tight leading-tight">${item.pair}</h2>
+                    <span class="text-sm font-bold text-red-500 italic mt-2 block">${item.upr}</span>
+                </div>
                 <div class="grid gap-3">
                     ${options.map(opt => `
                         <button onclick="checkQuiz('${opt.replace(/'/g, "\\'")}')" class="w-full py-5 px-6 glass rounded-2xl font-bold text-slate-700 hover:bg-blue-900 hover:text-white transition-all text-lg shadow-sm border border-slate-100">
@@ -412,7 +458,8 @@
         el.innerHTML = `
             <div class="max-w-2xl mx-auto glass p-10 rounded-3xl text-center shadow-xl">
                 <div class="mb-4 font-bold text-emerald-600 uppercase tracking-[0.2em] text-xs">Үг олборлогч</div>
-                <h3 class="text-3xl font-black text-slate-800 mb-8">${item.mn}</h3>
+                <h3 class="text-3xl font-black text-slate-800">${item.mn}</h3>
+                <span class="text-xs font-bold text-red-500 italic mb-8 block">${item.upr}</span>
                 <div class="flex flex-wrap justify-center gap-2 mb-10">
                     ${targetWord.split('').map((char, i) => `
                         <div class="letter-slot ${gameState.minerRevealed.has(i) ? 'correct' : ''}">
@@ -441,10 +488,6 @@
             }
         });
 
-        if(!found) {
-            // Энд алдааны эффект нэмж болно
-        }
-
         if(gameState.minerRevealed.size === target.length) {
             gameState.score++;
             showFeedback("ОЛБОРЛОЛТ АМЖИЛТТАЙ!", "success");
@@ -469,7 +512,8 @@
                         <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
                     </button>
                 </div>
-                <div class="text-lg font-bold text-slate-400 mb-8 italic">"${item.mn}"</div>
+                <div class="text-lg font-bold text-slate-400 mb-4 italic">"${item.mn}"</div>
+                <div class="text-xs font-bold text-red-500 italic mb-8">${item.upr}</div>
                 <input type="text" id="listenInput" placeholder="..." autocomplete="off" class="w-full p-6 rounded-2xl border-2 border-slate-100 text-center text-3xl font-black uppercase mb-8 focus:border-purple-500 outline-none transition-all shadow-inner bg-slate-50/30" onkeyup="if(event.key==='Enter') checkListen()">
                 <button onclick="checkListen()" class="w-full py-5 bg-purple-600 text-white rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all shadow-lg">ШАЛГАХ</button>
                 <button onclick="setTab('practice')" class="mt-8 text-slate-400 font-bold hover:text-red-500 text-xs tracking-widest uppercase">Зогсоох</button>
@@ -507,7 +551,8 @@
         el.innerHTML = `
             <div class="max-w-xl mx-auto glass p-10 rounded-3xl text-center shadow-2xl">
                 <div class="text-xs font-bold text-red-500 mb-6 uppercase tracking-[0.3em]">Үсгүүдийг эвлүүл</div>
-                <h3 class="text-2xl font-black text-slate-800 mb-8 italic">"${item.mn}"</h3>
+                <h3 class="text-2xl font-black text-slate-800 italic">"${item.mn}"</h3>
+                <span class="text-xs font-bold text-red-500 italic mb-8 block">${item.upr}</span>
                 <div class="flex flex-wrap justify-center gap-3 mb-10">
                     ${gameState.scrambledWord.split('').map(char => `
                         <span class="w-12 h-16 flex items-center justify-center glass rounded-2xl font-black text-3xl text-red-600 border-b-4 border-red-200 shadow-md transform rotate-2">${char}</span>
@@ -569,7 +614,7 @@
             el.innerHTML = `
                 <div class="text-center p-20 glass rounded-3xl text-slate-400">
                     <div class="text-5xl mb-4 opacity-30">📂</div>
-                    <div class="font-bold italic">Одоогоор цээжилсэн үг байхгүй байна. Үгний ард байх зөв тэмдэг дээр дарж нэмээрэй.</div>
+                    <div class="font-bold italic">Одоогоор цээжилсэн үг байхгүй байна.</div>
                 </div>`;
             return;
         }
@@ -585,7 +630,10 @@
             list.innerHTML += `
                 <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center border-l-green-500 shadow-sm transition-all hover:-translate-y-1">
                     <div>
-                        <div class="text-blue-900 font-black text-lg">${v.pair}</div>
+                        <div class="flex items-center gap-2">
+                            <div class="text-blue-900 font-black text-lg">${v.pair}</div>
+                            <span class="text-xs font-bold text-red-500 italic">${v.upr}</span>
+                        </div>
                         <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
                     </div>
                     <div class="flex gap-2">
@@ -617,7 +665,6 @@
         }, 1600);
     }
 
-    // Анхны ачаалалт
     window.onload = () => {
         setTab('dict');
     };
