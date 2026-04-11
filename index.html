@@ -1,298 +1,627 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="mn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Мир Глаголов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Орос хэлний 100 үйл үг - Практик</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <style>
-        :root { --ru-blue: #0039A6; --ru-red: #D52B1E; }
+        :root { 
+            --ru-blue: #0039A6; 
+            --ru-red: #D52B1E; 
+        }
+        
         body { 
             font-family: 'Montserrat', sans-serif; 
+            /* Арын фон зургийг SB-1.png болгож солив */
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
-                        url('https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=1920') no-repeat center center fixed;
+                        url('./SB-1.png') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
+            background-color: #f8fafc; /* Зураг ачаалагдахгүй үеийн нөөц өнгө */
         }
-        .accent-font { font-family: 'Montserrat', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); }
-        .nav-btn.active { background: var(--ru-blue); color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,57,166,0.3); }
-        .verb-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 1.2rem; }
-        .verb-card:hover { transform: scale(1.02); }
-        .progress-bar { height: 10px; background: #E2E8F0; border-radius: 5px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--ru-blue), var(--ru-red)); transition: width 0.4s ease-out; }
-        .animate-fade { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255,255,255,0.4); 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-btn.active { 
+            background: var(--ru-blue); 
+            color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 57, 166, 0.3);
+        }
+
+        .verb-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border-left: 4px solid var(--ru-blue); 
+        }
+
+        .verb-card:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+        }
+
+        .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
         
-        @media (hover: hover) {
-            .hover-btn:hover { background-color: #f8fafc; border-color: #bfdbfe; transform: scale(1.02); }
+        .letter-slot { 
+            width: 3rem; 
+            height: 3.5rem; 
+            border-bottom: 3px solid #cbd5e1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            color: #1e293b; 
+            margin: 0 0.25rem; 
         }
-        .hover-btn:active { background-color: #eff6ff; }
-        input[type=range] { -webkit-appearance: none; background: #e2e8f0; border-radius: 5px; height: 4px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%; background: var(--ru-blue); cursor: pointer; }
+
+        .letter-slot.correct { border-bottom-color: #22c55e; color: #15803d; }
+        
+        .logo-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .school-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .shake { animation: shake 0.4s ease-in-out; }
     </style>
 </head>
 <body class="pb-20">
 
-<div class="fixed top-4 right-4 z-50 glass p-3 rounded-2xl flex flex-col items-center gap-2 border-t-4 border-blue-600 shadow-lg">
-    <audio id="bgMusic" loop>
-        <source src="song1.mp3" type="audio/mpeg">
-    </audio>
-    <div class="flex items-center gap-3">
-        <button onclick="toggleMusic()" id="musicBtn" class="p-2 bg-slate-100 rounded-full text-blue-600 hover:bg-blue-100 transition-colors">
-            <svg id="musicIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-        </button>
-        <input type="range" min="0" max="1" step="0.1" value="0.5" oninput="adjustVolume(this.value)" class="w-20">
-    </div>
-</div>
-
-<div id="app" class="max-w-4xl mx-auto px-4 pt-8">
+<div id="app" class="max-w-5xl mx-auto px-4 pt-8">
     <header class="text-center mb-10">
-        <!-- Logo хэмжээг 3 дахин томруулсан (h-24 -> h-72) -->
-        <div class="flex justify-center mb-6">
-            <img src="Logo.png" alt="Logo" class="h-72 w-auto object-contain" onerror="this.style.display='none'">
+        <div class="logo-container">
+            <!-- logo.png файл олдсонгүй бол handleLogoError ажиллана -->
+            <img src="./logo.png" alt="Сургуулийн Лого" class="school-logo" id="mainLogo" onerror="handleLogoError(this)">
         </div>
         
-        <!-- Сургуулийн нэрийг Ө, Ү үсгийн алдаагүй, зөв фонтоор оруулсан -->
-        <p class="accent-font text-xl font-bold text-slate-700 mb-8 px-4">
-            Сэлэнгэ аймгийн Сүхбаатар сумын ерөнхий боловсролын нэгдүгээр сургууль
-        </p>
+        <h1 class="school-font text-2xl md:text-3xl font-bold text-slate-800 mb-2 uppercase leading-tight drop-shadow-sm">
+            Сэлэнгэ аймгийн Сүхбаатар сумын<br>Ерөнхий боловсролын нэгдүгээр сургууль
+        </h1>
+        <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full shadow-sm"></div>
         
-        <nav class="flex flex-wrap justify-center gap-2">
-            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-3 rounded-xl font-black text-xs uppercase glass text-slate-600">Словарь</button>
-            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-3 rounded-xl font-black text-xs uppercase glass text-slate-600">Практика</button>
-            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-3 rounded-xl font-black text-xs uppercase glass text-slate-600">Изученные</button>
+        <nav class="flex flex-wrap justify-center gap-3">
+            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Толь бичиг</button>
+            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Дасгал</button>
+            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Цээжилсэн</button>
         </nav>
     </header>
-    <main id="content" class="animate-fade"></main>
+
+    <main id="content" class="min-h-[400px]"></main>
 </div>
 
-<audio id="verbAudioPlayer" preload="auto"></audio>
-
 <script>
+    // Лого олдохгүй үед ажиллах функц
+    function handleLogoError(img) {
+        const container = img.parentElement;
+        container.innerHTML = `
+            <div class="w-full h-full rounded-full bg-blue-50 flex items-center justify-center border-2 border-dashed border-blue-300">
+                <span class="text-blue-400 font-bold text-[10px] text-center p-2 uppercase">logo.png<br>байхгүй</span>
+            </div>
+        `;
+    }
+
+    // Өгөгдлийн сан - 100 үйл үг
     const verbs = [
-        { id: 1, nsf: "Бере́чь", sf: "Сбере́чь", mn: "Хайрлах, гамнах", up: "(кого́? что?)" },
-        { id: 2, nsf: "Боле́ть", sf: "Заболе́ть", mn: "Өвдөх, шаналах", up: "(чем?)" },
-        { id: 3, nsf: "Брать", sf: "Взять", mn: "Авах", up: "(кого́? что?)" },
-        { id: 4, nsf: "Возвраща́ть", sf: "Верну́ть", mn: "Буцаах", up: "(кого́? что?)" },
-        { id: 5, nsf: "Воспи́тывать", sf: "Воспита́ть", mn: "Хүмүүжүүлэх", up: "(кого́?)" },
-        { id: 6, nsf: "Встреча́ться", sf: "Встре́титься", mn: "Уулзах", up: "(с кем?)" },
-        { id: 7, nsf: "Выбира́ть", sf: "Вы́брать", mn: "Сонгох", up: "(кого́? что?)" },
-        { id: 8, nsf: "Выделя́ть", sf: "Вы́делить", mn: "Ялгах, онцлох", up: "(что?)" },
-        { id: 9, nsf: "Вырыва́ть", sf: "Вы́рвать", mn: "Сугалах, тасдах", up: "(что?)" },
-        { id: 10, nsf: "Выступа́ть", sf: "Вы́ступить", mn: "Илтгэх, гарах", up: "(где?)" },
-        { id: 11, nsf: "Говори́ть", sf: "Сказа́ть", mn: "Ярих, хэлэх", up: "(с кем? о чём?)" },
-        { id: 12, nsf: "Гото́вить", sf: "Пригото́вить", mn: "Бэлтгэх, хоол хийх", up: "(что?)" },
-        { id: 13, nsf: "Грани́чить", sf: "-", mn: "Хиллэх", up: "(с чем?)" },
-        { id: 14, nsf: "Дава́ть", sf: "Дать", mn: "Өгөх", up: "(кого́? что?)" },
-        { id: 15, nsf: "Де́лать", sf: "Сде́лать", mn: "Хийх", up: "(что?)" },
-        { id: 16, nsf: "Ду́мать", sf: "Поду́мать", mn: "Бодох", up: "(о ком? о чём?)" },
-        { id: 17, nsf: "Е́здить", sf: "Съе́здить", mn: "Явах (унаагаар)", up: "(куда́?)" },
-        { id: 18, nsf: "Есть", sf: "Съесть", mn: "Идэх", up: "(что?)" },
-        { id: 19, nsf: "Жа́рить", sf: "Пожа́рить", mn: "Шарж болгох", up: "(что?)" },
-        { id: 20, nsf: "Жить", sf: "Пожи́ть", mn: "Амьдрах", up: "(где?)" },
-        { id: 21, nsf: "Загиба́ть", sf: "Загнуть", mn: "Нугалах", up: "(что?)" },
-        { id: 22, nsf: "Заговори́ть", sf: "-", mn: "Ярьж эхлэх", up: "(с кем?)" },
-        { id: 23, nsf: "Занима́ться", sf: "Позанима́ться", mn: "Хичээллэх", up: "(чем?)" },
-        { id: 24, nsf: "Знать", sf: "Узна́ть", mn: "Мэдэх", up: "(кого́? что?)" },
-        { id: 25, nsf: "Игра́ть", sf: "Сыгра́ть", mn: "Тоглох", up: "(во что?)" },
-        { id: 26, nsf: "Изуча́ть", sf: "Изучи́ть", mn: "Судлах", up: "(что?)" },
-        { id: 27, nsf: "Име́ть", sf: "-", mn: "Мэдээлэлтэй байх, өмчлөх", up: "(что?)" },
-        { id: 28, nsf: "Испуга́ться", sf: "-", mn: "Айх", up: "(кого́?)" },
-        { id: 29, nsf: "Исче́знуть", sf: "Исчеза́ть", mn: "Алга болох", up: "(где?)" },
-        { id: 30, nsf: "Ката́ться", sf: "Поката́ться", mn: "Гулгах, давхих", up: "(на чём?)" },
-        { id: 31, nsf: "Купа́ться", sf: "Искупа́ться", mn: "Усанд орох", up: "(где?)" },
-        { id: 32, nsf: "Купи́ть", sf: "Покупа́ть", mn: "Худалдаж авах", up: "(что?)" },
-        { id: 33, nsf: "Лечи́ть", sf: "Вы́лечить", mn: "Эмчлэх", up: "(кого́?)" },
-        { id: 34, nsf: "Люби́ть", sf: "Полюби́ть", mn: "Дурлах, хайрлах", up: "(кого́? что?)" },
-        { id: 35, nsf: "Мечта́ть", sf: "Помечта́ть", mn: "Мөрөөдөх", up: "(о чём?)" },
-        { id: 36, nsf: "Мочь", sf: "Смочь", mn: "Чадах", up: "(+ инфинитив)" },
-        { id: 37, nsf: "Наде́ть", sf: "Надева́ть", mn: "Өмсөх", up: "(что?)" },
-        { id: 38, nsf: "Начина́ть", sf: "Нача́ть", mn: "Эхлэх", up: "(что?)" },
-        { id: 39, nsf: "Находи́ться", sf: "-", mn: "Байрлах", up: "(где?)" },
-        { id: 40, nsf: "Нра́виться", sf: "Понра́виться", mn: "Таалагдах", up: "(кому́?)" },
-        { id: 41, nsf: "Овладе́ть", sf: "Овладева́ть", mn: "Эзэмших", up: "(чем?)" },
-        { id: 42, nsf: "Объясни́ть", sf: "Объясня́ть", mn: "Тайлбарлах", up: "(что?)" },
-        { id: 43, nsf: "Означа́ть", sf: "-", mn: "Утга илэрхийлэх", up: "(что?)" },
-        { id: 44, nsf: "Окружа́ть", sf: "Окружи́ть", mn: "Хүрээлэх", up: "(кого́?)" },
-        { id: 45, nsf: "Оста́вить", sf: "Оставля́ть", mn: "Үлдээх", up: "(что?)" },
-        { id: 46, nsf: "Отва́ривать", sf: "Отвари́ть", mn: "Чанаж болгох", up: "(что?)" },
-        { id: 47, nsf: "Отвеча́ть", sf: "Отве́тить", mn: "Хариулах", up: "(на что?)" },
-        { id: 48, nsf: "Отда́ть", sf: "Отдава́ть", mn: "Буцааж өгөх", up: "(что? кому́?)" },
-        { id: 49, nsf: "Отдыха́ть", sf: "Отдохну́ть", mn: "Амрах", up: "(где?)" },
-        { id: 50, nsf: "Открыва́ться", sf: "Откры́ться", mn: "Нээгдэх", up: "(где?)" },
-        { id: 51, nsf: "Относи́ться", sf: "Отнести́сь", mn: "Хандах, хамаарах", up: "(к кому?)" },
-        { id: 52, nsf: "Охраня́ть", sf: "-", mn: "Хамгаалах", up: "(кого́? что?)" },
-        { id: 53, nsf: "Пасти́", sf: "-", mn: "Хариулах (мал)", up: "(кого́?)" },
-        { id: 54, nsf: "Переста́ть", sf: "Перестава́ть", mn: "Зогсох, болих", up: "(+ инфинитив)" },
-        { id: 55, nsf: "Петь", sf: "Спеть", mn: "Дуулах", up: "(что?)" },
-        { id: 56, nsf: "Писа́ть", sf: "Написа́ть", mn: "Бичих", up: "(кому́? что?)" },
-        { id: 57, nsf: "Пить", sf: "Вы́пить", mn: "Уух", up: "(что?)" },
-        { id: 58, nsf: "Плани́ровать", sf: "Заплани́ровать", mn: "Төлөвлөх", up: "(что?)" },
-        { id: 59, nsf: "Победи́ть", sf: "Побежда́ть", mn: "Ялах", up: "(кого́?)" },
-        { id: 60, nsf: "Подружи́ться", sf: "-", mn: "Найзлах", up: "(с кем?)" },
-        { id: 61, nsf: "Поги́бнуть", sf: "Погиба́ть", mn: "Амь үрэгдэх", up: "(где?)" },
-        { id: 62, nsf: "Покупа́ть", sf: "Купи́ть", mn: "Худалдан авах", up: "(что?)" },
-        { id: 63, nsf: "Помога́ть", sf: "Помо́чь", mn: "Туслах", up: "(кому́?)" },
-        { id: 64, nsf: "Понима́ть", sf: "Поня́ть", mn: "Ойлгох", up: "(что?)" },
-        { id: 65, nsf: "Поступа́ть", sf: "Поступи́ть", mn: "Элсэх, хандах", up: "(куда́?)" },
-        { id: 66, nsf: "Приглаша́ть", sf: "Пригласи́ть", mn: "Урих", up: "(кого́?)" },
-        { id: 67, nsf: "Прийти́", sf: "Приходи́ть", mn: "Ирэх (явган)", up: "(куда́?)" },
-        { id: 68, nsf: "Применя́ть", sf: "Примени́ть", mn: "Хэрэглэх, ашиглах", up: "(что?)" },
-        { id: 69, nsf: "Проводи́ть", sf: "Провести́", mn: "Өнгөрүүлэх, хөтлөх", up: "(что?)" },
-        { id: 70, nsf: "Путеше́ствовать", sf: "-", mn: "Аялах", up: "(где?)" },
-        { id: 71, nsf: "Рабо́тать", sf: "Порабо́тать", mn: "Ажиллах", up: "(где? кем?)" },
-        { id: 72, nsf: "Развива́ть", sf: "Разви́ть", mn: "Хөгжүүлэх", up: "(что?)" },
-        { id: 73, nsf: "Разраба́тывать", sf: "Разрабо́тать", mn: "Боловсруулах", up: "(что?)" },
-        { id: 74, nsf: "Расска́зывать", sf: "Рассказа́ть", mn: "Хүүрнэх", up: "(кому́? что?)" },
-        { id: 75, nsf: "Рисова́ть", sf: "Нарисо́вать", mn: "Зурах", up: "(что?)" },
-        { id: 76, nsf: "Сиде́ть", sf: "Посиде́ть", mn: "Суух", up: "(где?)" },
-        { id: 77, nsf: "Символизи́ровать", sf: "-", mn: "Бэлгэдэх", up: "(что?)" },
-        { id: 78, nsf: "Слу́шать", sf: "Послу́шать", mn: "Сонсох", up: "(кого́? что?)" },
-        { id: 79, nsf: "Смотре́ть", sf: "Посмотре́ть", mn: "Үзэх, харах", up: "(на что?)" },
-        { id: 80, nsf: "Собира́ть", sf: "Собра́ть", mn: "Цуглуулах", up: "(что?)" },
-        { id: 81, nsf: "Собира́ться", sf: "Собра́ться", mn: "Цуглах, төлөвлөх", up: "(куда́?)" },
-        { id: 82, nsf: "Сове́товать", sf: "Посове́товать", mn: "Зөвлөх", up: "(кому́?)" },
-        { id: 83, nsf: "Создава́ть", sf: "Созда́ть", mn: "Бүтээх", up: "(что?)" },
-        { id: 84, nsf: "Соста́вить", sf: "Составля́ть", mn: "Зохиох, бүрдүүлэх", up: "(что?)" },
-        { id: 85, nsf: "Состоя́ть", sf: "-", mn: "Бүрдэх, байх", up: "(из чего?)" },
-        { id: 86, nsf: "Спать", sf: "Поспа́ть", mn: "Унтах", up: "(где?)" },
-        { id: 87, nsf: "Спра́шивать", sf: "Спроси́ть", mn: "Асуух", up: "(кого́?)" },
-        { id: 88, nsf: "Стать", sf: "Станови́ться", mn: "Болох", up: "(кем?)" },
-        { id: 89, nsf: "Стро́ить", sf: "Постро́ить", mn: "Барих", up: "(что?)" },
-        { id: 90, nsf: "Суши́ть", sf: "Посуши́ть", mn: "Хатаах", up: "(что?)" },
-        { id: 91, nsf: "Уви́деть", sf: "Ви́деть", mn: "Харах", up: "(кого́?)" },
-        { id: 92, nsf: "Удиви́ться", sf: "Удивля́ться", mn: "Гайхах", up: "(чему́?)" },
-        { id: 93, nsf: "Узна́ть", sf: "Узнава́ть", mn: "Мэдэж авах", up: "(что?)" },
-        { id: 94, nsf: "Уме́ть", sf: "Суме́ть", mn: "Чадах (мэдэх)", up: "(+ инфинитив)" },
-        { id: 95, nsf: "Уча́ствовать", sf: "-", mn: "Оролцох", up: "(в чём?)" },
-        { id: 96, nsf: "Учи́ться", sf: "Научи́ться", mn: "Суралцах", up: "(где?)" },
-        { id: 97, nsf: "Ходи́ть", sf: "Сходи́ть", mn: "Явах (явган)", up: "(куда́?)" },
-        { id: 98, nsf: "Хоте́ть", sf: "Захоте́ть", mn: "Хүсэх", up: "(что?)" },
-        { id: 99, nsf: "Чита́ть", sf: "Прочита́ть", mn: "Унших", up: "(что?)" },
-        { id: 100, nsf: "Экономи́ть", sf: "Сэкономи́ть", mn: "Хэмнэх", up: "(что?)" }
+        { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь" },
+        { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть" },
+        { id: 3, pair: "Брать / Взять", mn: "Авах", raw: "Брать" },
+        { id: 4, pair: "Возвраща́ть / Верну́ть", mn: "Буцаах", raw: "Возвращать" },
+        { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать" },
+        { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться" },
+        { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать" },
+        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять" },
+        { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать" },
+        { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать" },
+        { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить" },
+        { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить" },
+        { id: 13, pair: "Грани́чить / —", mn: "Хиллэх", raw: "Граничить" },
+        { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать" },
+        { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать" },
+        { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать" },
+        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить" },
+        { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть" },
+        { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить" },
+        { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить" },
+        { id: 21, pair: "Загиба́ть / Загну́ть", mn: "Нугалах, эргүүлэх", raw: "Загибать" },
+        { id: 22, pair: "Загова́ривать / Заговори́ть", mn: "Ярьж эхлэх", raw: "Заговорить" },
+        { id: 23, pair: "Занима́ться / Заня́ться", mn: "Хичээллэх, оролдох", raw: "Заниматься" },
+        { id: 24, pair: "Знать / Узна́ть", mn: "Мэдэх", raw: "Знать" },
+        { id: 25, pair: "Игра́ть / Поигра́ть", mn: "Тоглох", raw: "Играть" },
+        { id: 26, pair: "Изуча́ть / Изучи́ть", mn: "Судлах", raw: "Изучать" },
+        { id: 27, pair: "Име́ть / —", mn: "Эзэмших, байх", raw: "Иметь" },
+        { id: 28, pair: "Пуга́ться / Испуга́ться", mn: "Айх", raw: "Испугаться" },
+        { id: 29, pair: "Исчеза́ть / Исче́знуть", mn: "Алга болох", raw: "Исчезнуть" },
+        { id: 30, pair: "Ката́ться / Поката́ться", mn: "Гулгах, давхих", raw: "Кататься" },
+        { id: 31, pair: "Купа́ться / Покупа́ться", mn: "Усанд орох, сэлэх", raw: "Купаться" },
+        { id: 32, pair: "Покупа́ть / Купи́ть", mn: "Худалдаж авах", raw: "Купить" },
+        { id: 33, pair: "Лечи́ть / Вы́лечить", mn: "Эмчлэх", raw: "Лечить" },
+        { id: 34, pair: "Люби́ть / Полюби́ть", mn: "Хайрлах, дурлах", raw: "Любить" },
+        { id: 35, pair: "Мечта́ть / Помечта́ть", mn: "Мөрөөдөх", raw: "Мечтать" },
+        { id: 36, pair: "Мочь / Смочь", mn: "Чадах", raw: "Мочь" },
+        { id: 37, pair: "Надева́ть / Наде́ть", mn: "Өмсөх", raw: "Надеть" },
+        { id: 38, pair: "Начина́ть / Нача́ть", mn: "Эхлэх", raw: "Начинать" },
+        { id: 39, pair: "Находи́ться / Найти́сь", mn: "Байрлах, олдох", raw: "Находиться" },
+        { id: 40, pair: "Нравиться / Понра́виться", mn: "Таалагдах", raw: "Нравиться" },
+        { id: 41, pair: "Овладева́ть / Овладе́ть", mn: "Эзэмших", raw: "Овладеть" },
+        { id: 42, pair: "Объясня́ть / Объясни́ть", mn: "Тайлбарлах", raw: "Объяснить" },
+        { id: 43, pair: "Означа́ть / —", mn: "Утга илэрхийлэх", raw: "Означать" },
+        { id: 44, pair: "Окружа́ть / Окружи́ть", mn: "Хүрээлэх", raw: "Окружать" },
+        { id: 45, pair: "Оставля́ть / Оста́вить", mn: "Үлдээх", raw: "Оставить" },
+        { id: 46, pair: "Отва́ривать / Отвари́ть", mn: "Чанах", raw: "Отваривать" },
+        { id: 47, pair: "Отвеча́ть / Отве́тить", mn: "Хариулах", raw: "Отвечать" },
+        { id: 48, pair: "Отдава́ть / Отда́ть", mn: "Буцааж өгөх", raw: "Отдать" },
+        { id: 49, pair: "Отдыха́ть / Отдохну́ть", mn: "Амрах", raw: "Отдыхать" },
+        { id: 50, pair: "Открыва́ться / Откры́ться", mn: "Нээгдэх", raw: "Открываться" },
+        { id: 51, pair: "Относи́ться / Отнести́сь", mn: "Хандлага гаргах", raw: "Относиться" },
+        { id: 52, pair: "Охраня́ть / Охрани́ть", mn: "Хамгаалах, манах", raw: "Охранять" },
+        { id: 53, pair: "Пасти́ / Спасти́", mn: "Маллах, хариулах", raw: "Пасти" },
+        { id: 54, pair: "Перестава́ть / Переста́ть", mn: "Болих, зогсох", raw: "Перестать" },
+        { id: 55, pair: "Петь / Спеть", mn: "Дуулах", raw: "Петь" },
+        { id: 56, pair: "Писа́ть / Написа́ть", mn: "Бичих", raw: "Писать" },
+        { id: 57, pair: "Пить / Вы́пить", mn: "Уух", raw: "Пить" },
+        { id: 58, pair: "Плани́ровать / Заплани́ровать", mn: "Төлөвлөх", raw: "Планировать" },
+        { id: 59, pair: "Побежда́ть / Победи́ть", mn: "Ялах", raw: "Победить" },
+        { id: 60, pair: "Дружить / Подружи́ться", mn: "Найзлах", raw: "Подружиться" },
+        { id: 61, pair: "Погиба́ть / Поги́бнуть", mn: "Амь үрэгдэх", raw: "Погибнуть" },
+        { id: 62, pair: "Покупа́ть / Купи́ть", mn: "Худалдан авах", raw: "Покупать" },
+        { id: 63, pair: "Помога́ть / Помо́чь", mn: "Туслах", raw: "Помогать" },
+        { id: 64, pair: "Понима́ть / Поня́ть", mn: "Ойлгох", raw: "Понимать" },
+        { id: 65, pair: "Поступа́ть / Поступи́ть", mn: "Орох (сургуульд)", raw: "Поступать" },
+        { id: 66, pair: "Приглаша́ть / Пригласи́ть", mn: "Урих", raw: "Приглашать" },
+        { id: 67, pair: "Приходи́ть / Прийти́", mn: "Ирэх", raw: "Прийти" },
+        { id: 68, pair: "Применя́ть / Примени́ть", mn: "Хэрэглэх", raw: "Применять" },
+        { id: 69, pair: "Проводи́ть / Провести́", mn: "Өнгөрүүлэх, дамжуулах", raw: "Проводить" },
+        { id: 70, pair: "Путеше́ствовать / —", mn: "Аялах", raw: "Путешествовать" },
+        { id: 71, pair: "Рабо́тать / Порабо́тать", mn: "Ажиллах", raw: "Работать" },
+        { id: 72, pair: "Развива́ть / Разви́ть", mn: "Хөгжүүлэх", raw: "Развивать" },
+        { id: 73, pair: "Разраба́тывать / Разрабо́тать", mn: "Боловсруулах", raw: "Разрабатывать" },
+        { id: 74, pair: "Расска́зывать / Рассказа́ть", mn: "Ярьж өгөх", raw: "Рассказывать" },
+        { id: 75, pair: "Рисова́ть / Нарисова́ть", mn: "Зурах", raw: "Рисовать" },
+        { id: 76, pair: "Сиде́ть / Посиде́ть", mn: "Суух", raw: "Сидеть" },
+        { id: 77, pair: "Символизи́ровать / —", mn: "Бэлгэдэх", raw: "Символизировать" },
+        { id: 78, pair: "Слу́шать / Послу́шать", mn: "Сонсох", raw: "Слушать" },
+        { id: 79, pair: "Смотре́ть / Посмотре́ть", mn: "Үзэх, харах", raw: "Смотреть" },
+        { id: 80, pair: "Собира́ть / Собра́ть", mn: "Цуглуулах", raw: "Собирать" },
+        { id: 81, pair: "Собира́ться / Собра́ться", mn: "Цуглах, төлөвлөх", raw: "Собираться" },
+        { id: 82, pair: "Сове́товать / Посове́товать", mn: "Зөвлөх", raw: "Советовать" },
+        { id: 83, pair: "Создава́ть / Созда́ть", mn: "Бүтээх", raw: "Создавать" },
+        { id: 84, pair: "Составля́ть / Соста́вить", mn: "Зохиох, бүрдүүлэх", raw: "Составить" },
+        { id: 85, pair: "Состоя́ть / —", mn: "Бүрдэх", raw: "Состоять" },
+        { id: 86, pair: "Спать / Поспа́ть", mn: "Унтах", raw: "Спать" },
+        { id: 87, pair: "Спра́шивать / Спроси́ть", mn: "Асуух", raw: "Спрашивать" },
+        { id: 88, pair: "Станови́ться / Стать", mn: "Болох", raw: "Стать" },
+        { id: 89, pair: "Стро́ить / Постро́ить", mn: "Барих", raw: "Строить" },
+        { id: 90, pair: "Суши́ть / Вы́сушить", mn: "Хатаах", raw: "Сушить" },
+        { id: 91, pair: "Ви́деть / Уви́деть", mn: "Харах", raw: "Увидеть" },
+        { id: 92, pair: "Удивля́ться / Удиви́ться", mn: "Гайхах", raw: "Удивляться" },
+        { id: 93, pair: "Узнава́ть / Узна́ть", mn: "Мэдэж авах", raw: "Узнать" },
+        { id: 94, pair: "Уме́ть / Суме́ть", mn: "Чадах", raw: "Уметь" },
+        { id: 95, pair: "Уча́ствовать / —", mn: "Оролцох", raw: "Участвовать" },
+        { id: 96, pair: "Учи́ться / Научи́ться", mn: "Суралцах", raw: "Учиться" },
+        { id: 97, pair: "Ходи́ть / Пойти́", mn: "Явах (хөлөөр)", raw: "Ходить" },
+        { id: 98, pair: "Хоте́ть / Захоте́ть", mn: "Хүсэх", raw: "Хотеть" },
+        { id: 99, pair: "Чита́ть / Прочита́ть", mn: "Унших", raw: "Читать" },
+        { id: 100, pair: "Экономи́ть / Сэкономи́ть", mn: "Хэмнэх", raw: "Экономить" }
     ];
 
     let currentTab = 'dict';
-    let learnedIds = new Set(JSON.parse(localStorage.getItem('verbs_learned_v2')) || []);
     let currentPage = 1;
-    let searchQuery = '';
-    let quiz = { active: false, mode: '', index: 0, score: 0, items: [], answered: false, inputVal: '', isCorrect: false, correctValue: '', subStep: 1 };
+    let learnedIds = new Set(JSON.parse(localStorage.getItem('learnedVerbs')) || []);
+    let gameMode = null; 
+    let gameState = {};
 
-    function playVerbAudio(verbId) {
-        const player = document.getElementById('verbAudioPlayer');
-        player.src = verbId + ".mp3";
-        player.load();
-        player.play().catch(e => console.warn("Audio error: " + verbId));
-    }
-
-    function toggleMusic() {
-        const music = document.getElementById('bgMusic');
-        music.paused ? music.play().catch(() => {}) : music.pause();
-    }
-
-    function adjustVolume(val) {
-        document.getElementById('bgMusic').volume = val;
+    function playAudio(verbId) {
+        const audio = new Audio(`./${verbId}.mp3`);
+        audio.play().catch(err => {
+            console.error(`${verbId}.mp3 файл олдсонгүй`);
+            showFeedback(`${verbId}.mp3 олдсонгүй`, "error");
+        });
     }
 
     function setTab(tab) {
         currentTab = tab;
-        quiz.active = false;
+        gameMode = null;
+        currentPage = 1;
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        const target = document.getElementById(`tab-${tab}`);
-        if(target) target.classList.add('active');
+        const activeTab = document.getElementById(`tab-${tab}`);
+        if(activeTab) activeTab.classList.add('active');
         render();
     }
 
     function toggleLearned(id) {
         if (learnedIds.has(id)) learnedIds.delete(id);
         else learnedIds.add(id);
-        localStorage.setItem('verbs_learned_v2', JSON.stringify([...learnedIds]));
+        localStorage.setItem('learnedVerbs', JSON.stringify([...learnedIds]));
         render();
     }
 
     function render() {
         const container = document.getElementById('content');
-        if (quiz.active) return renderQuiz(container);
+        container.innerHTML = '';
         
-        switch(currentTab) {
-            case 'dict': renderDict(container); break;
-            case 'practice': renderPracticeMenu(container); break;
-            case 'favorites': renderFavorites(container); break;
+        if (currentTab === 'dict') renderDictionary(container);
+        else if (currentTab === 'favorites') renderFavorites(container);
+        else if (currentTab === 'practice') {
+            if (!gameMode) renderPracticeMenu(container);
+            else if (gameMode === 'quiz') renderQuiz(container);
+            else if (gameMode === 'miner') renderMiner(container);
+            else if (gameMode === 'listen') renderListen(container);
+            else if (gameMode === 'scrambled') renderScrambled(container);
         }
     }
 
-    function renderDict(el) {
-        const cleanStr = (s) => s.replace(/[́]/g, '').toLowerCase();
-        const filteredVerbs = verbs.filter(v => {
-            if (!searchQuery) return true;
-            return cleanStr(v.nsf).includes(searchQuery) || cleanStr(v.sf).includes(searchQuery) || v.mn.toLowerCase().includes(searchQuery);
-        });
+    function renderDictionary(el) {
+        const itemsPerPage = 10;
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const currentVerbs = verbs.slice(start, end);
 
-        const start = (currentPage - 1) * 10;
-        const pageItems = filteredVerbs.slice(start, start + 10);
-        
-        el.innerHTML = `
-            <div class="mb-8">
-                <input type="text" value="${searchQuery}" placeholder="Хайх..." oninput="searchQuery=this.value; currentPage=1; render();" class="glass w-full p-4 rounded-2xl outline-none font-bold">
-            </div>
-            <div class="grid gap-4 mb-10">
-                ${pageItems.map(v => `
-                    <div class="verb-card glass p-6 flex flex-col md:flex-row md:items-center justify-between border-l-4 ${learnedIds.has(v.id) ? 'border-green-500' : 'border-blue-500'}">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-xl font-black text-slate-800">${v.nsf} <span class="text-blue-600">${v.sf}</span></h3>
-                                <span class="text-xs font-black text-blue-500 bg-blue-50 px-2 py-1 rounded">${v.up}</span>
-                            </div>
-                            <p class="text-sm font-bold text-slate-600 mt-1">${v.mn}</p>
+        const list = document.createElement('div');
+        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-8';
+        currentVerbs.forEach(v => {
+            const isLearned = learnedIds.has(v.id);
+            list.innerHTML += `
+                <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center ${isLearned ? 'border-l-green-500' : ''}">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-slate-400 font-bold bg-slate-100 px-1.5 py-0.5 rounded">#${v.id}</span>
+                            <div class="text-blue-900 font-black text-lg">${v.pair}</div>
                         </div>
-                        <div class="flex gap-2 mt-4 md:mt-0">
-                            <button onclick="playVerbAudio(${v.id})" class="p-3 bg-blue-50 text-blue-600 rounded-full active:scale-95"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9h4l5-5v16l-5-5h-4v-6z"/></svg></button>
-                            <button onclick="toggleLearned(${v.id})" class="p-3 ${learnedIds.has(v.id) ? 'bg-green-100 text-green-600' : 'bg-slate-100 text-slate-400'} rounded-full"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
-                        </div>
+                        <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
                     </div>
-                `).join('')}
-            </div>
-            <div class="flex justify-center flex-wrap gap-2 pb-10">
-                ${Array.from({length: Math.ceil(filteredVerbs.length / 10)}).map((_, i) => `
-                    <button onclick="currentPage=${i+1}; render();" class="w-10 h-10 rounded-lg font-black text-xs ${currentPage === i+1 ? 'bg-blue-600 text-white' : 'glass text-slate-500'}">${i+1}</button>
-                `).join('')}
+                    <div class="flex gap-2">
+                        <button onclick="playAudio(${v.id})" class="p-3 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors shadow-sm">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                        </button>
+                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl ${isLearned ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 text-slate-300 hover:text-green-500'} transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        el.appendChild(list);
+
+        const pagination = document.createElement('div');
+        pagination.className = 'flex flex-wrap justify-center items-center gap-2 mt-10';
+        for (let i = 1; i <= 10; i++) {
+            pagination.innerHTML += `
+                <button onclick="changePage(${i})" class="w-10 h-10 rounded-lg glass text-sm font-bold ${currentPage === i ? 'bg-blue-900 text-white shadow-lg' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>
+            `;
+        }
+        el.appendChild(pagination);
+    }
+
+    function changePage(p) {
+        currentPage = p;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderPracticeMenu(el) {
+        el.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div onclick="startPractice('quiz')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-blue-600 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📝</div>
+                    <h3 class="font-bold text-xl text-slate-800">Сонгох тест</h3>
+                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Орос үгэнд тохирох монгол орчуулгыг зөв сонгоорой.</p>
+                </div>
+                <div onclick="startPractice('miner')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-emerald-600 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⛏️</div>
+                    <h3 class="font-bold text-xl text-slate-800">Үг олборлогч</h3>
+                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Орчуулгыг харж орос үгийн үсгийг тааж бөглөөрэй.</p>
+                </div>
+                <div onclick="startPractice('listen')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-purple-500 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🎧</div>
+                    <h3 class="font-bold text-xl text-slate-800">Сонсох ба Бичих</h3>
+                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Дуудлагыг сонсоод зөв бичиж дадлагажаарай.</p>
+                </div>
+                <div onclick="startPractice('scrambled')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-red-500 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⌨️</div>
+                    <h3 class="font-bold text-xl text-slate-800">Үг бүтээх</h3>
+                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Холилдсон үсгүүдийг зөв байранд нь тавьж үг бүтээ.</p>
+                </div>
             </div>
         `;
     }
 
-    function renderPracticeMenu(el) {
-        const modes = [
-            { id: 'listen_write', t: 'Сонсоод бичих', icon: '🎧' },
-            { id: 'ru_mn', t: 'Орос → Монгол', icon: '🇷🇺' },
-            { id: 'mn_ru', t: 'Монгол → Орос', icon: '🇲🇳' },
-            { id: 'reading', t: 'Эх дээр ажиллах', icon: '📖' }
-        ];
-        el.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">${modes.map(m => `
-            <button onclick="startPractice('${m.id}')" class="glass p-10 rounded-[2rem] text-center hover:scale-105 transition-transform group border-b-4 border-transparent hover:border-blue-500">
-                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">${m.icon}</div>
-                <h3 class="text-xl font-black text-slate-800 uppercase tracking-tight">${m.t}</h3>
-            </button>`).join('')}</div>`;
-    }
-
     function startPractice(mode) {
-        let items = (mode === 'reading') ? [...shortTexts].sort(() => 0.5 - Math.random()) : [...verbs].sort(() => 0.5 - Math.random()).slice(0, 15);
-        quiz = { active: true, mode, index: 0, score: 0, items, answered: false, inputVal: '', isCorrect: false, correctValue: '', subStep: 1 };
+        gameMode = mode;
+        gameState = {
+            score: 0,
+            index: 0,
+            shuffled: [...verbs].sort(() => Math.random() - 0.5).slice(0, 10)
+        };
         render();
     }
 
-    function renderFavorites(el) {
-        const favs = verbs.filter(v => learnedIds.has(v.id));
-        if (!favs.length) { el.innerHTML = `<div class="text-center py-20 glass rounded-[2rem] font-black text-slate-400">СУДАЛСАН ҮГ БАЙХГҮЙ</div>`; return; }
-        el.innerHTML = `<div class="grid gap-4 mb-10">${favs.map(v => `
-            <div class="glass p-6 flex items-center justify-between border-l-4 border-green-500">
-                <div><h3 class="text-xl font-black text-slate-800">${v.nsf}</h3><p class="text-sm font-bold text-slate-600">${v.mn}</p></div>
-                <button onclick="toggleLearned(${v.id})" class="p-3 bg-red-50 text-red-500 rounded-full"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
-            </div>`).join('')}</div>`;
+    function renderQuiz(el) {
+        const item = gameState.shuffled[gameState.index];
+        const options = [item.mn];
+        while(options.length < 4) {
+            const randomMn = verbs[Math.floor(Math.random() * verbs.length)].mn;
+            if(!options.includes(randomMn)) options.push(randomMn);
+        }
+        options.sort(() => Math.random() - 0.5);
+
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto glass p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="bg-blue-100 text-blue-800 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-tighter">${gameState.index + 1} / 10 дасгал</span>
+                    <span class="bg-green-100 text-green-800 px-4 py-1.5 rounded-full font-bold text-xs">Оноо: ${gameState.score}</span>
+                </div>
+                <div class="flex justify-center mb-8">
+                    <button onclick="playAudio(${item.id})" class="p-5 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-all shadow-lg transform hover:scale-105 active:scale-95">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                    </button>
+                </div>
+                <h2 class="text-4xl font-black text-center text-slate-800 mb-10 tracking-tight leading-tight">${item.pair}</h2>
+                <div class="grid gap-3">
+                    ${options.map(opt => `
+                        <button onclick="checkQuiz('${opt.replace(/'/g, "\\'")}')" class="w-full py-5 px-6 glass rounded-2xl font-bold text-slate-700 hover:bg-blue-900 hover:text-white transition-all text-lg shadow-sm border border-slate-100">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold w-full text-center hover:text-red-500 transition-colors uppercase text-xs tracking-widest">Дасгалыг зогсоох</button>
+            </div>
+        `;
     }
 
-    window.onload = () => { setTab('dict'); };
+    function checkQuiz(ans) {
+        if(ans === gameState.shuffled[gameState.index].mn) {
+            gameState.score++;
+            showFeedback("ЗӨВ БАЙЛАА!", "success");
+        } else {
+            showFeedback("АНХААРААРАЙ, БУРУУ БАЙНА", "error");
+        }
+        setTimeout(() => {
+            gameState.index++;
+            if(gameState.index < 10) render();
+            else renderResult();
+        }, 1000);
+    }
+
+    function renderMiner(el) {
+        const item = gameState.shuffled[gameState.index];
+        const targetWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
+        if(!gameState.minerRevealed) gameState.minerRevealed = new Set();
+
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto glass p-10 rounded-3xl text-center shadow-xl">
+                <div class="mb-4 font-bold text-emerald-600 uppercase tracking-[0.2em] text-xs">Үг олборлогч</div>
+                <h3 class="text-3xl font-black text-slate-800 mb-8">${item.mn}</h3>
+                <div class="flex flex-wrap justify-center gap-2 mb-10">
+                    ${targetWord.split('').map((char, i) => `
+                        <div class="letter-slot ${gameState.minerRevealed.has(i) ? 'correct' : ''}">
+                            ${gameState.minerRevealed.has(i) ? char : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="grid grid-cols-7 sm:grid-cols-9 gap-2 max-w-lg mx-auto bg-slate-50/50 p-4 rounded-2xl">
+                    ${"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split('').map(char => `
+                        <button onclick="guessLetter('${char}', '${targetWord}')" class="w-full aspect-square flex items-center justify-center glass rounded-xl font-bold text-slate-700 hover:bg-emerald-600 hover:text-white transition-all text-sm shadow-sm active:scale-90">
+                            ${char}
+                        </button>
+                    `).join('')}
+                </div>
+                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold hover:text-red-500 uppercase text-xs tracking-widest">Буцах</button>
+            </div>
+        `;
+    }
+
+    function guessLetter(char, target) {
+        let found = false;
+        target.split('').forEach((c, i) => {
+            if(c === char) {
+                gameState.minerRevealed.add(i);
+                found = true;
+            }
+        });
+
+        if(!found) {
+            // Энд алдааны эффект нэмж болно
+        }
+
+        if(gameState.minerRevealed.size === target.length) {
+            gameState.score++;
+            showFeedback("ОЛБОРЛОЛТ АМЖИЛТТАЙ!", "success");
+            setTimeout(() => {
+                gameState.index++;
+                gameState.minerRevealed = null;
+                if(gameState.index < 10) render();
+                else renderResult();
+            }, 800);
+        } else {
+            render();
+        }
+    }
+
+    function renderListen(el) {
+        const item = gameState.shuffled[gameState.index];
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto glass p-12 rounded-3xl text-center shadow-2xl border-b-8 border-purple-200">
+                <div class="text-xs font-bold text-purple-600 mb-6 uppercase tracking-[0.3em]">Сонсоод бичнэ үү</div>
+                <div class="flex flex-col items-center mb-10">
+                    <button onclick="playAudio(${item.id})" class="w-28 h-28 bg-purple-600 text-white rounded-full flex items-center justify-center transition-all transform hover:scale-105 shadow-xl hover:bg-purple-700 active:scale-95">
+                        <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                    </button>
+                </div>
+                <div class="text-lg font-bold text-slate-400 mb-8 italic">"${item.mn}"</div>
+                <input type="text" id="listenInput" placeholder="..." autocomplete="off" class="w-full p-6 rounded-2xl border-2 border-slate-100 text-center text-3xl font-black uppercase mb-8 focus:border-purple-500 outline-none transition-all shadow-inner bg-slate-50/30" onkeyup="if(event.key==='Enter') checkListen()">
+                <button onclick="checkListen()" class="w-full py-5 bg-purple-600 text-white rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all shadow-lg">ШАЛГАХ</button>
+                <button onclick="setTab('practice')" class="mt-8 text-slate-400 font-bold hover:text-red-500 text-xs tracking-widest uppercase">Зогсоох</button>
+            </div>
+        `;
+        setTimeout(() => document.getElementById('listenInput').focus(), 200);
+    }
+
+    function checkListen() {
+        const inputEl = document.getElementById('listenInput');
+        if(!inputEl) return;
+        const val = inputEl.value.trim().toUpperCase();
+        const item = gameState.shuffled[gameState.index];
+        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
+        
+        if(val === rawWord) {
+            gameState.score++;
+            showFeedback("МАШ САЙН БАЙЛАА!", "success");
+        } else {
+            showFeedback(`БУРУУ! Зөв нь: ${rawWord}`, "error");
+            inputEl.classList.add('shake');
+        }
+        setTimeout(() => {
+            gameState.index++;
+            if(gameState.index < 10) render();
+            else renderResult();
+        }, 1500);
+    }
+
+    function renderScrambled(el) {
+        const item = gameState.shuffled[gameState.index];
+        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
+        if(!gameState.scrambledWord) gameState.scrambledWord = rawWord.split('').sort(() => Math.random() - 0.5).join('');
+
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto glass p-10 rounded-3xl text-center shadow-2xl">
+                <div class="text-xs font-bold text-red-500 mb-6 uppercase tracking-[0.3em]">Үсгүүдийг эвлүүл</div>
+                <h3 class="text-2xl font-black text-slate-800 mb-8 italic">"${item.mn}"</h3>
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    ${gameState.scrambledWord.split('').map(char => `
+                        <span class="w-12 h-16 flex items-center justify-center glass rounded-2xl font-black text-3xl text-red-600 border-b-4 border-red-200 shadow-md transform rotate-2">${char}</span>
+                    `).join('')}
+                </div>
+                <input type="text" id="guessInput" placeholder="Үгээ бичээрэй..." autocomplete="off" class="w-full p-6 rounded-2xl border-2 border-slate-100 text-center text-3xl font-black uppercase mb-8 focus:border-red-500 outline-none transition-all shadow-inner bg-slate-50/30" onkeyup="if(event.key==='Enter') checkScrambled()">
+                <button onclick="checkScrambled()" class="w-full py-5 bg-slate-800 text-white rounded-2xl font-bold text-xl hover:bg-black transition-all shadow-xl">ШАЛГАХ</button>
+                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold hover:text-red-500 text-xs tracking-widest uppercase">Зогсоох</button>
+            </div>
+        `;
+        setTimeout(() => document.getElementById('guessInput').focus(), 200);
+    }
+
+    function checkScrambled() {
+        const val = document.getElementById('guessInput').value.trim().toUpperCase();
+        const item = gameState.shuffled[gameState.index];
+        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
+        
+        if(val === rawWord) {
+            gameState.score++;
+            showFeedback("ЗӨВ ЭВЛҮҮЛЛЭЭ!", "success");
+        } else {
+            showFeedback(`БУРУУ! Зөв нь: ${rawWord}`, "error");
+        }
+        
+        setTimeout(() => {
+            gameState.index++;
+            gameState.scrambledWord = null;
+            if(gameState.index < 10) render();
+            else renderResult();
+        }, 1200);
+    }
+
+    function renderResult() {
+        const container = document.getElementById('content');
+        const percentage = (gameState.score / 10) * 100;
+        let rank = "ХИЧЭЭХ ХЭРЭГТЭЙ";
+        let emoji = "📚";
+        
+        if(percentage >= 90) { rank = "МАШ САЙН!"; emoji = "🏆"; }
+        else if(percentage >= 70) { rank = "САЙН БАЙНА"; emoji = "⭐"; }
+
+        container.innerHTML = `
+            <div class="max-w-md mx-auto glass p-12 rounded-4xl text-center shadow-2xl border-t-8 border-yellow-400 transform animate-in fade-in zoom-in duration-500">
+                <div class="text-8xl mb-6">${emoji}</div>
+                <h2 class="text-4xl font-black text-slate-800 mb-2">${rank}</h2>
+                <div class="my-10">
+                    <p class="text-slate-400 text-sm uppercase font-bold tracking-widest mb-2">Таны оноо</p>
+                    <div class="text-6xl font-black text-blue-900">${gameState.score} <span class="text-slate-300 text-3xl">/ 10</span></div>
+                </div>
+                <button onclick="setTab('practice')" class="w-full py-5 bg-blue-900 text-white rounded-2xl font-bold text-xl shadow-2xl hover:bg-black transition-all transform hover:scale-105 active:scale-95">ДАХИН ЭХЛЭХ</button>
+            </div>
+        `;
+    }
+
+    function renderFavorites(el) {
+        const favVerbs = verbs.filter(v => learnedIds.has(v.id));
+        if (favVerbs.length === 0) {
+            el.innerHTML = `
+                <div class="text-center p-20 glass rounded-3xl text-slate-400">
+                    <div class="text-5xl mb-4 opacity-30">📂</div>
+                    <div class="font-bold italic">Одоогоор цээжилсэн үг байхгүй байна. Үгний ард байх зөв тэмдэг дээр дарж нэмээрэй.</div>
+                </div>`;
+            return;
+        }
+        el.innerHTML = `
+            <div class="flex justify-between items-center mb-8 px-4">
+                <h2 class="text-xl font-bold text-slate-800">Миний цээжилсэн үгс (${favVerbs.length})</h2>
+                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">ЦЭЭЖИЛСЭН</span>
+            </div>
+        `;
+        const list = document.createElement('div');
+        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+        favVerbs.forEach(v => {
+            list.innerHTML += `
+                <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center border-l-green-500 shadow-sm transition-all hover:-translate-y-1">
+                    <div>
+                        <div class="text-blue-900 font-black text-lg">${v.pair}</div>
+                        <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playAudio(${v.id})" class="p-3 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
+                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                        </button>
+                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl bg-red-50 text-red-400 hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        el.appendChild(list);
+    }
+
+    function showFeedback(msg, type) {
+        const feedback = document.createElement('div');
+        feedback.className = `fixed top-10 left-1/2 transform -translate-x-1/2 p-5 rounded-2xl text-white font-bold shadow-2xl z-50 transition-all duration-300 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 ${type==='success' ? 'bg-green-600' : 'bg-red-600'}`;
+        feedback.innerHTML = `
+            <span>${type === 'success' ? '✔' : '✖'}</span>
+            <span>${msg}</span>
+        `;
+        document.body.appendChild(feedback);
+        setTimeout(() => {
+            feedback.style.opacity = '0';
+            feedback.style.transform = 'translate(-50%, -20px)';
+            setTimeout(() => feedback.remove(), 400);
+        }, 1600);
+    }
+
+    // Анхны ачаалалт
+    window.onload = () => {
+        setTab('dict');
+    };
 </script>
+
 </body>
 </html>
