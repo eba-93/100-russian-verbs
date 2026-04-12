@@ -14,11 +14,10 @@
         
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
-                        url('./SB-1.png') no-repeat center center fixed;
+            background: linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.9)), 
+                        url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=2000') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
-            background-color: #f8fafc;
         }
 
         .glass { 
@@ -48,34 +47,31 @@
         .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
         
         .letter-slot { 
-            width: 3rem; 
-            height: 3.5rem; 
+            width: 2.5rem; 
+            height: 3rem; 
             border-bottom: 3px solid #cbd5e1; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-size: 1.5rem; 
+            font-size: 1.25rem; 
             font-weight: 900; 
             color: #1e293b; 
-            margin: 0 0.25rem; 
+            margin: 0 0.15rem; 
         }
 
         .letter-slot.correct { border-bottom-color: #22c55e; color: #15803d; }
         
         .logo-container {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 1.5rem auto;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-        }
-
-        .school-logo {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         @keyframes shake {
@@ -85,13 +81,17 @@
         }
         .shake { animation: shake 0.4s ease-in-out; }
 
-        .search-glass {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--ru-blue);
+        .conjugation-table th { background: #f1f5f9; text-align: left; padding: 10px; font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
+        .conjugation-table td { padding: 10px; border-bottom: 1px solid #f1f5f9; }
+
+        .game-card {
+            animation: slideIn 0.5s ease-out;
         }
 
-        .conjugation-table th { background: #f1f5f9; text-align: left; padding: 12px; font-size: 0.75rem; color: #64748b; text-transform: uppercase; }
-        .conjugation-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="pb-20">
@@ -99,37 +99,32 @@
 <div id="app" class="max-w-5xl mx-auto px-4 pt-8">
     <header class="text-center mb-10">
         <div class="logo-container">
-            <img src="./logo.png" alt="Сургуулийн Лого" class="school-logo" id="mainLogo" onerror="handleLogoError(this)">
+            <span class="text-blue-600 font-black text-2xl">RU</span>
         </div>
         
-        <h1 class="school-font text-2xl md:text-3xl font-bold text-slate-800 mb-2 uppercase leading-tight drop-shadow-sm">
-            Сэлэнгэ аймгийн Сүхбаатар сумын<br>Ерөнхий боловсролын нэгдүгхий сургууль
+        <h1 class="school-font text-xl md:text-2xl font-bold text-slate-800 mb-2 uppercase leading-tight">
+            Сэлэнгэ аймгийн Сүхбаатар сумын<br>Ерөнхий боловсролын нэгдүгээр сургууль
         </h1>
-        <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full shadow-sm"></div>
+        <div class="h-1 w-24 bg-red-600 mx-auto mb-6 rounded-full"></div>
         
-        <nav class="flex flex-wrap justify-center gap-3">
-            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Үг сурах</button>
-            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Дасгал</button>
-            <button onclick="setTab('conjugation')" id="tab-conjugation" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Спряжение</button>
-            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-2.5 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider transition-all">Цээжилсэн</button>
+        <nav class="flex flex-wrap justify-center gap-2">
+            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-4 py-2 rounded-lg font-bold glass text-slate-700 uppercase text-[10px] tracking-wider transition-all">Үг сурах</button>
+            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-4 py-2 rounded-lg font-bold glass text-slate-700 uppercase text-[10px] tracking-wider transition-all">Дасгал</button>
+            <button onclick="setTab('conjugation')" id="tab-conjugation" class="nav-btn px-4 py-2 rounded-lg font-bold glass text-slate-700 uppercase text-[10px] tracking-wider transition-all">Спряжение</button>
+            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-4 py-2 rounded-lg font-bold glass text-slate-700 uppercase text-[10px] tracking-wider transition-all">Цээжилсэн</button>
         </nav>
     </header>
 
     <main id="content" class="min-h-[400px]"></main>
 </div>
 
+<!-- Feedback Toast -->
+<div id="feedback" class="fixed bottom-10 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full text-white font-bold shadow-2xl transition-all opacity-0 pointer-events-none z-50"></div>
+
 <script>
     const apiKey = ""; 
     
-    function handleLogoError(img) {
-        const container = img.parentElement;
-        container.innerHTML = `
-            <div class="w-full h-full rounded-full bg-blue-50 flex items-center justify-center border-2 border-dashed border-blue-300">
-                <span class="text-blue-400 font-bold text-[10px] text-center p-2 uppercase">logo.png<br>байхгүй</span>
-            </div>
-        `;
-    }
-
+    // Verbs Data
     const verbs = [
         { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь", upr: "(кого? что?)" },
         { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть", upr: "(чем?)" },
@@ -138,7 +133,7 @@
         { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать", upr: "(кого?)" },
         { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться", upr: "(с кем?)" },
         { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать", upr: "(что? из чего?)" },
-        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
+        { id: 8, pair: "Выделя́ть / Вы́ выделить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
         { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
         { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать", upr: "(перед кем?)" },
         { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить", upr: "(что? кому? о ком?)" },
@@ -147,7 +142,7 @@
         { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать", upr: "(что? кому?)" },
         { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать", upr: "(что?)" },
         { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать", upr: "(о ком? о чём?)" },
-        { id: 17, pair: "Е́здить / Пое́ехать", mn: "Явах (унаагаар)", raw: "Ездить", upr: "(куда? на чём?)" },
+        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить", upr: "(куда? на чём?)" },
         { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть", upr: "(что?)" },
         { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить", upr: "(что?)" },
         { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить", upr: "(где? с кем?)" },
@@ -240,6 +235,7 @@
     let gameMode = null; 
     let gameState = {};
 
+    // Navigation and Logic
     function setTab(tab) {
         currentTab = tab;
         gameMode = null;
@@ -256,16 +252,29 @@
         else learnedIds.add(id);
         localStorage.setItem('learnedVerbs', JSON.stringify([...learnedIds]));
         render();
+        showFeedback(learnedIds.has(id) ? "Цээжилсэн үгэнд нэмэгдлээ" : "Жагсаалтаас хасагдлаа", "success");
     }
 
     function playAudio(verbId) {
-        const audio = new Audio(`./${verbId}.mp3`);
-        audio.play().catch(err => {
-            console.error(`${verbId}.mp3 файл олдсонгүй`);
-            showFeedback(`${verbId}.mp3 олдсонгүй`, "error");
-        });
+        // Fallback to Web Speech API if mp3 file is not available
+        const verb = verbs.find(v => v.id === verbId);
+        if (!verb) return;
+        
+        const utterance = new SpeechSynthesisUtterance(verb.raw);
+        utterance.lang = 'ru-RU';
+        utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
     }
 
+    function showFeedback(msg, type = "success") {
+        const fb = document.getElementById('feedback');
+        fb.textContent = msg;
+        fb.className = `fixed bottom-10 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full text-white font-bold shadow-2xl transition-all z-50 ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+        fb.style.opacity = "1";
+        setTimeout(() => fb.style.opacity = "0", 2000);
+    }
+
+    // AI Conjugation
     async function fetchConjugation(verb) {
         const prompt = `Conjugate the Russian verb "${verb}" in all forms. 
         Response MUST be in JSON format with exactly this structure:
@@ -275,7 +284,7 @@
           "future": {"я": "", "ты": "", "он/она": "", "мы": "", "вы": "", "они": ""},
           "imperative": {"ед.ч.": "", "мн.ч.": ""},
           "translation": "Mongolian translation",
-          "upr": "Question like (кого? что?) if known, otherwise empty string"
+          "upr": "Question like (кого? что?) if known"
         }`;
         
         try {
@@ -295,6 +304,7 @@
         }
     }
 
+    // Rendering functions
     function render() {
         const container = document.getElementById('content');
         container.innerHTML = '';
@@ -317,9 +327,9 @@
         searchDiv.innerHTML = `
             <div class="relative">
                 <input type="text" id="searchInput" value="${searchQuery}" placeholder="Үг хайх (Орос эсвэл Монгол)..." 
-                    class="w-full p-5 pl-14 rounded-2xl search-glass font-bold text-slate-700 outline-none shadow-xl focus:ring-4 focus:ring-blue-100 transition-all"
+                    class="w-full p-4 pl-12 rounded-2xl glass font-bold text-slate-700 outline-none shadow-xl focus:ring-4 focus:ring-blue-100 transition-all border-2 border-blue-900"
                     oninput="handleSearch(this.value)">
-                <svg class="w-6 h-6 absolute left-5 top-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 absolute left-4 top-4 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
@@ -336,11 +346,6 @@
         const end = start + itemsPerPage;
         const currentVerbs = filteredVerbs.slice(start, end);
 
-        if (currentVerbs.length === 0) {
-            el.innerHTML += `<div class="text-center p-10 text-slate-400 italic">Үг олдсонгүй...</div>`;
-            return;
-        }
-
         const list = document.createElement('div');
         list.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-8';
         currentVerbs.forEach(v => {
@@ -349,17 +354,17 @@
                 <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center ${isLearned ? 'border-l-green-500' : ''}">
                     <div class="flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <span class="text-[10px] text-slate-400 font-bold bg-slate-100 px-1.5 py-0.5 rounded">#${v.id}</span>
+                            <span class="text-[8px] text-slate-400 font-bold bg-slate-100 px-1 py-0.5 rounded">#${v.id}</span>
                             <div class="text-blue-900 font-black text-lg">${v.pair}</div>
-                            <span class="text-xs font-bold text-red-500 italic ml-1">${v.upr}</span>
                         </div>
                         <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
+                        <span class="text-[10px] font-bold text-red-500 italic uppercase">${v.upr}</span>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="playAudio(${v.id})" class="p-3 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors shadow-sm">
+                        <button onclick="playAudio(${v.id})" class="p-3 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
                         </button>
-                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl ${isLearned ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 text-slate-300 hover:text-green-500'} transition-all">
+                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl ${isLearned ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-300'} transition-all">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </button>
                     </div>
@@ -374,7 +379,7 @@
             pagination.className = 'flex flex-wrap justify-center items-center gap-2 mt-10';
             for (let i = 1; i <= totalPages; i++) {
                 pagination.innerHTML += `
-                    <button onclick="changePage(${i})" class="w-10 h-10 rounded-lg glass text-sm font-bold ${currentPage === i ? 'bg-blue-900 text-white shadow-lg' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>
+                    <button onclick="changePage(${i})" class="w-10 h-10 rounded-lg glass text-sm font-bold ${currentPage === i ? 'bg-blue-900 text-white' : 'text-slate-600'} transition-all">${i}</button>
                 `;
             }
             el.appendChild(pagination);
@@ -385,31 +390,28 @@
         el.innerHTML = `
             <div class="max-w-3xl mx-auto mb-10">
                 <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-blue-900">
-                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                        <span class="text-2xl">🔄</span> Спряжение (Үйл үг хувиргах)
-                    </h2>
+                    <h2 class="text-xl font-bold text-slate-800 mb-6">🔄 Спряжение (Хувиргах)</h2>
                     <div class="flex gap-3 mb-8">
                         <input type="text" id="conjInput" placeholder="Үйл үгээ бичнэ үү (ж: Делать)..." 
-                            class="flex-1 p-4 rounded-xl border-2 border-slate-100 focus:border-blue-500 outline-none font-bold text-slate-700 transition-all">
-                        <button onclick="handleConjugate()" class="px-8 py-4 bg-blue-900 text-white rounded-xl font-bold hover:bg-black transition-all shadow-lg active:scale-95 uppercase">Хувиргах</button>
+                            class="flex-1 p-4 rounded-xl border-2 border-slate-100 focus:border-blue-500 outline-none font-bold text-slate-700">
+                        <button onclick="handleConjugate()" class="px-8 py-4 bg-blue-900 text-white rounded-xl font-bold hover:bg-black transition-all shadow-lg active:scale-95 uppercase text-xs">Хувиргах</button>
                     </div>
                     <div id="conjLoading" class="hidden text-center py-10">
-                        <div class="animate-spin w-10 h-10 border-4 border-blue-900 border-t-transparent rounded-full mx-auto mb-4"></div>
-                        <p class="text-slate-400 font-bold uppercase text-xs tracking-widest">Түр хүлээнэ үү...</p>
+                        <div class="animate-spin w-8 h-8 border-4 border-blue-900 border-t-transparent rounded-full mx-auto mb-2"></div>
+                        <p class="text-slate-400 font-bold uppercase text-[10px]">Уншиж байна...</p>
                     </div>
-                    <div id="conjResult" class="space-y-8 animate-in fade-in duration-500"></div>
+                    <div id="conjResult" class="space-y-6"></div>
                 </div>
             </div>
         `;
     }
 
     async function handleConjugate() {
-        const input = document.getElementById('conjInput');
+        const val = document.getElementById('conjInput').value.trim();
+        if(!val) return;
+        
         const result = document.getElementById('conjResult');
         const loading = document.getElementById('conjLoading');
-        const val = input.value.trim();
-        
-        if(!val) return;
         
         loading.classList.remove('hidden');
         result.innerHTML = '';
@@ -422,71 +424,339 @@
             return;
         }
 
-        // Check if the verb exists in our 100 verbs list to get audio and stored upr
-        const baseVerb = verbs.find(v => v.pair.toLowerCase().includes(val.toLowerCase()) || v.raw.toLowerCase() === val.toLowerCase());
-        const displayUpr = baseVerb ? baseVerb.upr : (data.upr || "");
-        const audioBtn = baseVerb ? `
-            <button onclick="playAudio(${baseVerb.id})" class="ml-4 p-3 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-all">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-            </button>
-        ` : "";
-
         result.innerHTML = `
-            <div class="border-l-4 border-red-500 pl-6 py-4 bg-red-50/30 rounded-r-xl flex items-center justify-between">
-                <div>
-                    <div class="flex items-center gap-3">
-                        <div class="text-3xl font-black text-slate-800 uppercase">${val}</div>
-                        <div class="text-xl font-bold text-red-500 italic">${displayUpr}</div>
-                    </div>
-                    <div class="text-slate-500 font-bold mt-1 text-lg">${data.translation}</div>
-                </div>
-                ${audioBtn}
+            <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-900">
+                <div class="text-2xl font-black text-slate-800">${val} <span class="text-red-500 text-lg">${data.upr || ''}</span></div>
+                <div class="text-slate-500 font-bold">${data.translation}</div>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${createConjBox('Одоо цаг', data.present, 'blue')}
+                ${createConjBox('Өнгөрсөн цаг', data.past, 'green')}
+                ${createConjBox('Ирээдүй цаг', data.future, 'purple')}
+                ${createConjBox('Захиран тушаах', data.imperative, 'orange')}
+            </div>
+        `;
+    }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass p-4 rounded-2xl border-t-2 border-blue-200">
-                    <h4 class="text-xs font-black text-blue-900 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-blue-500"></span> Одоо цаг (Настоящее)
-                    </h4>
-                    <table class="w-full text-sm conjugation-table">
-                        ${Object.entries(data.present).map(([person, form]) => `
-                            <tr><th class="w-24">${person}</th><td class="font-bold text-slate-700">${form}</td></tr>
-                        `).join('')}
-                    </table>
-                </div>
+    function createConjBox(title, forms, color) {
+        return `
+            <div class="p-4 rounded-xl bg-${color}-50 border border-${color}-100">
+                <h4 class="text-[10px] font-black text-${color}-700 mb-2 uppercase">${title}</h4>
+                <table class="w-full text-xs conjugation-table">
+                    ${Object.entries(forms).map(([k, v]) => `<tr><th class="w-16">${k}</th><td class="font-bold">${v}</td></tr>`).join('')}
+                </table>
+            </div>
+        `;
+    }
 
-                <div class="glass p-4 rounded-2xl border-t-2 border-green-200">
-                    <h4 class="text-xs font-black text-green-700 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-green-500"></span> Өнгөрсөн цаг (Прошедшее)
-                    </h4>
-                    <table class="w-full text-sm conjugation-table">
-                        ${Object.entries(data.past).map(([gender, form]) => `
-                            <tr><th class="w-24">${gender}</th><td class="font-bold text-slate-700">${form}</td></tr>
-                        `).join('')}
-                    </table>
-                </div>
+    // Practice Section
+    function renderPracticeMenu(el) {
+        const modes = [
+            { id: 'quiz', icon: '📝', title: 'Сонгох тест', desc: 'Зөв орчуулгыг сонгоорой' },
+            { id: 'miner', icon: '⛏️', title: 'Үг бүтээх', desc: 'Орос үгийг үсгээр нь таах' },
+            { id: 'listen', icon: '🎧', title: 'Сонсох ба Бичих', desc: 'Дуудлагыг сонсоод бичих' },
+            { id: 'scrambled', icon: '⌨️', title: 'Холимог үсэг', desc: 'Үсгүүдийг зөв байрлуулах' }
+        ];
 
-                <div class="glass p-4 rounded-2xl border-t-2 border-purple-200">
-                    <h4 class="text-xs font-black text-purple-700 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-purple-500"></span> Ирээдүй цаг (Будущее)
-                    </h4>
-                    <table class="w-full text-sm conjugation-table">
-                        ${Object.entries(data.future).map(([person, form]) => `
-                            <tr><th class="w-24">${person}</th><td class="font-bold text-slate-700">${form}</td></tr>
-                        `).join('')}
-                    </table>
-                </div>
+        el.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                ${modes.map(m => `
+                    <div onclick="startPractice('${m.id}')" class="glass p-8 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-blue-600 group">
+                        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">${m.icon}</div>
+                        <h3 class="font-bold text-lg text-slate-800">${m.title}</h3>
+                        <p class="text-slate-500 text-xs mt-2">${m.desc}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
 
-                <div class="glass p-4 rounded-2xl border-t-2 border-orange-200">
-                    <h4 class="text-xs font-black text-orange-700 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-orange-500"></span> Захиран тушаах (Повелительное)
-                    </h4>
-                    <table class="w-full text-sm conjugation-table">
-                        ${Object.entries(data.imperative).map(([num, form]) => `
-                            <tr><th class="w-24">${num}</th><td class="font-bold text-slate-700">${form}</td></tr>
+    function startPractice(mode) {
+        gameMode = mode;
+        gameState = {
+            score: 0,
+            index: 0,
+            shuffled: [...verbs].sort(() => Math.random() - 0.5).slice(0, 10),
+            wrongCount: 0
+        };
+        render();
+    }
+
+    function renderQuiz(el) {
+        const item = gameState.shuffled[gameState.index];
+        const options = [item.mn];
+        while(options.length < 4) {
+            const rand = verbs[Math.floor(Math.random() * verbs.length)].mn;
+            if(!options.includes(rand)) options.push(rand);
+        }
+        options.sort(() => Math.random() - 0.5);
+
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto game-card">
+                <div class="glass p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-10">
+                        <span class="text-xs font-black text-slate-400 uppercase tracking-widest">Асуулт ${gameState.index + 1}/10</span>
+                        <span class="text-blue-600 font-black">Оноо: ${gameState.score}</span>
+                    </div>
+                    
+                    <div class="text-center mb-10">
+                        <div class="text-4xl font-black text-blue-900 mb-2">${item.raw}</div>
+                        <button onclick="playAudio(${item.id})" class="p-2 text-blue-400 hover:text-blue-600 transition-colors">🔊 Сонсох</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3">
+                        ${options.map(opt => `
+                            <button onclick="checkQuiz('${opt.replace(/'/g, "\\'")}')" 
+                                class="p-4 rounded-xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 font-bold text-slate-700 transition-all text-sm">
+                                ${opt}
+                            </button>
                         `).join('')}
-                    </table>
+                    </div>
                 </div>
+            </div>
+        `;
+    }
+
+    function checkQuiz(ans) {
+        const item = gameState.shuffled[gameState.index];
+        if(ans === item.mn) {
+            gameState.score += 10;
+            showFeedback("+10 Оноо!", "success");
+        } else {
+            showFeedback(`Буруу! Зөв нь: ${item.mn}`, "error");
+        }
+        nextQuestion();
+    }
+
+    function renderMiner(el) {
+        const item = gameState.shuffled[gameState.index];
+        const word = item.raw.toLowerCase().replace(/́/g, ''); // Remove stress marks
+        
+        if (!gameState.guesses) gameState.guesses = new Set();
+        
+        const displayWord = word.split('').map(char => 
+            gameState.guesses.has(char) ? char : '_'
+        ).join(' ');
+
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto game-card">
+                <div class="glass p-10 rounded-3xl shadow-2xl text-center">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-black text-slate-400 uppercase">Оноо: ${gameState.score}</span>
+                        <div class="flex gap-1">
+                            ${Array(3 - gameState.wrongCount).fill('❤️').join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="text-xl font-bold text-slate-600 mb-6 italic">"${item.mn}"</div>
+                    <div class="text-5xl font-black tracking-[0.5em] text-blue-900 mb-10 font-mono">${displayWord}</div>
+
+                    <div class="flex flex-wrap justify-center gap-2">
+                        ${"абвгдеёжзийклмнопрстуфхцчшщъыьэюя".split('').map(l => `
+                            <button onclick="guessLetter('${l}')" 
+                                ${gameState.guesses.has(l) ? 'disabled class="w-10 h-10 rounded-lg bg-slate-100 text-slate-300 font-bold"' : 'class="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-blue-500 font-bold text-slate-700"'}>
+                                ${l}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        if (!displayWord.includes('_')) {
+            setTimeout(() => {
+                gameState.score += 20;
+                showFeedback("Маш сайн! +20 Оноо", "success");
+                gameState.guesses = new Set();
+                gameState.wrongCount = 0;
+                nextQuestion();
+            }, 500);
+        }
+    }
+
+    function guessLetter(l) {
+        const item = gameState.shuffled[gameState.index];
+        const word = item.raw.toLowerCase().replace(/́/g, '');
+        gameState.guesses.add(l);
+        
+        if(!word.includes(l)) {
+            gameState.wrongCount++;
+            if(gameState.wrongCount >= 3) {
+                showFeedback(`Алдаж дууслаа! Зөв үг: ${item.raw}`, "error");
+                gameState.guesses = new Set();
+                gameState.wrongCount = 0;
+                nextQuestion();
+                return;
+            }
+        }
+        render();
+    }
+
+    function renderListen(el) {
+        const item = gameState.shuffled[gameState.index];
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto game-card">
+                <div class="glass p-10 rounded-3xl shadow-2xl text-center">
+                    <div class="mb-8">
+                        <button onclick="playAudio(${item.id})" class="w-24 h-24 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto shadow-xl hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                        </button>
+                        <p class="mt-4 text-slate-400 font-bold uppercase text-[10px]">Дууг сонсоод бичнэ үү</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <input type="text" id="listenInput" placeholder="Үгээ бичнэ үү..." 
+                            class="w-full p-5 rounded-2xl border-2 border-slate-100 focus:border-blue-500 outline-none font-bold text-center text-xl text-slate-700">
+                    </div>
+
+                    <button onclick="checkListen()" class="w-full py-5 bg-blue-900 text-white rounded-2xl font-black uppercase tracking-widest shadow-xl">Шалгах</button>
+                </div>
+            </div>
+        `;
+        // Delay playing audio to give user time to focus
+        setTimeout(() => playAudio(item.id), 500);
+    }
+
+    function checkListen() {
+        const input = document.getElementById('listenInput').value.trim().toLowerCase();
+        const item = gameState.shuffled[gameState.index];
+        const correct = item.raw.toLowerCase().replace(/́/g, '');
+        
+        if(input === correct) {
+            gameState.score += 30;
+            showFeedback("Гайхалтай! +30 Оноо", "success");
+        } else {
+            showFeedback(`Буруу! Зөв нь: ${item.raw}`, "error");
+        }
+        nextQuestion();
+    }
+
+    function renderScrambled(el) {
+        const item = gameState.shuffled[gameState.index];
+        const word = item.raw.toLowerCase().replace(/́/g, '');
+        
+        if(!gameState.scrambled) {
+            gameState.scrambled = word.split('').sort(() => Math.random() - 0.5);
+            gameState.userWord = [];
+        }
+
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto game-card">
+                <div class="glass p-10 rounded-3xl shadow-2xl text-center">
+                    <div class="text-lg font-bold text-slate-500 mb-8 italic">"${item.mn}"</div>
+                    
+                    <div class="flex flex-wrap justify-center gap-2 mb-10 min-h-[60px] border-b-2 border-slate-100 pb-4">
+                        ${gameState.userWord.map((l, i) => `
+                            <button onclick="removeFromScramble(${i})" class="w-12 h-14 rounded-xl bg-blue-900 text-white font-black text-xl shadow-lg animate-in zoom-in">${l}</button>
+                        `).join('')}
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-2">
+                        ${gameState.scrambled.map((l, i) => `
+                            <button onclick="addToScramble(${i})" class="w-12 h-14 rounded-xl bg-white border-2 border-slate-200 text-slate-700 font-black text-xl hover:border-blue-500 shadow-sm">${l}</button>
+                        `).join('')}
+                    </div>
+
+                    <div class="mt-10 flex gap-2">
+                         <button onclick="checkScramble()" class="flex-1 py-4 bg-green-600 text-white rounded-xl font-bold uppercase text-xs">Боллоо</button>
+                         <button onclick="resetScramble()" class="px-6 py-4 bg-slate-100 text-slate-400 rounded-xl font-bold uppercase text-xs">Арилгах</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function addToScramble(i) {
+        const letter = gameState.scrambled.splice(i, 1)[0];
+        gameState.userWord.push(letter);
+        render();
+    }
+
+    function removeFromScramble(i) {
+        const letter = gameState.userWord.splice(i, 1)[0];
+        gameState.scrambled.push(letter);
+        render();
+    }
+
+    function resetScramble() {
+        gameState.scrambled = null;
+        render();
+    }
+
+    function checkScramble() {
+        const item = gameState.shuffled[gameState.index];
+        const correct = item.raw.toLowerCase().replace(/́/g, '');
+        const current = gameState.userWord.join('');
+        
+        if(current === correct) {
+            gameState.score += 25;
+            showFeedback("Зөв байна! +25 Оноо", "success");
+            gameState.scrambled = null;
+            nextQuestion();
+        } else {
+            showFeedback("Буруу байна, дахиад оролдоорой!", "error");
+            document.querySelector('.game-card').classList.add('shake');
+            setTimeout(() => document.querySelector('.game-card').classList.remove('shake'), 400);
+        }
+    }
+
+    function nextQuestion() {
+        gameState.index++;
+        if(gameState.index >= 10) {
+            renderGameOver();
+        } else {
+            gameState.scrambled = null; // reset for scramble mode
+            gameState.guesses = null; // reset for miner mode
+            setTimeout(render, 1000);
+        }
+    }
+
+    function renderGameOver() {
+        const el = document.getElementById('content');
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto text-center game-card">
+                <div class="glass p-12 rounded-[3rem] shadow-2xl">
+                    <div class="text-6xl mb-6">🏆</div>
+                    <h2 class="text-3xl font-black text-slate-800 mb-2">Дууслаа!</h2>
+                    <p class="text-slate-500 font-bold mb-8">Таны нийт оноо: <span class="text-blue-600 text-2xl">${gameState.score}</span></p>
+                    <button onclick="setTab('practice')" class="w-full py-5 bg-blue-900 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-black transition-all">Дахин тоглох</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderFavorites(el) {
+        const favoriteVerbs = verbs.filter(v => learnedIds.has(v.id));
+        
+        if(favoriteVerbs.length === 0) {
+            el.innerHTML = `
+                <div class="text-center py-20 glass rounded-3xl max-w-2xl mx-auto">
+                    <div class="text-5xl mb-4">🌟</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Одоогоор цээжилсэн үг байхгүй байна</h3>
+                    <p class="text-slate-400 text-sm">Үг сурах хэсгээс ✅ товчийг дарж энд нэмээрэй.</p>
+                </div>
+            `;
+            return;
+        }
+
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto mb-8">
+                 <h2 class="text-xl font-bold text-slate-800 flex items-center gap-3">
+                    <span class="text-2xl text-yellow-500">⭐</span> Миний цээжилсэн үгс (${favoriteVerbs.length})
+                 </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${favoriteVerbs.map(v => `
+                    <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center border-l-green-500">
+                        <div>
+                            <div class="text-blue-900 font-black text-lg">${v.pair}</div>
+                            <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
+                        </div>
+                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl bg-green-500 text-white shadow-md">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    </div>
+                `).join('')}
             </div>
         `;
     }
@@ -504,308 +774,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function renderPracticeMenu(el) {
-        el.innerHTML = `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div onclick="startPractice('quiz')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-blue-600 group">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📝</div>
-                    <h3 class="font-bold text-xl text-slate-800">Сонгох тест</h3>
-                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Орос үгэнд тохирох монгол орчуулгыг зөв сонгоорой.</p>
-                </div>
-                <div onclick="startPractice('miner')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-emerald-600 group">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⛏️</div>
-                    <h3 class="font-bold text-xl text-slate-800">Үг олборлогч</h3>
-                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Орчуулгыг харж орос үгийн үсгийг тааж бөглөөрэй.</p>
-                </div>
-                <div onclick="startPractice('listen')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-purple-500 group">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🎧</div>
-                    <h3 class="font-bold text-xl text-slate-800">Сонсох ба Бичих</h3>
-                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Дуудлагыг сонсоод зөв бичиж дадлагажаарай.</p>
-                </div>
-                <div onclick="startPractice('scrambled')" class="glass p-10 rounded-3xl text-center cursor-pointer hover:shadow-2xl transition-all border-b-4 border-red-500 group">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⌨️</div>
-                    <h3 class="font-bold text-xl text-slate-800">Үг бүтээх</h3>
-                    <p class="text-slate-500 text-sm mt-3 leading-relaxed">Холилдсон үсгүүдийг зөв байранд нь тавьж үг бүтээ.</p>
-                </div>
-            </div>
-        `;
-    }
-
-    function startPractice(mode) {
-        gameMode = mode;
-        gameState = {
-            score: 0,
-            index: 0,
-            shuffled: [...verbs].sort(() => Math.random() - 0.5).slice(0, 10)
-        };
-        render();
-    }
-
-    function renderQuiz(el) {
-        const item = gameState.shuffled[gameState.index];
-        const options = [item.mn];
-        while(options.length < 4) {
-            const randomMn = verbs[Math.floor(Math.random() * verbs.length)].mn;
-            if(!options.includes(randomMn)) options.push(randomMn);
-        }
-        options.sort(() => Math.random() - 0.5);
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto glass p-10 rounded-3xl shadow-2xl relative overflow-hidden">
-                <div class="flex justify-between items-center mb-8">
-                    <span class="bg-blue-100 text-blue-800 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-tighter">${gameState.index + 1} / 10 дасгал</span>
-                    <span class="bg-green-100 text-green-800 px-4 py-1.5 rounded-full font-bold text-xs">Оноо: ${gameState.score}</span>
-                </div>
-                <div class="flex justify-center mb-8">
-                    <button onclick="playAudio(${item.id})" class="p-5 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-all shadow-lg transform hover:scale-105 active:scale-95">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                    </button>
-                </div>
-                <div class="text-center mb-10">
-                    <h2 class="text-4xl font-black text-slate-800 tracking-tight leading-tight">${item.pair}</h2>
-                    <span class="text-sm font-bold text-red-500 italic mt-2 block">${item.upr}</span>
-                </div>
-                <div class="grid gap-3">
-                    ${options.map(opt => `
-                        <button onclick="checkQuiz('${opt.replace(/'/g, "\\'")}')" class="w-full py-5 px-6 glass rounded-2xl font-bold text-slate-700 hover:bg-blue-900 hover:text-white transition-all text-lg shadow-sm border border-slate-100">
-                            ${opt}
-                        </button>
-                    `).join('')}
-                </div>
-                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold w-full text-center hover:text-red-500 transition-colors uppercase text-xs tracking-widest">Дасгалыг зогсоох</button>
-            </div>
-        `;
-    }
-
-    function checkQuiz(ans) {
-        if(ans === gameState.shuffled[gameState.index].mn) {
-            gameState.score++;
-            showFeedback("ЗӨВ БАЙЛАА!", "success");
-        } else {
-            showFeedback("АНХААРААРАЙ, БУРУУ БАЙНА", "error");
-        }
-        setTimeout(() => {
-            gameState.index++;
-            if(gameState.index < 10) render();
-            else renderResult();
-        }, 1000);
-    }
-
-    function renderMiner(el) {
-        const item = gameState.shuffled[gameState.index];
-        const targetWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
-        if(!gameState.minerRevealed) gameState.minerRevealed = new Set();
-
-        el.innerHTML = `
-            <div class="max-w-2xl mx-auto glass p-10 rounded-3xl text-center shadow-xl">
-                <div class="mb-4 font-bold text-emerald-600 uppercase tracking-[0.2em] text-xs">Үг олборлогч</div>
-                <h3 class="text-3xl font-black text-slate-800">${item.mn}</h3>
-                <span class="text-xs font-bold text-red-500 italic mb-8 block">${item.upr}</span>
-                <div class="flex flex-wrap justify-center gap-2 mb-10">
-                    ${targetWord.split('').map((char, i) => `
-                        <div class="letter-slot ${gameState.minerRevealed.has(i) ? 'correct' : ''}">
-                            ${gameState.minerRevealed.has(i) ? char : ''}
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="grid grid-cols-7 sm:grid-cols-9 gap-2 max-w-lg mx-auto bg-slate-50/50 p-4 rounded-2xl">
-                    ${"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split('').map(char => `
-                        <button onclick="guessLetter('${char}', '${targetWord}')" class="w-full aspect-square flex items-center justify-center glass rounded-xl font-bold text-slate-700 hover:bg-emerald-600 hover:text-white transition-all text-sm shadow-sm active:scale-90">
-                            ${char}
-                        </button>
-                    `).join('')}
-                </div>
-                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold hover:text-red-500 uppercase text-xs tracking-widest">Буцах</button>
-            </div>
-        `;
-    }
-
-    function guessLetter(char, target) {
-        let found = false;
-        target.split('').forEach((c, i) => {
-            if(c === char) {
-                gameState.minerRevealed.add(i);
-                found = true;
-            }
-        });
-
-        if(gameState.minerRevealed.size === target.length) {
-            gameState.score++;
-            showFeedback("ОЛБОРЛОЛТ АМЖИЛТТАЙ!", "success");
-            setTimeout(() => {
-                gameState.index++;
-                gameState.minerRevealed = null;
-                if(gameState.index < 10) render();
-                else renderResult();
-            }, 800);
-        } else {
-            render();
-        }
-    }
-
-    function renderListen(el) {
-        const item = gameState.shuffled[gameState.index];
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto glass p-12 rounded-3xl text-center shadow-2xl border-b-8 border-purple-200">
-                <div class="text-xs font-bold text-purple-600 mb-6 uppercase tracking-[0.3em]">Сонсоод бичнэ үү</div>
-                <div class="flex flex-col items-center mb-10">
-                    <button onclick="playAudio(${item.id})" class="w-28 h-28 bg-purple-600 text-white rounded-full flex items-center justify-center transition-all transform hover:scale-105 shadow-xl hover:bg-purple-700 active:scale-95">
-                        <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                    </button>
-                </div>
-                <div class="text-lg font-bold text-slate-400 mb-4 italic">"${item.mn}"</div>
-                <div class="text-xs font-bold text-red-500 italic mb-8">${item.upr}</div>
-                <input type="text" id="listenInput" placeholder="..." autocomplete="off" class="w-full p-6 rounded-2xl border-2 border-slate-100 text-center text-3xl font-black uppercase mb-8 focus:border-purple-500 outline-none transition-all shadow-inner bg-slate-50/30" onkeyup="if(event.key==='Enter') checkListen()">
-                <button onclick="checkListen()" class="w-full py-5 bg-purple-600 text-white rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all shadow-lg">ШАЛГАХ</button>
-                <button onclick="setTab('practice')" class="mt-8 text-slate-400 font-bold hover:text-red-500 text-xs tracking-widest uppercase">Зогсоох</button>
-            </div>
-        `;
-        setTimeout(() => document.getElementById('listenInput').focus(), 200);
-    }
-
-    function checkListen() {
-        const inputEl = document.getElementById('listenInput');
-        if(!inputEl) return;
-        const val = inputEl.value.trim().toUpperCase();
-        const item = gameState.shuffled[gameState.index];
-        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
-        
-        if(val === rawWord) {
-            gameState.score++;
-            showFeedback("МАШ САЙН БАЙЛАА!", "success");
-        } else {
-            showFeedback(`БУРУУ! Зөв нь: ${rawWord}`, "error");
-            inputEl.classList.add('shake');
-        }
-        setTimeout(() => {
-            gameState.index++;
-            if(gameState.index < 10) render();
-            else renderResult();
-        }, 1500);
-    }
-
-    function renderScrambled(el) {
-        const item = gameState.shuffled[gameState.index];
-        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
-        if(!gameState.scrambledWord) gameState.scrambledWord = rawWord.split('').sort(() => Math.random() - 0.5).join('');
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto glass p-10 rounded-3xl text-center shadow-2xl">
-                <div class="text-xs font-bold text-red-500 mb-6 uppercase tracking-[0.3em]">Үсгүүдийг эвлүүл</div>
-                <h3 class="text-2xl font-black text-slate-800 italic">"${item.mn}"</h3>
-                <span class="text-xs font-bold text-red-500 italic mb-8 block">${item.upr}</span>
-                <div class="flex flex-wrap justify-center gap-3 mb-10">
-                    ${gameState.scrambledWord.split('').map(char => `
-                        <span class="w-12 h-16 flex items-center justify-center glass rounded-2xl font-black text-3xl text-red-600 border-b-4 border-red-200 shadow-md transform rotate-2">${char}</span>
-                    `).join('')}
-                </div>
-                <input type="text" id="guessInput" placeholder="Үгээ бичээрэй..." autocomplete="off" class="w-full p-6 rounded-2xl border-2 border-slate-100 text-center text-3xl font-black uppercase mb-8 focus:border-red-500 outline-none transition-all shadow-inner bg-slate-50/30" onkeyup="if(event.key==='Enter') checkScrambled()">
-                <button onclick="checkScrambled()" class="w-full py-5 bg-slate-800 text-white rounded-2xl font-bold text-xl hover:bg-black transition-all shadow-xl">ШАЛГАХ</button>
-                <button onclick="setTab('practice')" class="mt-10 text-slate-400 font-bold hover:text-red-500 text-xs tracking-widest uppercase">Зогсоох</button>
-            </div>
-        `;
-        setTimeout(() => document.getElementById('guessInput').focus(), 200);
-    }
-
-    function checkScrambled() {
-        const val = document.getElementById('guessInput').value.trim().toUpperCase();
-        const item = gameState.shuffled[gameState.index];
-        const rawWord = item.raw.toUpperCase().replace(/[А́Е́И́О́У́Ы́Э́Ю́Я́]/g, (m) => m[0]);
-        
-        if(val === rawWord) {
-            gameState.score++;
-            showFeedback("ЗӨВ ЭВЛҮҮЛЛЭЭ!", "success");
-        } else {
-            showFeedback(`БУРУУ! Зөв нь: ${rawWord}`, "error");
-        }
-        
-        setTimeout(() => {
-            gameState.index++;
-            gameState.scrambledWord = null;
-            if(gameState.index < 10) render();
-            else renderResult();
-        }, 1200);
-    }
-
-    function renderResult() {
-        const container = document.getElementById('content');
-        const percentage = (gameState.score / 10) * 100;
-        let rank = "ХИЧЭЭХ ХЭРЭГТЭЙ";
-        let emoji = "📚";
-        
-        if(percentage >= 90) { rank = "МАШ САЙН!"; emoji = "🏆"; }
-        else if(percentage >= 70) { rank = "САЙН БАЙНА"; emoji = "⭐"; }
-
-        container.innerHTML = `
-            <div class="max-w-md mx-auto glass p-12 rounded-4xl text-center shadow-2xl border-t-8 border-yellow-400 transform animate-in fade-in zoom-in duration-500">
-                <div class="text-8xl mb-6">${emoji}</div>
-                <h2 class="text-4xl font-black text-slate-800 mb-2">${rank}</h2>
-                <div class="my-10">
-                    <p class="text-slate-400 text-sm uppercase font-bold tracking-widest mb-2">Таны оноо</p>
-                    <div class="text-6xl font-black text-blue-900">${gameState.score} <span class="text-slate-300 text-3xl">/ 10</span></div>
-                </div>
-                <button onclick="setTab('practice')" class="w-full py-5 bg-blue-900 text-white rounded-2xl font-bold text-xl shadow-2xl hover:bg-black transition-all transform hover:scale-105 active:scale-95">ДАХИН ЭХЛЭХ</button>
-            </div>
-        `;
-    }
-
-    function renderFavorites(el) {
-        const favVerbs = verbs.filter(v => learnedIds.has(v.id));
-        if (favVerbs.length === 0) {
-            el.innerHTML = `
-                <div class="text-center p-20 glass rounded-3xl text-slate-400">
-                    <div class="text-5xl mb-4 opacity-30">📂</div>
-                    <div class="font-bold italic">Одоогоор цээжилсэн үг байхгүй байна.</div>
-                </div>`;
-            return;
-        }
-        el.innerHTML = `
-            <div class="flex justify-between items-center mb-8 px-4">
-                <h2 class="text-xl font-bold text-slate-800">Миний цээжилсэн үгс (${favVerbs.length})</h2>
-                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">ЦЭЭЖИЛСЭН</span>
-            </div>
-        `;
-        const list = document.createElement('div');
-        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
-        favVerbs.forEach(v => {
-            list.innerHTML += `
-                <div class="verb-card glass p-5 rounded-2xl flex justify-between items-center border-l-green-500 shadow-sm transition-all hover:-translate-y-1">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <div class="text-blue-900 font-black text-lg">${v.pair}</div>
-                            <span class="text-xs font-bold text-red-500 italic">${v.upr}</span>
-                        </div>
-                        <div class="text-slate-600 font-medium text-sm mt-1">${v.mn}</div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="playAudio(${v.id})" class="p-3 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
-                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                        </button>
-                        <button onclick="toggleLearned(${v.id})" class="p-3 rounded-xl bg-red-50 text-red-400 hover:bg-red-500 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-        el.appendChild(list);
-    }
-
-    function showFeedback(msg, type) {
-        const feedback = document.createElement('div');
-        feedback.className = `fixed top-10 left-1/2 transform -translate-x-1/2 p-5 rounded-2xl text-white font-bold shadow-2xl z-50 transition-all duration-300 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 ${type==='success' ? 'bg-green-600' : 'bg-red-600'}`;
-        feedback.innerHTML = `
-            <span>${type === 'success' ? '✔' : '✖'}</span>
-            <span>${msg}</span>
-        `;
-        document.body.appendChild(feedback);
-        setTimeout(() => {
-            feedback.style.opacity = '0';
-            feedback.style.transform = 'translate(-50%, -20px)';
-            setTimeout(() => feedback.remove(), 400);
-        }, 2000);
-    }
-
+    // Initial Render
     window.onload = () => {
         setTab('dict');
     };
