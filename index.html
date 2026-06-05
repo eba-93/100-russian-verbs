@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
+   <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJP6RNVDLP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-MJP6RNVDLP');
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Орос хэлний 100 үйл үг - Практик</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
-  <style>
-    :root { 
-        --ru-blue: #0039A6; 
-        --ru-red: #D52B1E; 
-    }
-    
-    body { 
-        font-family: 'Montserrat', sans-serif; 
-        background: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
-                    url('SB-1.png') no-repeat center center fixed;
-        background-size: cover;
-        min-height: 100vh;
-    }
+  ...
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Орос хэлний 100 үйл үг - Практик</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --ru-blue: #0039A6; 
+            --ru-red: #D52B1E; 
+        }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
+                        url('SB-1.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
 
-    .glass { 
-        background: rgba(255, 255, 255, 0.95); 
-        backdrop-filter: blur(10px); 
-        border: 1px solid rgba(255,255,255,0.5); 
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    }
+        .glass { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,0.5); 
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
 
-    .nav-btn.active { 
-        background: var(--ru-blue); 
-        color: white; 
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 57, 166, 0.3);
-    }
+        .nav-btn.active { 
+            background: var(--ru-blue); 
+            color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 57, 166, 0.3);
+        }
 
-    .verb-card { 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        border-left: 4px solid var(--ru-blue); 
-    }
+        .verb-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border-left: 4px solid var(--ru-blue); 
+        }
 
-    .verb-card:hover { 
-        transform: scale(1.02); 
-        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
-    }
+        .verb-card:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+        }
 
-    .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
+        .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
 
-    .logo-container {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 1.5rem auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border-radius: 50%;
-        padding: 5px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        overflow: hidden;
-    }
-    
-    .logo-img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-    }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-8px); }
-        75% { transform: translateX(8px); }
-    }
-    .shake { animation: shake 0.4s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .shake { animation: shake 0.4s ease-in-out; }
 
-    .conjugation-table th { background: #f8fafc; text-align: left; padding: 12px; font-size: 0.75rem; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; }
-    .conjugation-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-weight: 700; color: #1e293b; }
+        .conjugation-table th { background: #f8fafc; text-align: left; padding: 12px; font-size: 0.75rem; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; }
+        .conjugation-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-weight: 700; color: #1e293b; }
 
-    .game-card { animation: slideIn 0.5s ease-out; }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .game-card { animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    input:focus { border-color: var(--ru-blue) !important; box-shadow: 0 0 0 4px rgba(0, 57, 166, 0.1) !important; }
-  </style>
+        input:focus { border-color: var(--ru-blue) !important; box-shadow: 0 0 0 4px rgba(0, 57, 166, 0.1) !important; }
+    </style>
 </head>
 <body class="pb-20">
 
@@ -103,7 +107,7 @@
        <div class="max-w-xl mx-auto mt-4 mb-8 p-4 bg-white/60 backdrop-blur-md rounded-2xl border border-blue-100 shadow-sm text-center">
             <p class="text-[11px] font-black text-blue-900 tracking-wider uppercase mb-1">💡</p>
             <p class="text-slate-700 text-xs md:text-sm font-semibold leading-relaxed">
-                Энехүү бүтээлийг Ерөнхий боловсролын сургуулийн <span class="text-blue-900 font-black">IX ангийн Орос хэлний сурах бичгээс</span> түүвэрлэсэн гол үйл үгс дээр тулгуурлан, сурагчдын орос үйл үгийн хувиргалыг бие даан суралцах үйлийг дэмжих зорилгоор бүтээв.
+                Энэхүү бүтээлийг Ерөнхий боловсролын сургуулийн <span class="text-blue-900 font-black">IX ангийн Орос хэлний сурах бичгээс</span> түүвэрлэсэн гол үйл үгс дээр тулгуурлан, сурагчдын орос үйл үгийн хувиргалыг бие даан суралцах үйлийг дэмжих зорилгоор бүтээв.
             </p>
         </div>
         <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full"></div>
@@ -135,7 +139,7 @@
         { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться", upr: "(с кем?)" },
         { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать", upr: "(что? из чего?)" },
         { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
-        { id: 9, pair: "Вырывать / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
+        { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
         { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать", upr: "(перед кем?)" },
         { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить", upr: "(что? кому? о ком?)" },
         { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить", upr: "(что? для кого?)" },
@@ -277,13 +281,10 @@
 
     function render() {
         const container = document.getElementById('content');
-        if (!container) return;
         container.innerHTML = '';
-        
         if (currentTab === 'dict') renderDictionary(container);
         else if (currentTab === 'favorites') renderFavorites(container);
         else if (currentTab === 'conjugation') renderConjugation(container);
-        else if (currentTab === 'exam') renderExamMenu(container);
         else if (currentTab === 'practice') {
             if (!gameMode) renderPracticeMenu(container);
             else if (gameMode === 'quiz') renderQuiz(container);
@@ -353,60 +354,6 @@
         }
     }
 
-    function handleSearch(val) {
-        searchQuery = val;
-        currentPage = 1;
-        const container = document.getElementById('content');
-        container.innerHTML = '';
-        renderDictionary(container);
-    }
-
-    function changePage(page) {
-        currentPage = page;
-        const container = document.getElementById('content');
-        container.innerHTML = '';
-        renderDictionary(container);
-    }
-
-    function renderFavorites(el) {
-        const favVerbs = verbs.filter(v => learnedIds.has(v.id));
-        
-        if (favVerbs.length === 0) {
-            el.innerHTML = `
-                <div class="text-center py-20 bg-white/60 backdrop-blur-md rounded-3xl max-w-md mx-auto border border-dashed border-slate-200">
-                    <span class="text-4xl">🌟</span>
-                    <h3 class="text-lg font-black text-slate-700 mt-4">Цээжилсэн үг одоогоор алга</h3>
-                    <p class="text-slate-400 text-xs mt-1">Цээжлэх үгс цэснээс зөв тэмдэглэгээг дарж нэмээрэй.</p>
-                </div>`;
-            return;
-        }
-
-        const list = document.createElement('div');
-        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-5';
-        favVerbs.forEach(v => {
-            list.innerHTML += `
-                <div class="verb-card glass p-6 rounded-2xl flex justify-between items-center border-l-green-500">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[9px] text-green-600 font-black bg-green-50 px-1.5 py-0.5 rounded">ЦЭЭЖИЛСЭН</span>
-                            <div class="text-blue-900 font-black text-xl">${v.pair}</div>
-                        </div>
-                        <div class="text-slate-600 font-bold text-base">${v.mn}</div>
-                        <span class="text-[10px] font-black text-red-500 italic uppercase mt-1 block">${v.upr}</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="playAudio(${v.id})" class="p-3.5 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                        </button>
-                        <button onclick="toggleLearned(${v.id})" class="p-3.5 rounded-xl bg-green-500 text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </button>
-                    </div>
-                </div>`;
-        });
-        el.appendChild(list);
-    }
-
     function renderConjugation(el) {
         el.innerHTML = `
             <div class="max-w-3xl mx-auto mb-12">
@@ -424,6 +371,7 @@
         `;
     }
 
+// ТӨГС ХУВИЛБАР: 100 үйл үгийн бүх дүрмийн бус хувирлыг багтаасан систем
 function handleConjugate() {
     let val = document.getElementById('conjInput').value.trim().toLowerCase();
     if (!val) return;
@@ -434,11 +382,13 @@ function handleConjugate() {
     loading.classList.remove('hidden');
     result.innerHTML = '';
 
+    // Өргөлт болон илүү тэмдэгт цэвэрлэх функц
     const cleanWord = (word) => {
         if (!word) return "";
         return word.toLowerCase().replace(/́/g, "").trim();
     };
 
+    // Хэрэглэгчийн бичсэн үгийг 100 үг дотроос хайх (raw болон pair-аас давхар хайна)
     let foundVerb = verbs.find(v => 
         cleanWord(v.raw) === cleanWord(val) || 
         cleanWord(v.pair).includes(cleanWord(val))
@@ -449,14 +399,16 @@ function handleConjugate() {
         result.innerHTML = `
             <div class="bg-red-50 p-6 rounded-2xl border-l-8 border-red-500 shadow-sm text-center">
                 <p class="text-red-600 font-bold">"${val}" үг олдсонгүй.</p>
-                <p class="text-slate-500 text-xs mt-1">Зөвхөн апп дотор байгаа 100 үйл үгний хүрээнд хайлт хийнэ үү.</p>
+                <p class="text-slate-500 text-xs mt-1">Зөвхөн апп дотор байгаа 100 үйл үгийн хүрээнд хайлт хийнэ үү.</p>
             </div>`;
         return;
     }
 
+    // Хайж олдсон үндсэн үг
     let baseVerb = foundVerb.raw; 
     let cleanRaw = cleanWord(baseVerb);
 
+    // Суурь цагуудын бэлдэц
     let presentForms = {};
     let pastForms = {};
     let futureForms = { 
@@ -464,6 +416,11 @@ function handleConjugate() {
         "Мы": "будем " + cleanRaw, "Вы": "будете " + cleanRaw, "Они": "будут " + cleanRaw 
     };
 
+    // ========================================================
+    // 1. ТАНЫ 100 ҮГНЭЭС ДҮРМИЙН БУС ОНЦГОЙ ҮГСИЙГ ТОХИРУУЛАХ ХЭСЭГ
+    // ========================================================
+    
+    // 1.1 Хөдөлгөөний болон Төгс/Төгс бус хос нь зөрдөг үгс (Прийти, Ездить, Ходить)
     if (cleanRaw === "прийти" || cleanRaw === "приходить") {
         presentForms = { "Я": "прихожу", "Ты": "приходишь", "Он/Она": "приходит", "Мы": "приходим", "Вы": "приходите", "Они": "приходят" };
         pastForms = { "Эр (Он)": "приходил", "Эм (Она)": "приходила", "Дунд (Оно)": "приходило", "Олон (Они)": "приходили" };
@@ -476,6 +433,7 @@ function handleConjugate() {
         presentForms = { "Я": "хожу", "Ты": "ходишь", "Он/Она": "ходит", "Мы": "ходим", "Вы": "ходите", "Они": "ходят" };
         pastForms = { "Эр (Он)": "ходил", "Эм (Она)": "ходила", "Дунд (Оно)": "ходило", "Олон (Они)": "ходили" };
     }
+    // 1.2 Төгсгөл нь -чь, -ть гэж өөрчлөгддөг хэцүү үгс
     else if (cleanRaw === "беречь") {
         presentForms = { "Я": "берегу", "Ты": "бережёшь", "Он/Она": "бережёт", "Мы": "бережём", "Вы": "бережёте", "Они": "берегут" };
         pastForms = { "Эр (Он)": "берёг", "Эм (Она)": "берегла", "Дунд (Оно)": "берегло", "Олон (Они)": "берегли" };
@@ -492,6 +450,7 @@ function handleConjugate() {
         presentForms = { "Я": "живу", "Ты": "живёшь", "Он/Она": "живёт", "Мы": "живём", "Вы": "живёте", "Они": "живут" };
         pastForms = { "Эр (Он)": "жил", "Эм (Она)": "жила", "Дунд (Оно)": "жило", "Олон (Они)": "жили" };
     }
+    // 1.3 Гээгдэх болон хувирах эгшиг/гийгүүлэгчтэй үгс
     else if (cleanRaw === "брать") {
         presentForms = { "Я": "беру", "Ты": "берёшь", "Он/Она": "берёт", "Мы": "берём", "Вы": "берёте", "Они": "берут" };
         pastForms = { "Эр (Он)": "брал", "Эм (Она)": "брала", "Дунд (Оно)": "брало", "Олон (Они)": "брали" };
@@ -542,307 +501,118 @@ function handleConjugate() {
         pastForms = { "Эр (Он)": "учился", "Эм (Она)": "училась", "Дунд (Оно)": "училось", "Олон (Они)": "учились" };
     } 
     else if (cleanRaw === "готовить") {
-        presentForms = { "Я": "готовлю", "Ты": "готовишь", "Он/Она": "котовит", "Мы": "готовим", "Вы": "готовите", "Они": "готовят" };
+        presentForms = { "Я": "готовлю", "Ты": "готовишь", "Он/Она": "готовит", "Мы": "готовим", "Вы": "готовите", "Они": "готовят" };
         pastForms = { "Эр (Он)": "готовил", "Эм (Она)": "готовила", "Дунд (Оно)": "готовило", "Олон (Они)": "готовили" };
     }
+    // 1.4 -овать, -евать төгсгөлтэй үгс (Рисовать, Путешествовать г.м -> ую, уешь болно)
+    else if (cleanRaw.endsWith("овать") || cleanRaw.endsWith("евать")) {
+        let stem = baseVerb.slice(0, -5); // -овать хэсгийг хасна
+        presentForms = { "Я": stem + "ую", "Ты": stem + "уешь", "Он/Она": stem + "ует", "Мы": stem + "уем", "Вы": stem + "уете", "Они": stem + "уют" };
+        let pastStem = baseVerb.slice(0, -2);
+        pastForms = { "Эр (Он)": pastStem + "л", "Эм (Она)": pastStem + "ла", "Дунд (Оно)": pastStem + "ло", "Олон (Они)": pastStem + "ли" };
+    }
+    // ========================================================
+    // 2. ЖИРИЙН ДҮРМЭЭР ХУВИРАХ БУСАД ҮГСҮҮД
+    // ========================================================
     else {
-        let stem = baseVerb.slice(0, -2); 
-        let ending = baseVerb.slice(-2);
-
-        if (baseVerb.endsWith("ить")) {
-            stem = baseVerb.slice(0, -3);
-            presentForms = { "Я": stem+"ю", "Ты": stem+"ишь", "Он/Она": stem+"ит", "Мы": stem+"им", "Вы": stem+"ите", "Они": stem+"ят" };
-        } else if (baseVerb.endsWith("ать")) {
-            stem = baseVerb.slice(0, -3);
-            presentForms = { "Я": stem+"аю", "Ты": stem+"аешь", "Он/Она": stem+"ает", "Мы": stem+"аем", "Вы": stem+"аете", "Они": stem+"ают" };
+        // Өнгөрсөн цаг (Ть-ийг хасаж л, ла, ло, ли залгана)
+        let pastStem = baseVerb.endsWith("ться") ? baseVerb.slice(0, -4) : (baseVerb.endsWith("ть") ? baseVerb.slice(0, -2) : baseVerb);
+        
+        if (baseVerb.endsWith("ться")) {
+            pastForms = { "Эр (Он)": pastStem + "лся", "Эм (Она)": pastStem + "лась", "Дунд (Оно)": pastStem + "лось", "Олон (Они)": pastStem + "лись" };
         } else {
-            presentForms = { "Я": stem+"ю", "Ты": stem+"ешь", "Он/Она": stem+"ет", "Мы": stem+"ем", "Вы": stem+"ете", "Они": stem+"ют" };
+            pastForms = { "Эр (Он)": pastStem + "л", "Эм (Она)": pastStem + "ла", "Дунд (Оно)": pastStem + "ло", "Олон (Они)": pastStem + "ли" };
         }
-        pastForms = { "Эр (Он)": stem+"л", "Эм (Она)": stem+"ла", "Дунд (Оно)": stem+"ло", "Олон (Они)": stem+"ли" };
+
+        // Одоо цаг
+        if (cleanRaw.endsWith("ить")) {
+            // 2-р хувирал
+            let stem = baseVerb.slice(0, -3);
+            presentForms = { "Я": stem + "ю", "Ты": stem + "ишь", "Он/Она": stem + "ит", "Мы": stem + "им", "Вы": stem + "ите", "Они": stem + "ят" };
+        } else if (cleanRaw.endsWith("иться")) {
+            let stem = baseVerb.slice(0, -5);
+            presentForms = { "Я": stem + "юсь", "Ты": stem + "ишься", "Он/Она": stem + "ится", "Мы": stem + "имся", "Вы": stem + "итесь", "Они": stem + "ятся" };
+        } else if (cleanRaw.endsWith("аться") || cleanRaw.endsWith("яться")) {
+            let stem = baseVerb.slice(0, -4);
+            presentForms = { "Я": stem + "юсь", "Ты": stem + "ешься", "Он/Она": stem + "ется", "Мы": stem + "емся", "Вы": stem + "етесь", "Они": stem + "ются" };
+        } else {
+            // 1-р хувирал (Делать, читать г.м)
+            let stem = baseVerb.slice(0, -2);
+            presentForms = { "Я": stem + "ю", "Ты": stem + "ешь", "Он/Она": stem + "ет", "Мы": stem + "ем", "Вы": stem + "ете", "Они": stem + "ют" };
+        }
     }
 
-    loading.classList.add('hidden');
-    result.innerHTML = `
-        <div class="bg-blue-50/50 p-6 rounded-2xl border-l-4 border-blue-900 mb-6">
-            <span class="text-xs font-black text-blue-900 tracking-widest uppercase">Үндсэн үг:</span>
-            <div class="text-2xl font-black text-slate-800">${foundVerb.pair}</div>
-            <div class="text-slate-600 font-bold text-sm mt-1">Орчуулга: ${foundVerb.mn}</div>
-        </div>
-        ${createConjBox("Настоящее время (Одоо цаг)", presentForms)}
-        ${createConjBox("Прошедшее время (Өнгөрсөн цаг)", pastForms)}
-        ${createConjBox("Будущее время (Ирээдүй цаг)", futureForms)}
-    `;
+    // Үр дүнг дэлгэцэнд үзүүлэх HTML хэсэг
+    setTimeout(() => {
+        if (loading) loading.classList.add('hidden');
+        result.innerHTML = `
+            <div class="bg-blue-50 p-6 rounded-2xl border-l-8 border-blue-900 shadow-sm mb-6">
+                <div class="text-3xl font-black text-slate-800 mb-1">${foundVerb.pair} <span class="text-red-500 text-sm font-bold">${foundVerb.upr || ''}</span></div>
+                <div class="text-slate-600 font-bold text-lg">Орчуулга: ${foundVerb.mn}</div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                ${createConjBox('Настоящее время (Одоо)', presentForms, 'blue')}
+                ${createConjBox('Прошедшее время (Өнгөрсөн)', pastForms, 'green')}
+                ${createConjBox('Будущее время (Ирээдүй)', futureForms, 'purple')}
+            </div>
+        `;
+    }, 400);
 }
 
-    function createConjBox(title, forms) {
-        let rows = '';
-        for (let p in forms) {
-            rows += `<tr><td class="w-1/3 text-slate-400 font-bold">${p}</td><td class="text-blue-900 font-black text-base">${forms[p]}</td></tr>`;
-        }
-        return `
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">📌 ${title}</h3>
-                <table class="w-full text-left font-sans text-sm space-y-2">${rows}</table>
-            </div>`;
-    }
+function createConjBox(title, forms, color) {
+    let colorClasses = {
+        blue: { bg: 'bg-blue-50/50', border: 'border-blue-100', text: 'text-blue-700' },
+        green: { bg: 'bg-green-50/50', border: 'border-green-100', text: 'text-green-700' },
+        purple: { bg: 'bg-purple-50/50', border: 'border-purple-100', text: 'text-purple-700' }
+    };
+    let c = colorClasses[color] || colorClasses.blue;
 
-    function renderPracticeMenu(el) {
-        el.innerHTML = `
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl font-black text-slate-800 mb-2">🎯 Дасгал ажиллах горим</h2>
-                <p class="text-slate-400 text-sm mb-10 font-medium">Өөрийн мэдлэгийг баталгаажуулах тоглоомын хэлбэрийг сонгоно уу.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div onclick="startGame('quiz')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-900 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-blue-900 group-hover:text-white transition-all">A</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Сонгох тест</h3>
-                        <p class="text-slate-400 text-xs font-medium">Орос үг өгөгдөхөд зөв орчуулгыг 4 сонголтоос олно.</p>
+    return `
+        <div class="p-5 rounded-2xl ${c.bg} border ${c.border}">
+            <h4 class="text-xs font-black ${c.text} mb-3 uppercase tracking-wider text-center">${title}</h4>
+            <table class="w-full text-sm">
+                ${Object.entries(forms).map(([k, v]) => `
+                    <tr class="border-b border-gray-100 last:border-0">
+                        <th class="w-20 text-left py-2 text-gray-400 font-bold uppercase text-[11px]">${k}</th>
+                        <td class="py-2 text-slate-800 font-extrabold text-right">${v}</td>
+                    </tr>
+                `).join('')}
+            </table>
+        </div>
+    `;
+}
+   // Шалгалтын цэсийг дэлгэц дээр хэвлэх функц
+function renderExamMenu(el) {
+    el.innerHTML = `
+        <div id="exam" class="tab-content py-4 animate-fade-in">
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl max-w-2xl mx-auto border border-blue-50">
+                <h2 class="text-2xl font-black text-slate-800 mb-2 flex items-center gap-2">
+                    <span>📋 IX Ангийн Орос Хэлний Шалгалт</span>
+                </h2>
+                <p class="text-slate-500 text-sm mb-6">Сурах бичгийн 100 үйл үгнээс санамсаргүй 10 үг ирнэ. Шалгалт дуусахад дүн багш руу автоматаар илгээгдэнэ.</p>
+
+                <div id="exam-register" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Сурагчийн Овог Нэр:</label>
+                        <input type="text" id="student-name" placeholder="Жишээ нь: Болдын Тэмүүлэн" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
                     </div>
-                    <div onclick="startGame('write')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-red-600 group-hover:text-white transition-all">✏️</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Үг бөглөх</h3>
-                        <p class="text-slate-400 text-xs font-medium">Монгол орчуулгад тохирох орос үгийг гарнаас бичнэ.</p>
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Анги / Бүлэг:</label>
+                        <input type="text" id="student-class" placeholder="Жишээ нь: 9А" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
                     </div>
-                    <div onclick="startGame('listen')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-green-600 group-hover:text-white transition-all">🎧</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Сонсоод олох</h3>
-                        <p class="text-slate-400 text-xs font-medium">Үгийн дуудлагыг сонсоод зөв үгийг сонгоно.</p>
+                    <button onclick="startExam()" class="w-full py-4 bg-blue-950 text-white font-black rounded-2xl shadow-lg hover:bg-black transition-all uppercase tracking-wider text-sm">Шалгалт эхлүүлэх 🚀</button>
+                </div>
+
+                <div id="exam-area" class="hidden">
+                    <div class="flex justify-between items-center mb-6 bg-slate-50 p-4 rounded-2xl">
+                        <span id="exam-progress" class="font-black text-blue-950 text-sm">Асуулт: 1 / 10</span>
+                        <span id="exam-score-live" class="font-bold text-green-600 text-sm">Зөв: 0</span>
                     </div>
-                    <div onclick="startGame('scrambled')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-all">🔠</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Үсэг эвлүүлэх</h3>
-                        <p class="text-slate-400 text-xs font-medium">Үсгүүдийг зөв дараалалд оруулж орос үгийг бүтээгээрэй.</p>
+                    
+                    <div class="mb-6 text-center py-8 bg-blue-50/50 rounded-2xl border border-blue-100">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wide block mb-1">Орос үг:</span>
+                        <div id="exam-question-word" class="text-3xl font-black text-slate-800">---</div>
                     </div>
-                </div>
-            </div>`;
-    }
-
-    function startGame(mode) {
-        gameMode = mode;
-        gameState = { score: 0, current: 0, total: 10, wrongs: [] };
-        let pool = verbs.length > 0 ? [...verbs] : [];
-        gameState.questions = pool.sort(() => 0.5 - Math.random()).slice(0, 10);
-        render();
-    }
-
-    function renderQuiz(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let options = [q.mn];
-        while(options.length < 4) {
-            let rand = verbs[Math.floor(Math.random()*verbs.length)].mn;
-            if(!options.includes(rand)) options.push(rand);
-        }
-        options.sort(() => 0.5 - Math.random());
-
-        let cleanQWord = q.pair ? q.pair.replace(/́/g, "") : q.raw.replace(/́/g, "");
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Тест: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-10 bg-blue-50/50 rounded-2xl mb-6"><span class="text-xs font-black text-blue-600 uppercase tracking-wider block mb-2">Орос үг:</span><h2 class="text-3xl font-black text-slate-800">${cleanQWord}</h2></div>
-                <div class="grid grid-cols-1 gap-3">
-                    ${options.map(o => `<button onclick="submitAnswer('${o.replace(/'/g, "\\'")}', '${q.mn.replace(/'/g, "\\'")}')" class="w-full p-4 text-left font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-xl transition-all text-sm">${o}</button>`).join('')}
-                </div>
-            </div>`;
-    }
-
-    function renderWrite(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Бичих: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-10 bg-red-50/30 rounded-2xl mb-6"><span class="text-xs font-black text-red-500 uppercase tracking-wider block mb-2">Монгол утга:</span><h2 class="text-xl font-black text-slate-800">${q.mn}</h2></div>
-                <div class="space-y-4">
-                    <input type="text" id="writeAns" placeholder="Орос үгийг бичнэ үү..." class="w-full p-4 rounded-xl border-2 border-slate-100 font-bold text-slate-700 outline-none" onkeypress="if(event.key==='Enter') submitWrite()">
-                    <button onclick="submitWrite()" class="w-full py-4 bg-blue-900 text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all">Шалгах</button>
-                </div>
-            </div>`;
-        setTimeout(() => document.getElementById('writeAns')?.focus(), 100);
-    }
-
-    function submitWrite() {
-        let input = document.getElementById('writeAns').value.trim().toLowerCase();
-        let q = gameState.questions[gameState.current];
-        
-        let cleanRaw = q.raw ? q.raw.toLowerCase().replace(/́/g, "").trim() : "";
-        let cleanInput = input.toLowerCase().replace(/́/g, "").trim();
-
-        if (cleanInput === cleanRaw) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: q.raw, your: input });
-            showFeedback(`Буруу! Зөв нь: ${q.raw}`, "error");
-        }
-        gameState.current++;
-        render();
-    }
-
-    function renderListen(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let options = [q.pair];
-        while(options.length < 4) {
-            let rand = verbs[Math.floor(Math.random()*verbs.length)].pair;
-            if(!options.includes(rand)) options.push(rand);
-        }
-        options.sort(() => 0.5 - Math.random());
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl text-center">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest text-left">Сонсох: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded text-right">Оноо: ${gameState.score}</span></div>
-                <button onclick="playAudio(${q.id})" class="mx-auto w-24 h-24 rounded-full bg-green-50 text-green-600 flex items-center justify-center shadow-lg hover:scale-105 transition-all mb-8">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                </button>
-                <div class="grid grid-cols-1 gap-3 text-left">
-                    ${options.map(o => {
-                        let cleanO = o.replace(/́/g, "");
-                        let cleanQ = q.pair.replace(/́/g, "");
-                        return `<button onclick="submitAnswer('${cleanO.replace(/'/g, "\\'")}', '${cleanQ.replace(/'/g, "\\'")}')" class="w-full p-4 font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-xl transition-all text-sm">${cleanO}</button>`;
-                    }).join('')}
-                </div>
-            </div>`;
-        playAudio(q.id);
-    }
-
-    function renderScrambled(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.replace(/́/g, "");
-        
-        if (!gameState.scrambledLetters) {
-            gameState.scrambledLetters = cleanRaw.split('').sort(() => 0.5 - Math.random());
-            gameState.userLetters = [];
-        }
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Эвлүүлэх: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-6 bg-purple-50/30 rounded-2xl mb-6"><span class="text-xs font-black text-purple-600 uppercase tracking-wider block mb-1">Утга:</span><h2 class="text-xl font-black text-slate-800">${q.mn}</h2></div>
-                
-                <div class="flex flex-wrap justify-center gap-2 min-h-[60px] p-4 bg-slate-50 rounded-xl mb-6 border-2 border-dashed">
-                    ${gameState.userLetters.map((l, i) => `<button onclick="removeLetter(${i})" class="w-12 h-12 rounded-xl bg-blue-900 text-white font-black text-lg shadow-md">${l}</button>`).join('')}
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-2 mb-6">
-                    ${gameState.scrambledLetters.map((l, i) => `<button onclick="addLetter(${i})" class="w-12 h-12 rounded-xl bg-white hover:bg-slate-100 border-2 font-black text-lg text-slate-700 shadow-sm">${l}</button>`).join('')}
-                </div>
-
-                <div class="flex gap-2">
-                    <button onclick="clearScrambled()" class="w-1/3 py-4 bg-slate-100 text-slate-600 font-black rounded-xl text-xs uppercase tracking-wider">Цэвэрлэх</button>
-                    <button onclick="submitScrambled()" class="w-2/3 py-4 bg-blue-900 text-white font-black rounded-xl text-xs uppercase tracking-wider shadow-lg">Илгээх</button>
-                </div>
-            </div>`;
-    }
-
-    function addLetter(idx) {
-        let l = gameState.scrambledLetters.splice(idx, 1)[0];
-        gameState.userLetters.push(l);
-        render();
-    }
-
-    function removeLetter(idx) {
-        let l = gameState.userLetters.splice(idx, 1)[0];
-        gameState.scrambledLetters.push(l);
-        render();
-    }
-
-    function clearScrambled() {
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.replace(/́/g, "");
-        gameState.scrambledLetters = cleanRaw.split('').sort(() => 0.5 - Math.random());
-        gameState.userLetters = [];
-        render();
-    }
-
-    function submitScrambled() {
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.toLowerCase().replace(/́/g, "").trim();
-        let userWord = gameState.userLetters.join('').toLowerCase().trim();
-
-        if (userWord === cleanRaw) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: q.raw, your: userWord || "---" });
-            showFeedback(`Буруу! Зөв нь: ${q.raw}`, "error");
-        }
-        gameState.scrambledLetters = null;
-        gameState.current++;
-        render();
-    }
-
-    function submitAnswer(selected, correct) {
-        let q = gameState.questions[gameState.current];
-        
-        let cleanSel = selected.toLowerCase().replace(/́/g, "").trim();
-        let cleanCorr = correct.toLowerCase().replace(/́/g, "").trim();
-
-        if (cleanSel === cleanCorr) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: correct, your: selected });
-            showFeedback("Буруу хариуллаа!", "error");
-        }
-        gameState.current++;
-        render();
-    }
-
-    function renderGameResult(el) {
-        el.innerHTML = `
-            <div class="max-w-md mx-auto text-center game-card glass p-10 rounded-[2.5rem]">
-                <span class="text-5xl">🎉</span>
-                <h2 class="text-2xl font-black text-slate-800 mt-4 mb-1">Дасгал дууслаа!</h2>
-                <p class="text-slate-400 text-xs font-bold mb-6 uppercase tracking-wider">Амжилтын хураангуй</p>
-                <div class="bg-blue-50/50 p-6 rounded-2xl mb-6">
-                    <span class="text-xs font-black text-blue-900 uppercase tracking-widest block mb-1">Нийт оноо:</span>
-                    <div class="text-4xl font-black text-blue-950">${gameState.score} <span class="text-lg text-slate-400 font-bold">/ ${gameState.total}</span></div>
-                </div>
-                ${gameState.wrongs.length > 0 ? `
-                    <div class="text-left bg-red-50/50 p-4 rounded-xl mb-6 text-xs text-red-700 max-h-40 overflow-y-auto">
-                        <p class="font-black uppercase tracking-wider mb-2">❌ Алдсан үгс:</p>
-                        ${gameState.wrongs.map(w => `<p class="mb-1"><strong>${w.word}</strong> - Зөв: ${w.right} (Та: ${w.your})</p>`).join('')}
-                    </div>` : ''}
-                <button onclick="setTab('practice')" class="w-full py-4 bg-blue-900 text-white font-black rounded-xl text-xs uppercase tracking-widest shadow-lg hover:bg-black transition-all">Цэс рүү буцах</button>
-            </div>`;
-    }
-
-    // ========================================================
-    // ШАЛГАЛТЫН СИСТЕМ БА GOOGLE SHEETS-ТЭЙ ХОЛБОХ ХЭСЭГ
-    // ========================================================
-    function renderExamMenu(el) {
-        el.innerHTML = `
-            <div id="exam" class="tab-content py-4 animate-fade-in">
-                <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl max-w-2xl mx-auto border border-blue-50">
-                    <h2 class="text-2xl font-black text-slate-800 mb-2 flex items-center gap-2">
-                        <span>📋 IX Ангийн Орос Хэлний Шалгалт</span>
-                    </h2>
-                    <p class="text-slate-500 text-sm mb-6">Сурах бичгийн 100 үйл үгнээс санамсаргүй 10 үг ирнэ. Шалгалт дуусахад дүн багш руу автоматаар илгээгдэнэ.</p>
-
-                    <div id="exam-register" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Сурагчийн Овог Нэр:</label>
-                            <input type="text" id="student-name" placeholder="Жишээ нь: Болдын Тэмүүлэн" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Анги / Бүлэг:</label>
-                            <input type="text" id="student-class" placeholder="Жишээ нь: 9А" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
-                        </div>
-                        <button onclick="startExam()" class="w-full py-4 bg-blue-950 text-white font-black rounded-2xl shadow-lg hover:bg-black transition-all uppercase tracking-wider text-sm">Шалгалт эхлүүлэх 🚀</button>
-                    </div>
-
-                    <div id="exam-area" class="hidden">
-                        <div class="flex justify-between items-center mb-6 bg-slate-50 p-4 rounded-2xl">
-                            <span id="exam-progress" class="font-black text-blue-950 text-sm">Асуулт: 1 / 10</span>
-                            <span id="exam-score-live" class="font-bold text-green-600 text-sm">Зөв: 0</span>
-                        </div>
-                        
-                        <div class="mb-6 text-center py-8 bg-blue-50/50 rounded-2xl border border-blue-100">
-                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wide block mb-1">Орос үг:</span>
-                            <div id="exam-question-word" class="text-3xl font-black text-slate-800">---</div>
-                        </div>
 
                     <div id="exam-options" class="grid grid-cols-1 gap-3">
                         </div>
@@ -968,7 +738,6 @@ function finishExam() {
 }
 
 function sendDataToGoogleSheet() {
-    // Та өөрийн Google Form-ын URL болон entry ID-нуудыг энд сольж тавина
     const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXXX/formResponse"; 
     let formData = new FormData();
     formData.append("entry.1111111111", studentName);   
@@ -977,14 +746,283 @@ function sendDataToGoogleSheet() {
     formData.append("entry.4444444444", wrongWords.join(', ') || "Бүгд зөв"); 
 
     fetch(formURL, { method: "POST", mode: "no-cors" })
-    .then(() => console.log("Дүн амжилттай илгээгдлээ"))
+    .then(() => console.log("Илгээгдлээ"))
     .catch((e) => console.error(e));
 }
+    function renderPracticeMenu(el) {
+        const modes = [
+            { id: 'quiz', icon: '📝', title: 'Орчуулга сонгох', desc: 'Зөв монгол орчуулгыг нь сонгоно уу' },
+            { id: 'write', icon: '⌨️', title: 'Үг орчуулах', desc: 'Монгол үгийг оросоор бичиж хариулна уу' },
+            { id: 'listen', icon: '🎧', title: 'Сонсох ба Бичих', desc: 'Дуудлагыг сонсоод орос үгийг бичнэ үү' },
+            { id: 'scrambled', icon: '🧩', title: 'Холимог үсэг', desc: 'Холилдсон үсгүүдийг зөв дараалалд оруулна уу' }
+        ];
+        el.innerHTML = `
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-black text-slate-800 mb-8 text-center uppercase tracking-widest">Дасгал ажилаа сонгоно уу</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    ${modes.map(m => `
+                        <div onclick="startPractice('${m.id}')" class="glass p-10 rounded-[2.5rem] text-center cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all border-b-8 border-blue-600 group">
+                            <div class="text-6xl mb-5 group-hover:scale-110 transition-transform">${m.icon}</div>
+                            <h3 class="font-black text-xl text-slate-800 mb-3">${m.title}</h3>
+                            <p class="text-slate-500 text-sm font-bold leading-relaxed px-4">${m.desc}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
 
-    // Эхлэл хуудас ачаалахад дэлгэцийг зурах
-    document.addEventListener("DOMContentLoaded", () => {
-        setTab('dict');
-    });
+    function startPractice(mode) {
+        gameMode = mode;
+        gameState = { score: 0, index: 0, shuffled: [...verbs].sort(() => Math.random() - 0.5).slice(0, 10), wrongCount: 0 };
+        render();
+    }
+
+    function renderQuiz(el) {
+        const item = gameState.shuffled[gameState.index];
+        const options = [item.mn];
+        while(options.length < 4) {
+            const rand = verbs[Math.floor(Math.random() * verbs.length)].mn;
+            if(!options.includes(rand)) options.push(rand);
+        }
+        options.sort(() => Math.random() - 0.5);
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto game-card">
+                <div class="glass p-12 rounded-[3rem] shadow-2xl relative">
+                    <div class="flex justify-between items-center mb-12">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Дасгал ${gameState.index + 1} / 10</span>
+                        <span class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full font-black text-xs">ОНОО: ${gameState.score}</span>
+                    </div>
+                    <div class="text-center mb-12">
+                        <div class="text-4xl font-black text-blue-900 mb-3">${item.raw}</div>
+                        <button onclick="playAudio(${item.id})" class="text-blue-500 hover:text-blue-700 font-bold text-xs uppercase flex items-center justify-center gap-1 mx-auto">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                            Дуудлага
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        ${options.map(opt => `<button onclick="checkQuiz('${opt.replace(/'/g, "\\'")}')" class="p-5 rounded-2xl border-2 border-slate-100 hover:border-blue-900 hover:bg-blue-50 font-bold text-slate-700 transition-all text-sm shadow-sm">${opt}</button>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function checkQuiz(ans) {
+        const item = gameState.shuffled[gameState.index];
+        if(ans === item.mn) { gameState.score += 10; showFeedback("ЗӨВ! +10 Оноо", "success"); }
+        else { showFeedback(`БУРУУ! Зөв нь: ${item.mn}`, "error"); }
+        nextQuestion();
+    }
+
+    // ШИНЭ: Үг орчуулах (Гараар бичих)
+    function renderWrite(el) {
+        const item = gameState.shuffled[gameState.index];
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto game-card">
+                <div class="glass p-12 rounded-[3rem] shadow-2xl text-center">
+                    <div class="flex justify-between items-center mb-12">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Орчуулга ${gameState.index + 1}/10</span>
+                        <div class="flex gap-1">${Array(3 - gameState.wrongCount).fill('❤️').join('')}</div>
+                    </div>
+                    <div class="text-xl font-bold text-slate-500 mb-4 uppercase tracking-tighter">Оросоор юу гэх вэ?</div>
+                    <div class="text-4xl font-black text-blue-900 mb-12">"${item.mn}"</div>
+                    
+                    <div class="mb-10">
+                        <input type="text" id="writeInput" placeholder="Орос үгийг бичнэ үү..." 
+                            class="w-full p-6 rounded-2xl border-4 border-slate-100 focus:border-blue-900 outline-none font-black text-center text-2xl text-slate-800 transition-all shadow-inner"
+                            autocomplete="off"
+                            onkeypress="if(event.key === 'Enter') checkWrite()">
+                    </div>
+                    
+                    <button onclick="checkWrite()" class="w-full py-6 bg-blue-900 text-white rounded-2xl font-black uppercase tracking-widest shadow-xl hover:bg-black transition-all active:scale-95">Шалгах</button>
+                    <p class="mt-6 text-slate-400 text-[10px] font-bold uppercase tracking-widest">Enter товч дарж шалгаж болно</p>
+                </div>
+            </div>
+        `;
+        setTimeout(() => document.getElementById('writeInput').focus(), 100);
+    }
+
+    function checkWrite() {
+        const input = document.getElementById('writeInput').value.trim().toLowerCase();
+        const item = gameState.shuffled[gameState.index];
+        const correct = item.raw.toLowerCase().replace(/́/g, ''); // Өргөлтийг арилгаж шалгах
+        
+        if(input === correct) { 
+            gameState.score += 25; 
+            showFeedback("МАШ САЙН! +25 Оноо", "success");
+            nextQuestion();
+        } else { 
+            gameState.wrongCount++;
+            document.querySelector('.glass').classList.add('shake');
+            setTimeout(() => document.querySelector('.glass').classList.remove('shake'), 400);
+            
+            if(gameState.wrongCount >= 3) {
+                showFeedback(`АЛДЛАА! Зөв үг: ${item.raw}`, "error");
+                gameState.wrongCount = 0;
+                nextQuestion();
+            } else {
+                showFeedback("Буруу байна, дахин оролдоорой!", "error");
+            }
+        }
+    }
+
+    function renderListen(el) {
+        const item = gameState.shuffled[gameState.index];
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto game-card">
+                <div class="glass p-12 rounded-[3rem] shadow-2xl text-center">
+                    <div class="mb-12">
+                        <button onclick="playAudio(${item.id})" class="w-28 h-28 rounded-full bg-blue-900 text-white flex items-center justify-center mx-auto shadow-2xl hover:scale-110 transition-transform active:scale-95">
+                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                        </button>
+                        <p class="mt-6 text-slate-400 font-black uppercase text-[10px] tracking-widest">Дууг сонсоод орос үгийг бичнэ үү</p>
+                    </div>
+                    <div class="mb-10">
+                        <input type="text" id="listenInput" placeholder="Бичих..." 
+                            class="w-full p-6 rounded-2xl border-4 border-slate-100 focus:border-blue-900 outline-none font-black text-center text-2xl text-slate-800 transition-all shadow-inner"
+                            onkeypress="if(event.key === 'Enter') checkListen()">
+                    </div>
+                    <button onclick="checkListen()" class="w-full py-6 bg-blue-900 text-white rounded-2xl font-black uppercase tracking-widest shadow-xl">Шалгах</button>
+                </div>
+            </div>
+        `;
+        setTimeout(() => playAudio(item.id), 500);
+        setTimeout(() => document.getElementById('listenInput').focus(), 600);
+    }
+
+    function checkListen() {
+        const input = document.getElementById('listenInput').value.trim().toLowerCase();
+        const item = gameState.shuffled[gameState.index];
+        const correct = item.raw.toLowerCase().replace(/́/g, '');
+        if(input === correct) { gameState.score += 30; showFeedback("ГАЙХАЛТАЙ! +30 Оноо", "success"); }
+        else { showFeedback(`БУРУУ! Зөв нь: ${item.raw}`, "error"); }
+        nextQuestion();
+    }
+
+    function renderScrambled(el) {
+        const item = gameState.shuffled[gameState.index];
+        const word = item.raw.toLowerCase().replace(/́/g, '');
+        if(!gameState.scrambled) { 
+            gameState.scrambled = word.split('').sort(() => Math.random() - 0.5); 
+            gameState.userWord = []; 
+        }
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto game-card">
+                <div class="glass p-12 rounded-[3rem] shadow-2xl text-center">
+                    <div class="text-xl font-bold text-slate-500 mb-10 italic">"${item.mn}"</div>
+                    <div class="flex flex-wrap justify-center gap-3 mb-12 min-h-[70px] border-b-4 border-slate-100 pb-6">
+                        ${gameState.userWord.map((l, i) => `<button onclick="removeFromScramble(${i})" class="w-14 h-16 rounded-2xl bg-blue-900 text-white font-black text-2xl shadow-xl animate-in zoom-in">${l}</button>`).join('')}
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        ${gameState.scrambled.map((l, i) => `<button onclick="addToScramble(${i})" class="w-14 h-16 rounded-2xl bg-white border-2 border-slate-200 text-slate-700 font-black text-2xl hover:border-blue-900 hover:shadow-lg transition-all">${l}</button>`).join('')}
+                    </div>
+                    <div class="mt-12 flex gap-3">
+                        <button onclick="checkScramble()" class="flex-1 py-5 bg-green-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-lg">Шалгах</button>
+                        <button onclick="resetScramble()" class="px-8 py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-slate-200">Арилгах</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function addToScramble(i) {
+        const letter = gameState.scrambled.splice(i, 1)[0];
+        gameState.userWord.push(letter);
+        render();
+    }
+
+    function removeFromScramble(i) {
+        const letter = gameState.userWord.splice(i, 1)[0];
+        gameState.scrambled.push(letter);
+        render();
+    }
+
+    function resetScramble() { gameState.scrambled = null; render(); }
+
+    function checkScramble() {
+        const item = gameState.shuffled[gameState.index];
+        const correct = item.raw.toLowerCase().replace(/́/g, '');
+        const current = gameState.userWord.join('');
+        if(current === correct) { 
+            gameState.score += 25; 
+            showFeedback("ЗӨВ БАЙНА! +25 Оноо", "success"); 
+            gameState.scrambled = null; 
+            nextQuestion(); 
+        } else { 
+            showFeedback("Буруу дараалал байна!", "error"); 
+            document.querySelector('.game-card').classList.add('shake'); 
+            setTimeout(() => document.querySelector('.game-card').classList.remove('shake'), 400); 
+        }
+    }
+
+    function nextQuestion() {
+        gameState.index++;
+        if(gameState.index >= 10) { renderGameOver(); }
+        else { 
+            gameState.scrambled = null; 
+            gameState.guesses = null; 
+            gameState.wrongCount = 0;
+            setTimeout(render, 1500); 
+        }
+    }
+
+    function renderGameOver() {
+        const el = document.getElementById('content');
+        el.innerHTML = `
+            <div class="max-w-xl mx-auto text-center game-card">
+                <div class="glass p-16 rounded-[4rem] shadow-2xl">
+                    <div class="text-8xl mb-8 animate-bounce">🏆</div>
+                    <h2 class="text-4xl font-black text-slate-800 mb-3">Браво!</h2>
+                    <p class="text-slate-500 font-bold text-lg mb-10">Таны нийт оноо: <span class="text-blue-900 text-4xl block mt-2">${gameState.score}</span></p>
+                    <button onclick="setTab('practice')" class="w-full py-6 bg-blue-900 text-white rounded-[2rem] font-black uppercase tracking-widest hover:bg-black transition-all shadow-2xl active:scale-95">Дахин эхлэх</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderFavorites(el) {
+        const favoriteVerbs = verbs.filter(v => learnedIds.has(v.id));
+        if(favoriteVerbs.length === 0) { 
+            el.innerHTML = `
+                <div class="text-center py-24 glass rounded-[3rem] max-w-2xl mx-auto">
+                    <div class="text-7xl mb-6 text-slate-200">⭐</div>
+                    <h3 class="text-2xl font-black text-slate-800 mb-3">Цээжилсэн үг байхгүй байна</h3>
+                    <p class="text-slate-400 font-bold">Үгийн жагсаалт руу орж цээжилсэн үгээ тэмдэглээрэй</p>
+                </div>
+            `; 
+            return; 
+        }
+        el.innerHTML = `
+            <div class="max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl font-black text-slate-800 flex items-center gap-3">
+                    <span class="text-yellow-400 text-3xl">⭐</span> Миний цээжилсэн үгс (${favoriteVerbs.length})
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                ${favoriteVerbs.map(v => `
+                    <div class="verb-card glass p-6 rounded-2xl flex justify-between items-center border-l-green-500">
+                        <div>
+                            <div class="text-blue-900 font-black text-xl">${v.pair}</div>
+                            <div class="text-slate-600 font-bold text-sm mt-1">${v.mn}</div>
+                        </div>
+                        <button onclick="toggleLearned(${v.id})" class="p-4 rounded-2xl bg-green-500 text-white shadow-lg shadow-green-100 transition-all active:scale-90">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function handleSearch(val) { searchQuery = val; currentPage = 1; render(); document.getElementById('searchInput').focus(); }
+    function changePage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    window.onload = () => { setTab('dict'); };
 </script>
+<footer class="text-center py-6 mt-10 text-gray-500 text-sm">
+    <p>© 2026 Бүтээсэн: <span class="font-semibold text-gray-700">Орос хэлний багш Б.Эрдэнэбат</span></p>
+    <p class="text-xs mt-1 text-gray-400">Сэлэнгэ аймгийн Сүхбаатар сумын ЕБ-ын 1-р сургууль</p>
+</footer>
 </body>
 </html>
