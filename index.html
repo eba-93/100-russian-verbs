@@ -574,44 +574,6 @@ function createConjBox(title, forms, color) {
         </div>
     `;
 }
-    return `
-        <div class="p-5 rounded-2xl ${c.bg} border ${c.border}">
-            <h4 class="text-xs font-black ${c.text} mb-3 uppercase tracking-wider text-center">${title}</h4>
-            <table class="w-full text-sm">
-                ${Object.entries(forms).map(([k, v]) => `
-                    <tr class="border-b border-gray-100 last:border-0">
-                        <th class="w-20 text-left py-2 text-gray-400 font-bold uppercase text-[11px]">${k}</th>
-                        <td class="py-2 text-slate-800 font-extrabold text-right">${v}</td>
-                    </tr>
-                `).join('')}
-            </table>
-        </div>
-    `;
-}
-
-function createConjBox(title, forms, color) {
-    let colorClasses = {
-        blue: { bg: 'bg-blue-50/50', border: 'border-blue-100', text: 'text-blue-700' },
-        green: { bg: 'bg-green-50/50', border: 'border-green-100', text: 'text-green-700' },
-        purple: { bg: 'bg-purple-50/50', border: 'border-purple-100', text: 'text-purple-700' }
-    };
-    let c = colorClasses[color] || colorClasses.blue;
-
-    return `
-        <div class="p-5 rounded-2xl ${c.bg} border ${c.border}">
-            <h4 class="text-xs font-black ${c.text} mb-3 uppercase tracking-wider text-center">${title}</h4>
-            <table class="w-full text-sm">
-                ${Object.entries(forms).map(([k, v]) => `
-                    <tr class="border-b border-gray-100 last:border-0">
-                        <th class="w-20 text-left py-2 text-gray-400 font-bold uppercase text-[11px]">${k}</th>
-                        <td class="py-2 text-slate-800 font-extrabold text-right">${v}</td>
-                    </tr>
-                `).join('')}
-            </table>
-        </div>
-    `;
-}
-
     function renderPracticeMenu(el) {
         const modes = [
             { id: 'quiz', icon: '📝', title: 'Орчуулга сонгох', desc: 'Зөв монгол орчуулгыг нь сонгоно уу' },
