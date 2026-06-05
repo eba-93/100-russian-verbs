@@ -1,990 +1,508 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJP6RNVDLP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MJP6RNVDLP');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Орос хэлний 100 үйл үг - Практик</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
-  <style>
-    :root { 
-        --ru-blue: #0039A6; 
-        --ru-red: #D52B1E; 
-    }
-    
-    body { 
-        font-family: 'Montserrat', sans-serif; 
-        background: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
-                    url('SB-1.png') no-repeat center center fixed;
-        background-size: cover;
-        min-height: 100vh;
-    }
+   <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJP6RNVDLP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    .glass { 
-        background: rgba(255, 255, 255, 0.95); 
-        backdrop-filter: blur(10px); 
-        border: 1px solid rgba(255,255,255,0.5); 
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    }
+    gtag('config', 'G-MJP6RNVDLP');
+  </script>
+  <meta charset="UTF-8">
+  ...
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Орос хэлний 100 үйл үг - Практик</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --ru-blue: #0039A6; 
+            --ru-red: #D52B1E; 
+        }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
+                        url('SB-1.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
 
-    .nav-btn.active { 
-        background: var(--ru-blue); 
-        color: white; 
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 57, 166, 0.3);
-    }
+        .glass { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,0.5); 
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
 
-    .verb-card { 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        border-left: 4px solid var(--ru-blue); 
-    }
+        .nav-btn.active { 
+            background: var(--ru-blue); 
+            color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 57, 166, 0.3);
+        }
 
-    .verb-card:hover { 
-        transform: scale(1.02); 
-        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
-    }
+        .verb-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border-left: 4px solid var(--ru-blue); 
+        }
 
-    .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
+        .verb-card:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+        }
 
-    .logo-container {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 1.5rem auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border-radius: 50%;
-        padding: 5px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        overflow: hidden;
-    }
-    
-    .logo-img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-    }
+        .school-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.03em; }
 
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-8px); }
-        75% { transform: translateX(8px); }
-    }
-    .shake { animation: shake 0.4s ease-in-out; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-    .conjugation-table th { background: #f8fafc; text-align: left; padding: 12px; font-size: 0.75rem; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; }
-    .conjugation-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-weight: 700; color: #1e293b; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .shake { animation: shake 0.4s ease-in-out; }
 
-    .game-card { animation: slideIn 0.5s ease-out; }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .conjugation-table th { background: #f8fafc; text-align: left; padding: 12px; font-size: 0.75rem; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; }
+        .conjugation-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-weight: 700; color: #1e293b; }
 
-    input:focus { border-color: var(--ru-blue) !important; box-shadow: 0 0 0 4px rgba(0, 57, 166, 0.1) !important; }
-  </style>
+        .game-card { animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        input:focus { border-color: var(--ru-blue) !important; box-shadow: 0 0 0 4px rgba(0, 57, 166, 0.1) !important; }
+    </style>
 </head>
 <body class="pb-20">
 
 <div id="app" class="max-w-5xl mx-auto px-4 pt-10">
-    <header class="text-center mb-12">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/120?text=LOGO'">
-        </div>
-        
-        <h1 class="school-font text-2xl md:text-3xl font-bold text-slate-800 mb-2 uppercase leading-tight">
-            Сэлэнгэ аймгийн Сүхбаатар сумын<br>Ерөнхий боловсролын нэгдүгээр сургууль
-        </h1>
-       <div class="max-w-xl mx-auto mt-4 mb-8 p-4 bg-white/60 backdrop-blur-md rounded-2xl border border-blue-100 shadow-sm text-center">
-            <p class="text-[11px] font-black text-blue-900 tracking-wider uppercase mb-1">💡</p>
-            <p class="text-slate-700 text-xs md:text-sm font-semibold leading-relaxed">
-                Энехүү бүтээлийг Ерөнхий боловсролын сургуулийн <span class="text-blue-900 font-black">IX ангийн Орос хэлний сурах бичгээс</span> түүвэрлэсэн гол үйл үгс дээр тулгуурлан, сурагчдын орос үйл үгийн хувиргалыг бие даан суралцах үйлийг дэмжих зорилгоор бүтээв.
-            </p>
-        </div>
-        <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full"></div>
-        
-      <nav class="flex flex-wrap justify-center gap-3">
-            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цээжлэх үгс</button>
-            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Дасгал ажил</button>
-            <button onclick="setTab('conjugation')" id="tab-conjugation" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цагаар хувиргах</button>
-            <button onclick="setTab('exam')" id="tab-exam" class="nav-btn px-6 py-3 rounded-xl font-bold bg-blue-950 text-white uppercase text-xs tracking-wider shadow-md">📋 Шалгалт өгөх</button>
-            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цээжилсэн үгс</button>
-        </nav>
-    </header>
+    <header class="text-center mb-12">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/120?text=LOGO'">
+        </div>
+        
+        <h1 class="school-font text-2xl md:text-3xl font-bold text-slate-800 mb-2 uppercase leading-tight">
+            Сэлэнгэ аймгийн Сүхбаатар сумын<br>Ерөнхий боловсролын нэгдүгээр сургууль
+        </h1>
+       <div class="max-w-xl mx-auto mt-4 mb-8 p-4 bg-white/60 backdrop-blur-md rounded-2xl border border-blue-100 shadow-sm text-center">
+            <p class="text-[11px] font-black text-blue-900 tracking-wider uppercase mb-1">💡</p>
+            <p class="text-slate-700 text-xs md:text-sm font-semibold leading-relaxed">
+                Энэхүү бүтээлийг Ерөнхий боловсролын сургуулийн <span class="text-blue-900 font-black">IX ангийн Орос хэлний сурах бичгээс</span> түүвэрлэсэн гол үйл үгс дээр тулгуурлан, сурагчдын орос үйл үгийн хувиргалыг бие даан суралцах үйлийг дэмжих зорилгоор бүтээв.
+            </p>
+        </div>
+        <div class="h-1.5 w-32 bg-red-600 mx-auto mb-8 rounded-full"></div>
+        
+      <nav class="flex flex-wrap justify-center gap-3">
+            <button onclick="setTab('dict')" id="tab-dict" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цээжлэх үгс</button>
+            <button onclick="setTab('practice')" id="tab-practice" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Дасгал ажил</button>
+            <button onclick="setTab('conjugation')" id="tab-conjugation" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цагаар хувиргах</button>
+            <button onclick="setTab('exam')" id="tab-exam" class="nav-btn px-6 py-3 rounded-xl font-bold bg-blue-950 text-white uppercase text-xs tracking-wider shadow-md">📋 Шалгалт өгөх</button>
+            <button onclick="setTab('favorites')" id="tab-favorites" class="nav-btn px-6 py-3 rounded-xl font-bold glass text-slate-700 uppercase text-xs tracking-wider">Цээжилсэн үгс</button>
+        </nav>
+    </header>
 
-    <main id="content" class="min-h-[500px]"></main>
+    <main id="content" class="min-h-[500px]"></main>
 </div>
 
 <div id="feedback" class="fixed bottom-10 left-1/2 -translate-x-1/2 px-8 py-4 rounded-2xl text-white font-bold shadow-2xl transition-all opacity-0 pointer-events-none z-50"></div>
 
 <script>
-    const apiKey = ""; 
-    
-    // Үгсийн жагсаалт - Бүх үг үсгийг дахин нягтлав
-    const verbs = [
-        { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь", upr: "(кого? что?)" },
-        { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть", upr: "(чем?)" },
-        { id: 3, pair: "Брать / Взять", mn: "Авах", raw: "Брать", upr: "(что? у кого?)" },
-        { id: 4, pair: "Возвраща́ть / Верну́ть", mn: "Буцаах", raw: "Возвращать", upr: "(что? кому?)" },
-        { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать", upr: "(кого?)" },
-        { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться", upr: "(с кем?)" },
-        { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать", upr: "(что? из чего?)" },
-        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
-        { id: 9, pair: "Вырывать / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
-        { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать", upr: "(перед кем?)" },
-        { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить", upr: "(что? кому? о ком?)" },
-        { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить", upr: "(что? для кого?)" },
-        { id: 13, pair: "Грани́чить / —", mn: "Хиллэх", raw: "Граничить", upr: "(с чем?)" },
-        { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать", upr: "(что? кому?)" },
-        { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать", upr: "(что?)" },
-        { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать", upr: "(о ком? о чём?)" },
-        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить", upr: "(куда? на чём?)" },
-        { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть", upr: "(что?)" },
-        { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить", upr: "(что?)" },
-        { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить", upr: "(где? с кем?)" },
-        { id: 21, pair: "Загиба́ть / Загну́ть", mn: "Нугалах, эргүүлэх", raw: "Загибать", upr: "(что?)" },
-        { id: 22, pair: "Загова́ривать / Заговори́ть", mn: "Ярьж эхлэх", raw: "Заговорить", upr: "(с кем?)" },
-        { id: 23, pair: "Занима́ться / Заня́ться", mn: "Хичээллэх, оролдох", raw: "Заниматься", upr: "(чем?)" },
-        { id: 24, pair: "Знать / Узна́ть", mn: "Мэдэх", raw: "Знать", upr: "(что? о ком?)" },
-        { id: 25, pair: "Игра́ть / Поигра́ть", mn: "Тоглох", raw: "Играть", upr: "(во что? на чём?)" },
-        { id: 26, pair: "Изуча́ть / Изучи́ть", mn: "Судлах", raw: "Изучать", upr: "(что?)" },
-        { id: 27, pair: "Име́ть / —", mn: "Эзэмших, байх", raw: "Иметь", upr: "(что?)" },
-        { id: 28, pair: "Пуга́ться / Испуга́ться", mn: "Айх", raw: "Пугаться", upr: "(кого? чего?)" },
-        { id: 29, pair: "Исчеза́ть / Исче́знуть", mn: "Алга болох", raw: "Исчезнуть", upr: "(откуда?)" },
-        { id: 30, pair: "Ката́ться / Поката́ться", mn: "Гулгах, давхих", raw: "Кататься", upr: "(на чём?)" },
-        { id: 31, pair: "Купа́ться / Покупа́ться", mn: "Усанд орох, сэлэх", raw: "Купаться", upr: "(где?)" },
-        { id: 32, pair: "Покупа́ть / Купи́ть", mn: "Худалдаж авах", raw: "Купить", upr: "(что? у кого?)" },
-        { id: 33, pair: "Лечи́ть / Вы́лечить", mn: "Эмчлэх", raw: "Лечить", upr: "(кого? от чего?)" },
-        { id: 34, pair: "Люби́ть / Полюби́ть", mn: "Хайрлах, дурлах", raw: "Любить", upr: "(кого? что?)" },
-        { id: 35, pair: "Мечта́ть / Помечта́ть", mn: "Мөрөөдөх", raw: "Мечтать", upr: "(о чём?)" },
-        { id: 36, pair: "Мочь / Смочь", mn: "Чадах", raw: "Мочь", upr: "(сделать что?)" },
-        { id: 37, pair: "Надева́ть / Наде́ть", mn: "Өмсөх", raw: "Надеть", upr: "(что? на кого?)" },
-        { id: 38, pair: "Начина́ть / Нача́ть", mn: "Эхлэх", raw: "Начинать", upr: "(что?)" },
-        { id: 39, pair: "Находи́ться / Найти́сь", mn: "Байрлах, олдох", raw: "Находиться", upr: "(где?)" },
-        { id: 40, pair: "Нравиться / Понра́виться", mn: "Таалагдах", raw: "Нравиться", upr: "(кому?)" },
-        { id: 41, pair: "Овладева́ть / Овладе́ть", mn: "Эзэмших", raw: "Овладеть", upr: "(чем?)" },
-        { id: 42, pair: "Объясня́ть / Объясни́ть", mn: "Тайлбарлах", raw: "Объяснить", upr: "(что? кому?)" },
-        { id: 43, pair: "Означа́ть / —", mn: "Утга илэрхийлэх", raw: "Означать", upr: "(что?)" },
-        { id: 44, pair: "Окружа́ть / Окружи́ть", mn: "Хүрээлэх", raw: "Окружать", upr: "(кого? чем?)" },
-        { id: 45, pair: "Оставля́ть / Оста́вить", mn: "Үлдээх", raw: "Оставить", upr: "(что? где?)" },
-        { id: 46, pair: "Отва́ривать / Отвари́ть", mn: "Чанах", raw: "Отваривать", upr: "(что?)" },
-        { id: 47, pair: "Отвеча́ть / Отве́тить", mn: "Хариулах", raw: "Отвечать", upr: "(на что? кому?)" },
-        { id: 48, pair: "Отдава́ть / Отда́ть", mn: "Буцааж өгөх", raw: "Отдать", upr: "(что? кому?)" },
-        { id: 49, pair: "Отдыха́ть / Отдохну́ть", mn: "Амрах", raw: "Отдыхать", upr: "(где?)" },
-        { id: 50, pair: "Открыва́ться / Откры́ться", mn: "Нээгдэх", raw: "Открываться", upr: "(перед кем?)" },
-        { id: 51, pair: "Относи́ться / Отнести́сь", mn: "Хандлага гаргах", raw: "Относиться", upr: "(к кому?)" },
-        { id: 52, pair: "Охраня́ть / Охрани́ть", mn: "Хамгаалах, манах", raw: "Охранять", upr: "(кого? что?)" },
-        { id: 53, pair: "Пасти́ / Спасти́", mn: "Маллах, хариулах", raw: "Пасти", upr: "(кого?)" },
-        { id: 54, pair: "Перестава́ть / Переста́ть", mn: "Болих, зогсох", raw: "Перестать", upr: "(делать что?)" },
-        { id: 55, pair: "Петь / Спеть", mn: "Дуулах", raw: "Петь", upr: "(что?)" },
-        { id: 56, pair: "Писа́ть / Написа́ть", mn: "Бичих", raw: "Писать", upr: "(что? кому?)" },
-        { id: 57, pair: "Пить / Вы́пить", mn: "Уух", raw: "Пить", upr: "(что?)" },
-        { id: 58, pair: "Плани́ровать / Заплани́ровать", mn: "Төлөвлөх", raw: "Планировать", upr: "(что?)" },
-        { id: 59, pair: "Побежда́ть / Победи́ть", mn: "Ялах", raw: "Побеждать", upr: "(кого? в чём?)" },
-        { id: 60, pair: "Дружить / Подружи́ться", mn: "Найзлах", raw: "Подружиться", upr: "(с кем?)" },
-        { id: 61, pair: "Погиба́ть / Поги́бнуть", mn: "Амь үрэгдэх", raw: "Погибнуть", upr: "(где?)" },
-        { id: 62, pair: "Покупа́ть / Купи́ть", mn: "Худалдан авах", raw: "Покупать", upr: "(что?)" },
-        { id: 63, pair: "Помога́ть / Помо́чь", mn: "Туслах", raw: "Помогать", upr: "(кому?)" },
-        { id: 64, pair: "Понима́ть / Поня́ть", mn: "Ойлгох", raw: "Понимать", upr: "(кого? что?)" },
-        { id: 65, pair: "Поступа́ть / Поступи́ть", mn: "Орох (сургуульд)", raw: "Поступать", upr: "(куда?)" },
-        { id: 66, pair: "Приглаша́ть / Пригласи́ть", mn: "Урих", raw: "Приглашать", upr: "(кого? куда?)" },
-        { id: 67, pair: "Приходи́ть / Прийти́", mn: "Ирэх", raw: "Прийти", upr: "(куда? к кому?)" },
-        { id: 68, pair: "Применя́ть / Примени́ть", mn: "Хэрэглэх", raw: "Применять", upr: "(что?)" },
-        { id: 69, pair: "Проводи́ть / Провести́", mn: "Өнгөрүүлэх, дамжуулах", raw: "Проводить", upr: "(что?)" },
-        { id: 70, pair: "Путеше́ствовать / —", mn: "Аялах", raw: "Путешествовать", upr: "(где? по чему?)" },
-        { id: 71, pair: "Рабо́тать / Порабо́тать", mn: "Ажиллах", raw: "Работать", upr: "(кем? где?)" },
-        { id: 72, pair: "Развива́ть / Разви́ть", mn: "Хөгжүүлэх", raw: "Развивать", upr: "(что?)" },
-        { id: 73, pair: "Разраба́тывать / Разрабо́тать", mn: "Боловсруулах", raw: "Разрабатывать", upr: "(что?)" },
-        { id: 74, pair: "Расска́зывать / Рассказа́ть", mn: "Ярьж өгөх", raw: "Рассказывать", upr: "(что? о ком?)" },
-        { id: 75, pair: "Рисова́ть / Нарисова́ть", mn: "Зурах", raw: "Рисовать", upr: "(что? чем?)" },
-        { id: 76, pair: "Сиде́ть / Посиде́ть", mn: "Суух", raw: "Сидеть", upr: "(где? на чём?)" },
-        { id: 77, pair: "Символизи́ровать / —", mn: "Бэлгэдэх", raw: "Символизировать", upr: "(что?)" },
-        { id: 78, pair: "Слу́шать / Послу́шать", mn: "Сонсох", raw: "Слушать", upr: "(кого? что?)" },
-        { id: 79, pair: "Смотре́ть / Посмотре́ть", mn: "Үзэх, харах", raw: "Смотреть", upr: "(что? на кого?)" },
-        { id: 80, pair: "Собира́ть / Собра́ть", mn: "Цуглуулах", raw: "Собирать", upr: "(что?)" },
-        { id: 81, pair: "Собира́ться / Собра́ться", mn: "Цуглах, төлөвлөх", raw: "Собираться", upr: "(куда?)" },
-        { id: 82, pair: "Сове́товать / Посове́товать", mn: "Зөвлөх", raw: "Советовать", upr: "(кому?)" },
-        { id: 83, pair: "Создава́ть / Созда́ть", mn: "Бүтээх", raw: "Создавать", upr: "(что?)" },
-        { id: 84, pair: "Составля́ть / Соста́вить", mn: "Зохиох, бүрдүүлэх", raw: "Составить", upr: "(что?)" },
-        { id: 85, pair: "Состоя́ть / —", mn: "Бүрдэх", raw: "Состоять", upr: "(из чего?)" },
-        { id: 86, pair: "Спать / Поспа́ть", mn: "Унтах", raw: "Спать", upr: "(где?)" },
-        { id: 87, pair: "Спра́шивать / Спроси́ть", mn: "Асуух", raw: "Спрашивать", upr: "(кого? о чём?)" },
-        { id: 88, pair: "Станови́ться / Стать", mn: "Болох", raw: "Становиться", upr: "(кем? чем?)" },
-        { id: 89, pair: "Стро́ить / Постро́ить", mn: "Барих", raw: "Строить", upr: "(что?)" },
-        { id: 90, pair: "Суши́ть / Вы́сушить", mn: "Хатаах", raw: "Сушить", upr: "(что?)" },
-        { id: 91, pair: "Ви́деть / Уви́деть", mn: "Харах", raw: "Увидеть", upr: "(кого? что?)" },
-        { id: 92, pair: "Удивля́ться / Удиви́ться", mn: "Гайхах", raw: "Удивляться", upr: "(кому? чему?)" },
-        { id: 93, pair: "Узнава́ть / Узна́ть", mn: "Мэдэж авах", raw: "Узнать", upr: "(что? о ком?)" },
-        { id: 94, pair: "Уме́ть / Суме́ть", mn: "Чадах", raw: "Уметь", upr: "(сделать что?)" },
-        { id: 95, pair: "Уча́ствовать / —", mn: "Оролцох", raw: "Участвовать", upr: "(в чём?)" },
-        { id: 96, pair: "Учи́ться / Научи́ться", mn: "Суралцах", raw: "Учиться", upr: "(чему? где?)" },
-        { id: 97, pair: "Ходи́ть / Пойти́", mn: "Явах (хөлөөр)", raw: "Ходить", upr: "(куда?)" },
-        { id: 98, pair: "Хоте́ть / Захоте́ть", mn: "Хүсэх", raw: "Хотеть", upr: "(чего? что?)" },
-        { id: 99, pair: "Чита́ть / Прочита́ть", mn: "Унших", raw: "Читать", upr: "(что?)" },
-        { id: 100, pair: "Экономи́ть / Сэкономи́ть", mn: "Хэмнэх", raw: "Экономить", upr: "(на чём?)" }
-    ];
+    const apiKey = ""; 
+    
+    // Үгсийн жагсаалт - Бүх үг үсгийг дахин нягтлав
+    const verbs = [
+        { id: 1, pair: "Бере́чь / Сбере́чь", mn: "Хайрлах, хамгаалах", raw: "Беречь", upr: "(кого? что?)" },
+        { id: 2, pair: "Боле́ть / Заболе́ть", mn: "Өвдөх", raw: "Болеть", upr: "(чем?)" },
+        { id: 3, pair: "Брать / Взять", mn: "Авах", raw: "Брать", upr: "(что? у кого?)" },
+        { id: 4, pair: "Возвраща́ть / Верну́ть", mn: "Буцаах", raw: "Возвращать", upr: "(что? кому?)" },
+        { id: 5, pair: "Воспи́тывать / Воспита́ть", mn: "Хүмүүжүүлэх", raw: "Воспитывать", upr: "(кого?)" },
+        { id: 6, pair: "Встреча́ться / Встре́титься", mn: "Уулзах", raw: "Встречаться", upr: "(с кем?)" },
+        { id: 7, pair: "Выбира́ть / Вы́брать", mn: "Сонгох", raw: "Выбирать", upr: "(что? из чего?)" },
+        { id: 8, pair: "Выделя́ть / Вы́делить", mn: "Ялгах, онцлох", raw: "Выделять", upr: "(что?)" },
+        { id: 9, pair: "Вырыва́ть / Вы́рвать", mn: "Сугалах, тасдах", raw: "Вырывать", upr: "(что? из чего?)" },
+        { id: 10, pair: "Выступа́ть / Вы́ступить", mn: "Үг хэлэх, илтгэх", raw: "Выступать", upr: "(перед кем?)" },
+        { id: 11, pair: "Говори́ть / Сказа́ть", mn: "Ярих, хэлэх", raw: "Говорить", upr: "(что? кому? о ком?)" },
+        { id: 12, pair: "Гото́вить / Пригото́вить", mn: "Бэлтгэх, хоол хийх", raw: "Готовить", upr: "(что? для кого?)" },
+        { id: 13, pair: "Грани́чить / —", mn: "Хиллэх", raw: "Граничить", upr: "(с чем?)" },
+        { id: 14, pair: "Дава́ть / Дать", mn: "Өгөх", raw: "Давать", upr: "(что? кому?)" },
+        { id: 15, pair: "Де́лать / Сде́лать", mn: "Хийх", raw: "Делать", upr: "(что?)" },
+        { id: 16, pair: "Ду́мать / Поду́мать", mn: "Бодох", raw: "Думать", upr: "(о ком? о чём?)" },
+        { id: 17, pair: "Е́здить / Пое́хать", mn: "Явах (унаагаар)", raw: "Ездить", upr: "(куда? на чём?)" },
+        { id: 18, pair: "Есть / Пое́сть", mn: "Идэх", raw: "Есть", upr: "(что?)" },
+        { id: 19, pair: "Жа́рить / Пожа́рить", mn: "Шарж болгох", raw: "Жарить", upr: "(что?)" },
+        { id: 20, pair: "Жить / Пожи́ть", mn: "Амьдрах", raw: "Жить", upr: "(где? с кем?)" },
+        { id: 21, pair: "Загиба́ть / Загну́ть", mn: "Нугалах, эргүүлэх", raw: "Загибать", upr: "(что?)" },
+        { id: 22, pair: "Загова́ривать / Заговори́ть", mn: "Ярьж эхлэх", raw: "Заговорить", upr: "(с кем?)" },
+        { id: 23, pair: "Занима́ться / Заня́ться", mn: "Хичээллэх, оролдох", raw: "Заниматься", upr: "(чем?)" },
+        { id: 24, pair: "Знать / Узна́ть", mn: "Мэдэх", raw: "Знать", upr: "(что? о ком?)" },
+        { id: 25, pair: "Игра́ть / Поигра́ть", mn: "Тоглох", raw: "Играть", upr: "(во что? на чём?)" },
+        { id: 26, pair: "Изуча́ть / Изучи́ть", mn: "Судлах", raw: "Изучать", upr: "(что?)" },
+        { id: 27, pair: "Име́ть / —", mn: "Эзэмших, байх", raw: "Иметь", upr: "(что?)" },
+        { id: 28, pair: "Пуга́ться / Испуга́ться", mn: "Айх", raw: "Пугаться", upr: "(кого? чего?)" },
+        { id: 29, pair: "Исчеза́ть / Исче́знуть", mn: "Алга болох", raw: "Исчезнуть", upr: "(откуда?)" },
+        { id: 30, pair: "Ката́ться / Поката́ться", mn: "Гулгах, давхих", raw: "Кататься", upr: "(на чём?)" },
+        { id: 31, pair: "Купа́ться / Покупа́ться", mn: "Усанд орох, сэлэх", raw: "Купаться", upr: "(где?)" },
+        { id: 32, pair: "Покупа́ть / Купи́ть", mn: "Худалдаж авах", raw: "Купить", upr: "(что? у кого?)" },
+        { id: 33, pair: "Лечи́ть / Вы́лечить", mn: "Эмчлэх", raw: "Лечить", upr: "(кого? от чего?)" },
+        { id: 34, pair: "Люби́ть / Полюби́ть", mn: "Хайрлах, дурлах", raw: "Любить", upr: "(кого? что?)" },
+        { id: 35, pair: "Мечта́ть / Помечта́ть", mn: "Мөрөөдөх", raw: "Мечтать", upr: "(о чём?)" },
+        { id: 36, pair: "Мочь / Смочь", mn: "Чадах", raw: "Мочь", upr: "(сделать что?)" },
+        { id: 37, pair: "Надева́ть / Наде́ть", mn: "Өмсөх", raw: "Надеть", upr: "(что? на кого?)" },
+        { id: 38, pair: "Начина́ть / Нача́ть", mn: "Эхлэх", raw: "Начинать", upr: "(что?)" },
+        { id: 39, pair: "Находи́ться / Найти́сь", mn: "Байрлах, олдох", raw: "Находиться", upr: "(где?)" },
+        { id: 40, pair: "Нравиться / Понра́виться", mn: "Таалагдах", raw: "Нравиться", upr: "(кому?)" },
+        { id: 41, pair: "Овладева́ть / Овладе́ть", mn: "Эзэмших", raw: "Овладеть", upr: "(чем?)" },
+        { id: 42, pair: "Объясня́ть / Объясни́ть", mn: "Тайлбарлах", raw: "Объяснить", upr: "(что? кому?)" },
+        { id: 43, pair: "Означа́ть / —", mn: "Утга илэрхийлэх", raw: "Означать", upr: "(что?)" },
+        { id: 44, pair: "Окружа́ть / Окружи́ть", mn: "Хүрээлэх", raw: "Окружать", upr: "(кого? чем?)" },
+        { id: 45, pair: "Оставля́ть / Оста́вить", mn: "Үлдээх", raw: "Оставить", upr: "(что? где?)" },
+        { id: 46, pair: "Отва́ривать / Отвари́ть", mn: "Чанах", raw: "Отваривать", upr: "(что?)" },
+        { id: 47, pair: "Отвеча́ть / Отве́тить", mn: "Хариулах", raw: "Отвечать", upr: "(на что? кому?)" },
+        { id: 48, pair: "Отдава́ть / Отда́ть", mn: "Буцааж өгөх", raw: "Отдать", upr: "(что? кому?)" },
+        { id: 49, pair: "Отдыха́ть / Отдохну́ть", mn: "Амрах", raw: "Отдыхать", upr: "(где?)" },
+        { id: 50, pair: "Открыва́ться / Откры́ться", mn: "Нээгдэх", raw: "Открываться", upr: "(перед кем?)" },
+        { id: 51, pair: "Относи́ться / Отнести́сь", mn: "Хандлага гаргах", raw: "Относиться", upr: "(к кому?)" },
+        { id: 52, pair: "Охраня́ть / Охрани́ть", mn: "Хамгаалах, манах", raw: "Охранять", upr: "(кого? что?)" },
+        { id: 53, pair: "Пасти́ / Спасти́", mn: "Маллах, хариулах", raw: "Пасти", upr: "(кого?)" },
+        { id: 54, pair: "Перестава́ть / Переста́ть", mn: "Болих, зогсох", raw: "Перестать", upr: "(делать что?)" },
+        { id: 55, pair: "Петь / Спеть", mn: "Дуулах", raw: "Петь", upr: "(что?)" },
+        { id: 56, pair: "Писа́ть / Написа́ть", mn: "Бичих", raw: "Писать", upr: "(что? кому?)" },
+        { id: 57, pair: "Пить / Вы́пить", mn: "Уух", raw: "Пить", upr: "(что?)" },
+        { id: 58, pair: "Плани́ровать / Заплани́ровать", mn: "Төлөвлөх", raw: "Планировать", upr: "(что?)" },
+        { id: 59, pair: "Побежда́ть / Победи́ть", mn: "Ялах", raw: "Побеждать", upr: "(кого? в чём?)" },
+        { id: 60, pair: "Дружить / Подружи́ться", mn: "Найзлах", raw: "Подружиться", upr: "(с кем?)" },
+        { id: 61, pair: "Погиба́ть / Поги́бнуть", mn: "Амь үрэгдэх", raw: "Погибнуть", upr: "(где?)" },
+        { id: 62, pair: "Покупа́ть / Купи́ть", mn: "Худалдан авах", raw: "Покупать", upr: "(что?)" },
+        { id: 63, pair: "Помога́ть / Помо́чь", mn: "Туслах", raw: "Помогать", upr: "(кому?)" },
+        { id: 64, pair: "Понима́ть / Поня́ть", mn: "Ойлгох", raw: "Понимать", upr: "(кого? что?)" },
+        { id: 65, pair: "Поступа́ть / Поступи́ть", mn: "Орох (сургуульд)", raw: "Поступать", upr: "(куда?)" },
+        { id: 66, pair: "Приглаша́ть / Пригласи́ть", mn: "Урих", raw: "Приглашать", upr: "(кого? куда?)" },
+        { id: 67, pair: "Приходи́ть / Прийти́", mn: "Ирэх", raw: "Прийти", upr: "(куда? к кому?)" },
+        { id: 68, pair: "Применя́ть / Примени́ть", mn: "Хэрэглэх", raw: "Применять", upr: "(что?)" },
+        { id: 69, pair: "Проводи́ть / Провести́", mn: "Өнгөрүүлэх, дамжуулах", raw: "Проводить", upr: "(что?)" },
+        { id: 70, pair: "Путеше́ствовать / —", mn: "Аялах", raw: "Путешествовать", upr: "(где? по чему?)" },
+        { id: 71, pair: "Рабо́тать / Порабо́тать", mn: "Ажиллах", raw: "Работать", upr: "(кем? где?)" },
+        { id: 72, pair: "Развива́ть / Разви́ть", mn: "Хөгжүүлэх", raw: "Развивать", upr: "(что?)" },
+        { id: 73, pair: "Разраба́тывать / Разрабо́тать", mn: "Боловсруулах", raw: "Разрабатывать", upr: "(что?)" },
+        { id: 74, pair: "Расска́зывать / Рассказа́ть", mn: "Ярьж өгөх", raw: "Рассказывать", upr: "(что? о ком?)" },
+        { id: 75, pair: "Рисова́ть / Нарисова́ть", mn: "Зурах", raw: "Рисовать", upr: "(что? чем?)" },
+        { id: 76, pair: "Сиде́ть / Посиде́ть", mn: "Суух", raw: "Сидеть", upr: "(где? на чём?)" },
+        { id: 77, pair: "Символизи́ровать / —", mn: "Бэлгэдэх", raw: "Символизировать", upr: "(что?)" },
+        { id: 78, pair: "Слу́шать / Послу́шать", mn: "Сонсох", raw: "Слушать", upr: "(кого? что?)" },
+        { id: 79, pair: "Смотре́ть / Посмотре́ть", mn: "Үзэх, харах", raw: "Смотреть", upr: "(что? на кого?)" },
+        { id: 80, pair: "Собира́ть / Собра́ть", mn: "Цуглуулах", raw: "Собирать", upr: "(что?)" },
+        { id: 81, pair: "Собира́ться / Собра́ться", mn: "Цуглах, төлөвлөх", raw: "Собираться", upr: "(куда?)" },
+        { id: 82, pair: "Сове́товать / Посове́товать", mn: "Зөвлөх", raw: "Советовать", upr: "(кому?)" },
+        { id: 83, pair: "Создава́ть / Созда́ть", mn: "Бүтээх", raw: "Создавать", upr: "(что?)" },
+        { id: 84, pair: "Составля́ть / Соста́вить", mn: "Зохиох, бүрдүүлэх", raw: "Составить", upr: "(что?)" },
+        { id: 85, pair: "Состоя́ть / —", mn: "Бүрдэх", raw: "Состоять", upr: "(из чего?)" },
+        { id: 86, pair: "Спать / Поспа́ть", mn: "Унтах", raw: "Спать", upr: "(где?)" },
+        { id: 87, pair: "Спра́шивать / Спроси́ть", mn: "Асуух", raw: "Спрашивать", upr: "(кого? о чём?)" },
+        { id: 88, pair: "Станови́ться / Стать", mn: "Болох", raw: "Становиться", upr: "(кем? чем?)" },
+        { id: 89, pair: "Стро́ить / Постро́ить", mn: "Барих", raw: "Строить", upr: "(что?)" },
+        { id: 90, pair: "Суши́ть / Вы́сушить", mn: "Хатаах", raw: "Сушить", upr: "(что?)" },
+        { id: 91, pair: "Ви́деть / Уви́деть", mn: "Харах", raw: "Увидеть", upr: "(кого? что?)" },
+        { id: 92, pair: "Удивля́ться / Удиви́ться", mn: "Гайхах", raw: "Удивляться", upr: "(кому? чему?)" },
+        { id: 93, pair: "Узнава́ть / Узна́ть", mn: "Мэдэж авах", raw: "Узнать", upr: "(что? о ком?)" },
+        { id: 94, pair: "Уме́ть / Суме́ть", mn: "Чадах", raw: "Уметь", upr: "(сделать что?)" },
+        { id: 95, pair: "Уча́ствовать / —", mn: "Оролцох", raw: "Участвовать", upr: "(в чём?)" },
+        { id: 96, pair: "Учи́ться / Научи́ться", mn: "Суралцах", raw: "Учиться", upr: "(чему? где?)" },
+        { id: 97, pair: "Ходи́ть / Пойти́", mn: "Явах (хөлөөр)", raw: "Ходить", upr: "(куда?)" },
+        { id: 98, pair: "Хоте́ть / Захоте́ть", mn: "Хүсэх", raw: "Хотеть", upr: "(чего? что?)" },
+        { id: 99, pair: "Чита́ть / Прочита́ть", mn: "Унших", raw: "Читать", upr: "(что?)" },
+        { id: 100, pair: "Экономи́ть / Сэкономи́ть", mn: "Хэмнэх", raw: "Экономить", upr: "(на чём?)" }
+    ];
 
-    let currentTab = 'dict';
-    let currentPage = 1;
-    let searchQuery = '';
-    let learnedIds = new Set(JSON.parse(localStorage.getItem('learnedVerbs')) || []);
-    let gameMode = null; 
-    let gameState = {};
+    let currentTab = 'dict';
+    let currentPage = 1;
+    let searchQuery = '';
+    let learnedIds = new Set(JSON.parse(localStorage.getItem('learnedVerbs')) || []);
+    let gameMode = null; 
+    let gameState = {};
 
-    function setTab(tab) {
-        currentTab = tab;
-        gameMode = null;
-        currentPage = 1;
-        searchQuery = '';
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        const activeTab = document.getElementById(`tab-${tab}`);
-        if(activeTab) activeTab.classList.add('active');
-        render();
-    }
+    function setTab(tab) {
+        currentTab = tab;
+        gameMode = null;
+        currentPage = 1;
+        searchQuery = '';
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        const activeTab = document.getElementById(`tab-${tab}`);
+        if(activeTab) activeTab.classList.add('active');
+        render();
+    }
 
-    function toggleLearned(id) {
-        if (learnedIds.has(id)) learnedIds.delete(id);
-        else learnedIds.add(id);
-        localStorage.setItem('learnedVerbs', JSON.stringify([...learnedIds]));
-        render();
-        showFeedback(learnedIds.has(id) ? "Цээжилсэн үгэнд нэмэгдлээ" : "Жагсаалтаас хасагдлаа", "success");
-    }
+    function toggleLearned(id) {
+        if (learnedIds.has(id)) learnedIds.delete(id);
+        else learnedIds.add(id);
+        localStorage.setItem('learnedVerbs', JSON.stringify([...learnedIds]));
+        render();
+        showFeedback(learnedIds.has(id) ? "Цээжилсэн үгэнд нэмэгдлээ" : "Жагсаалтаас хасагдлаа", "success");
+    }
 
-    function playAudio(verbId) {
-        const audio = new Audio(`${verbId}.mp3`);
-        audio.play().catch(e => {
-            const verb = verbs.find(v => v.id === verbId);
-            if (!verb) return;
-            const utterance = new SpeechSynthesisUtterance(verb.raw);
-            utterance.lang = 'ru-RU';
-            utterance.rate = 0.8;
-            window.speechSynthesis.speak(utterance);
-        });
-    }
+    function playAudio(verbId) {
+        const audio = new Audio(`${verbId}.mp3`);
+        audio.play().catch(e => {
+            const verb = verbs.find(v => v.id === verbId);
+            if (!verb) return;
+            const utterance = new SpeechSynthesisUtterance(verb.raw);
+            utterance.lang = 'ru-RU';
+            utterance.rate = 0.8;
+            window.speechSynthesis.speak(utterance);
+        });
+    }
 
-    function showFeedback(msg, type = "success") {
-        const fb = document.getElementById('feedback');
-        fb.textContent = msg;
-        fb.className = `fixed bottom-10 left-1/2 -translate-x-1/2 px-8 py-4 rounded-2xl text-white font-bold shadow-2xl transition-all z-50 ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
-        fb.style.opacity = "1";
-        setTimeout(() => fb.style.opacity = "0", 2500);
-    }
+    function showFeedback(msg, type = "success") {
+        const fb = document.getElementById('feedback');
+        fb.textContent = msg;
+        fb.className = `fixed bottom-10 left-1/2 -translate-x-1/2 px-8 py-4 rounded-2xl text-white font-bold shadow-2xl transition-all z-50 ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+        fb.style.opacity = "1";
+        setTimeout(() => fb.style.opacity = "0", 2500);
+    }
 
-    function render() {
-        const container = document.getElementById('content');
-        if (!container) return;
-        container.innerHTML = '';
-        
-        if (currentTab === 'dict') renderDictionary(container);
-        else if (currentTab === 'favorites') renderFavorites(container);
-        else if (currentTab === 'conjugation') renderConjugation(container);
-        else if (currentTab === 'exam') renderExamMenu(container);
-        else if (currentTab === 'practice') {
-            if (!gameMode) renderPracticeMenu(container);
-            else if (gameMode === 'quiz') renderQuiz(container);
-            else if (gameMode === 'write') renderWrite(container);
-            else if (gameMode === 'listen') renderListen(container);
-            else if (gameMode === 'scrambled') renderScrambled(container);
-        }
-    }
+    function render() {
+        const container = document.getElementById('content');
+        container.innerHTML = '';
+        if (currentTab === 'dict') renderDictionary(container);
+        else if (currentTab === 'favorites') renderFavorites(container);
+        else if (currentTab === 'conjugation') renderConjugation(container);
+        else if (currentTab === 'practice') {
+            if (!gameMode) renderPracticeMenu(container);
+            else if (gameMode === 'quiz') renderQuiz(container);
+            else if (gameMode === 'write') renderWrite(container);
+            else if (gameMode === 'listen') renderListen(container);
+            else if (gameMode === 'scrambled') renderScrambled(container);
+        }
+    }
 
-    function renderDictionary(el) {
-        const searchDiv = document.createElement('div');
-        searchDiv.className = 'max-w-2xl mx-auto mb-12';
-        searchDiv.innerHTML = `
-            <div class="relative">
-                <input type="text" id="searchInput" value="${searchQuery}" placeholder="Хайх үгээ бичнэ үү..." 
-                    class="w-full p-5 pl-14 rounded-2xl glass font-bold text-slate-700 outline-none shadow-xl border-2 border-slate-100 transition-all"
-                    oninput="handleSearch(this.value)">
-                <svg class="w-6 h-6 absolute left-5 top-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-        `;
-        el.appendChild(searchDiv);
+    function renderDictionary(el) {
+        const searchDiv = document.createElement('div');
+        searchDiv.className = 'max-w-2xl mx-auto mb-12';
+        searchDiv.innerHTML = `
+            <div class="relative">
+                <input type="text" id="searchInput" value="${searchQuery}" placeholder="Хайх үгээ бичнэ үү..." 
+                    class="w-full p-5 pl-14 rounded-2xl glass font-bold text-slate-700 outline-none shadow-xl border-2 border-slate-100 transition-all"
+                    oninput="handleSearch(this.value)">
+                <svg class="w-6 h-6 absolute left-5 top-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+        `;
+        el.appendChild(searchDiv);
 
-        const filteredVerbs = verbs.filter(v => 
-            v.pair.toLowerCase().includes(searchQuery.toLowerCase()) || 
-            v.mn.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        const filteredVerbs = verbs.filter(v => 
+            v.pair.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            v.mn.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
-        const itemsPerPage = 10;
-        const start = (currentPage - 1) * itemsPerPage;
-        const currentVerbs = filteredVerbs.slice(start, start + itemsPerPage);
+        const itemsPerPage = 10;
+        const start = (currentPage - 1) * itemsPerPage;
+        const currentVerbs = filteredVerbs.slice(start, start + itemsPerPage);
 
-        const list = document.createElement('div');
-        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-5 mb-10';
-        currentVerbs.forEach(v => {
-            const isLearned = learnedIds.has(v.id);
-            list.innerHTML += `
-                <div class="verb-card glass p-6 rounded-2xl flex justify-between items-center ${isLearned ? 'border-l-green-500' : ''}">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[9px] text-slate-400 font-black bg-slate-100 px-1.5 py-0.5 rounded">№${v.id}</span>
-                            <div class="text-blue-900 font-black text-xl">${v.pair}</div>
-                        </div>
-                        <div class="text-slate-600 font-bold text-base">${v.mn}</div>
-                        <span class="text-[10px] font-black text-red-500 italic uppercase mt-1 block">${v.upr}</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="playAudio(${v.id})" class="p-3.5 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                        </button>
-                        <button onclick="toggleLearned(${v.id})" class="p-3.5 rounded-xl ${isLearned ? 'bg-green-500 text-white shadow-green-200' : 'bg-slate-100 text-slate-300'} transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-        el.appendChild(list);
+        const list = document.createElement('div');
+        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-5 mb-10';
+        currentVerbs.forEach(v => {
+            const isLearned = learnedIds.has(v.id);
+            list.innerHTML += `
+                <div class="verb-card glass p-6 rounded-2xl flex justify-between items-center ${isLearned ? 'border-l-green-500' : ''}">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[9px] text-slate-400 font-black bg-slate-100 px-1.5 py-0.5 rounded">№${v.id}</span>
+                            <div class="text-blue-900 font-black text-xl">${v.pair}</div>
+                        </div>
+                        <div class="text-slate-600 font-bold text-base">${v.mn}</div>
+                        <span class="text-[10px] font-black text-red-500 italic uppercase mt-1 block">${v.upr}</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playAudio(${v.id})" class="p-3.5 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
+                        </button>
+                        <button onclick="toggleLearned(${v.id})" class="p-3.5 rounded-xl ${isLearned ? 'bg-green-500 text-white shadow-green-200' : 'bg-slate-100 text-slate-300'} transition-all shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        el.appendChild(list);
 
-        if (filteredVerbs.length > itemsPerPage) {
-            const totalPages = Math.ceil(filteredVerbs.length / itemsPerPage);
-            const pagination = document.createElement('div');
-            pagination.className = 'flex flex-wrap justify-center gap-2 mt-10';
-            for (let i = 1; i <= totalPages; i++) {
-                pagination.innerHTML += `<button onclick="changePage(${i})" class="w-11 h-11 rounded-xl glass text-sm font-black ${currentPage === i ? 'bg-blue-900 text-white' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>`;
-            }
-            el.appendChild(pagination);
-        }
-    }
+        if (filteredVerbs.length > itemsPerPage) {
+            const totalPages = Math.ceil(filteredVerbs.length / itemsPerPage);
+            const pagination = document.createElement('div');
+            pagination.className = 'flex flex-wrap justify-center gap-2 mt-10';
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `<button onclick="changePage(${i})" class="w-11 h-11 rounded-xl glass text-sm font-black ${currentPage === i ? 'bg-blue-900 text-white' : 'text-slate-600 hover:bg-blue-50'} transition-all">${i}</button>`;
+            }
+            el.appendChild(pagination);
+        }
+    }
 
-    function handleSearch(val) {
-        searchQuery = val;
-        currentPage = 1;
-        const container = document.getElementById('content');
-        container.innerHTML = '';
-        renderDictionary(container);
-    }
+    function renderConjugation(el) {
+        el.innerHTML = `
+            <div class="max-w-3xl mx-auto mb-12">
+                <div class="glass p-10 rounded-[2.5rem] shadow-2xl border-t-8 border-blue-900">
+                    <h2 class="text-2xl font-black text-slate-800 mb-2">🔄 Спряжение (Хувиргах)</h2>
+                    <p class="text-slate-500 text-sm mb-8 font-bold">Орос үйл үгийг бүх цаг дээр хувиргаж үзээрэй</p>
+                    <div class="flex gap-3 mb-10">
+                        <input type="text" id="conjInput" placeholder="Жишээ: Работать..." class="flex-1 p-5 rounded-2xl border-2 border-slate-100 focus:border-blue-900 outline-none font-bold text-slate-700 shadow-inner">
+                        <button onclick="handleConjugate()" class="px-10 py-5 bg-blue-900 text-white rounded-2xl font-black hover:bg-black transition-all shadow-xl active:scale-95 uppercase text-xs tracking-widest">Хувиргах</button>
+                    </div>
+                    <div id="conjLoading" class="hidden text-center py-12"><div class="animate-spin w-10 h-10 border-4 border-blue-900 border-t-transparent rounded-full mx-auto mb-3"></div><p class="text-blue-900 font-bold text-xs uppercase">Хувиргаж байна...</p></div>
+                    <div id="conjResult" class="space-y-8"></div>
+                </div>
+            </div>
+        `;
+    }
 
-    function changePage(page) {
-        currentPage = page;
-        const container = document.getElementById('content');
-        container.innerHTML = '';
-        renderDictionary(container);
-    }
-
-    function renderFavorites(el) {
-        const favVerbs = verbs.filter(v => learnedIds.has(v.id));
-        
-        if (favVerbs.length === 0) {
-            el.innerHTML = `
-                <div class="text-center py-20 bg-white/60 backdrop-blur-md rounded-3xl max-w-md mx-auto border border-dashed border-slate-200">
-                    <span class="text-4xl">🌟</span>
-                    <h3 class="text-lg font-black text-slate-700 mt-4">Цээжилсэн үг одоогоор алга</h3>
-                    <p class="text-slate-400 text-xs mt-1">Цээжлэх үгс цэснээс зөв тэмдэглэгээг дарж нэмээрэй.</p>
-                </div>`;
-            return;
-        }
-
-        const list = document.createElement('div');
-        list.className = 'grid grid-cols-1 md:grid-cols-2 gap-5';
-        favVerbs.forEach(v => {
-            list.innerHTML += `
-                <div class="verb-card glass p-6 rounded-2xl flex justify-between items-center border-l-green-500">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[9px] text-green-600 font-black bg-green-50 px-1.5 py-0.5 rounded">ЦЭЭЖИЛСЭН</span>
-                            <div class="text-blue-900 font-black text-xl">${v.pair}</div>
-                        </div>
-                        <div class="text-slate-600 font-bold text-base">${v.mn}</div>
-                        <span class="text-[10px] font-black text-red-500 italic uppercase mt-1 block">${v.upr}</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="playAudio(${v.id})" class="p-3.5 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                        </button>
-                        <button onclick="toggleLearned(${v.id})" class="p-3.5 rounded-xl bg-green-500 text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </button>
-                    </div>
-                </div>`;
-        });
-        el.appendChild(list);
-    }
-
-    function renderConjugation(el) {
-        el.innerHTML = `
-            <div class="max-w-3xl mx-auto mb-12">
-                <div class="glass p-10 rounded-[2.5rem] shadow-2xl border-t-8 border-blue-900">
-                    <h2 class="text-2xl font-black text-slate-800 mb-2">🔄 Спряжение (Хувиргах)</h2>
-                    <p class="text-slate-500 text-sm mb-8 font-bold">Орос үйл үгийг бүх цаг дээр хувиргаж үзээрэй</p>
-                    <div class="flex gap-3 mb-10">
-                        <input type="text" id="conjInput" placeholder="Жишээ: Работать..." class="flex-1 p-5 rounded-2xl border-2 border-slate-100 focus:border-blue-900 outline-none font-bold text-slate-700 shadow-inner">
-                        <button onclick="handleConjugate()" class="px-10 py-5 bg-blue-900 text-white rounded-2xl font-black hover:bg-black transition-all shadow-xl active:scale-95 uppercase text-xs tracking-widest">Хувиргах</button>
-                    </div>
-                    <div id="conjLoading" class="hidden text-center py-12"><div class="animate-spin w-10 h-10 border-4 border-blue-900 border-t-transparent rounded-full mx-auto mb-3"></div><p class="text-blue-900 font-bold text-xs uppercase">Хувиргаж байна...</p></div>
-                    <div id="conjResult" class="space-y-8"></div>
-                </div>
-            </div>
-        `;
-    }
-
+// ТӨГС ХУВИЛБАР: 100 үйл үгийн бүх дүрмийн бус хувирлыг багтаасан систем
 function handleConjugate() {
-    let val = document.getElementById('conjInput').value.trim().toLowerCase();
-    if (!val) return;
+    let val = document.getElementById('conjInput').value.trim().toLowerCase();
+    if (!val) return;
 
-    const result = document.getElementById('conjResult');
-    const loading = document.getElementById('conjLoading');
-    
-    loading.classList.remove('hidden');
-    result.innerHTML = '';
+    const result = document.getElementById('conjResult');
+    const loading = document.getElementById('conjLoading');
+    
+    loading.classList.remove('hidden');
+    result.innerHTML = '';
 
-    const cleanWord = (word) => {
-        if (!word) return "";
-        return word.toLowerCase().replace(/́/g, "").trim();
-    };
+    // Өргөлт болон илүү тэмдэгт цэвэрлэх функц
+    const cleanWord = (word) => {
+        if (!word) return "";
+        return word.toLowerCase().replace(/́/g, "").trim();
+    };
 
-    let foundVerb = verbs.find(v => 
-        cleanWord(v.raw) === cleanWord(val) || 
-        cleanWord(v.pair).includes(cleanWord(val))
-    );
+    // Хэрэглэгчийн бичсэн үгийг 100 үг дотроос хайх (raw болон pair-аас давхар хайна)
+    let foundVerb = verbs.find(v => 
+        cleanWord(v.raw) === cleanWord(val) || 
+        cleanWord(v.pair).includes(cleanWord(val))
+    );
 
-    if (!foundVerb) {
-        loading.classList.add('hidden');
-        result.innerHTML = `
-            <div class="bg-red-50 p-6 rounded-2xl border-l-8 border-red-500 shadow-sm text-center">
-                <p class="text-red-600 font-bold">"${val}" үг олдсонгүй.</p>
-                <p class="text-slate-500 text-xs mt-1">Зөвхөн апп дотор байгаа 100 үйл үгний хүрээнд хайлт хийнэ үү.</p>
-            </div>`;
-        return;
-    }
+    if (!foundVerb) {
+        loading.classList.add('hidden');
+        result.innerHTML = `
+            <div class="bg-red-50 p-6 rounded-2xl border-l-8 border-red-500 shadow-sm text-center">
+                <p class="text-red-600 font-bold">"${val}" үг олдсонгүй.</p>
+                <p class="text-slate-500 text-xs mt-1">Зөвхөн апп дотор байгаа 100 үйл үгийн хүрээнд хайлт хийнэ үү.</p>
+            </div>`;
+        return;
+    }
 
-    let baseVerb = foundVerb.raw; 
-    let cleanRaw = cleanWord(baseVerb);
+    // Хайж олдсон үндсэн үг
+    let baseVerb = foundVerb.raw; 
+    let cleanRaw = cleanWord(baseVerb);
 
-    let presentForms = {};
-    let pastForms = {};
-    let futureForms = { 
-        "Я": "буду " + cleanRaw, "Ты": "будешь " + cleanRaw, "Он/Она": "будет " + cleanRaw, 
-        "Мы": "будем " + cleanRaw, "Вы": "будете " + cleanRaw, "Они": "будут " + cleanRaw 
-    };
+    // Суурь цагуудын бэлдэц
+    let presentForms = {};
+    let pastForms = {};
+    let futureForms = { 
+        "Я": "буду " + cleanRaw, "Ты": "будешь " + cleanRaw, "Он/Она": "будет " + cleanRaw, 
+        "Мы": "будем " + cleanRaw, "Вы": "будете " + cleanRaw, "Они": "будут " + cleanRaw 
+    };
 
-    if (cleanRaw === "прийти" || cleanRaw === "приходить") {
-        presentForms = { "Я": "прихожу", "Ты": "приходишь", "Он/Она": "приходит", "Мы": "приходим", "Вы": "приходите", "Они": "приходят" };
-        pastForms = { "Эр (Он)": "приходил", "Эм (Она)": "приходила", "Дунд (Оно)": "приходило", "Олон (Они)": "приходили" };
-    } 
-    else if (cleanRaw === "ездить") {
-        presentForms = { "Я": "езжу", "Ты": "ездишь", "Он/Она": "ездит", "Мы": "ездим", "Вы": "ездите", "Они": "ездят" };
-        pastForms = { "Эр (Он)": "ездил", "Эм (Она)": "ездила", "Дунд (Оно)": "ездило", "Олон (Они)": "ездили" };
-    } 
-    else if (cleanRaw === "ходить") {
-        presentForms = { "Я": "хожу", "Ты": "ходишь", "Он/Она": "ходит", "Мы": "ходим", "Вы": "ходите", "Они": "ходят" };
-        pastForms = { "Эр (Он)": "ходил", "Эм (Она)": "ходила", "Дунд (Оно)": "ходило", "Олон (Они)": "ходили" };
-    }
-    else if (cleanRaw === "беречь") {
-        presentForms = { "Я": "берегу", "Ты": "бережёшь", "Он/Она": "бережёт", "Мы": "бережём", "Вы": "бережёте", "Они": "берегут" };
-        pastForms = { "Эр (Он)": "берёг", "Эм (Она)": "берегла", "Дунд (Оно)": "берегло", "Олон (Они)": "берегли" };
-    } 
-    else if (cleanRaw === "мочь") {
-        presentForms = { "Я": "могу", "Ты": "можешь", "Он/Она": "может", "Мы": "можем", "Вы": "можете", "Они": "могут" };
-        pastForms = { "Эр (Он)": "мог", "Эм (Она)": "могла", "Дунд (Оно)": "могло", "Олон (Они)": "могли" };
-    } 
-    else if (cleanRaw === "есть") {
-        presentForms = { "Я": "ем", "Ты": "ешь", "Он/Она": "ест", "Мы": "едим", "Вы": "едите", "Они": "едят" };
-        pastForms = { "Эр (Он)": "ел", "Эм (Она)": "ела", "Дунд (Оно)": "ело", "Олон (Они)": "ели" };
-    } 
-    else if (cleanRaw === "жить") {
-        presentForms = { "Я": "живу", "Ты": "живёшь", "Он/Она": "живёт", "Мы": "живём", "Вы": "живёте", "Они": "живут" };
-        pastForms = { "Эр (Он)": "жил", "Эм (Она)": "жила", "Дунд (Оно)": "жило", "Олон (Они)": "жили" };
-    }
-    else if (cleanRaw === "брать") {
-        presentForms = { "Я": "беру", "Ты": "берёшь", "Он/Она": "берёт", "Мы": "берём", "Вы": "берёте", "Они": "берут" };
-        pastForms = { "Эр (Он)": "брал", "Эм (Она)": "брала", "Дунд (Оно)": "брало", "Олон (Они)": "брали" };
-    } 
-    else if (cleanRaw === "пить") {
-        presentForms = { "Я": "пью", "Ты": "пьёшь", "Он/Она": "пьёт", "Мы": "пьём", "Вы": "пьёте", "Они": "пьют" };
-        pastForms = { "Эр (Он)": "пил", "Эм (Она)": "пила", "Дунд (Оно)": "пило", "Олон (Они)": "пили" };
-    } 
-    else if (cleanRaw === "петь") {
-        presentForms = { "Я": "пою", "Ты": "поёшь", "Он/Она": "поёт", "Мы": "поём", "Вы": "поёте", "Они": "поют" };
-        pastForms = { "Эр (Он)": "пел", "Эм (Она)": "пела", "Дунд (Оно)": "пело", "Олон (Они)": "пели" };
-    } 
-    else if (cleanRaw === "писать") {
-        presentForms = { "Я": "пишу", "Ты": "пишешь", "Он/Она": "пишет", "Мы": "пишем", "Вы": "пишете", "Они": "пишут" };
-        pastForms = { "Эр (Он)": "писал", "Эм (Она)": "писала", "Дунд (Оно)": "писало", "Олон (Они)": "писали" };
-    } 
-    else if (cleanRaw === "хотеть") {
-        presentForms = { "Я": "хочу", "Ты": "хочешь", "Он/Она": "хочет", "Мы": "хотим", "Вы": "хотите", "Они": "хотят" };
-        pastForms = { "Эр (Он)": "хотел", "Эм (Она)": "хотела", "Дунд (Оно)": "хотело", "Олон (Они)": "хотели" };
-    } 
-    else if (cleanRaw === "спать") {
-        presentForms = { "Я": "сплю", "Ты": "спишь", "Он/Она": "спит", "Мы": "спим", "Вы": "спите", "Они": "спят" };
-        pastForms = { "Эр (Он)": "спал", "Эм (Она)": "спала", "Дунд (Оно)": "спало", "Олон (Они)": "спали" };
-    } 
-    else if (cleanRaw === "любить") {
-        presentForms = { "Я": "люблю", "Ты": "любишь", "Он/Она": "любит", "Мы": "любим", "Вы": "любите", "Они": "любят" };
-        pastForms = { "Эр (Он)": "любил", "Эм (Она)": "любила", "Дунд (Оно)": "любило", "Олон (Они)": "любили" };
-    } 
-    else if (cleanRaw === "видеть" || cleanRaw === "увидеть") {
-        presentForms = { "Я": "вижу", "Ты": "видишь", "Он/Она": "видит", "Мы": "видим", "Вы": "видите", "Они": "видят" };
-        pastForms = { "Эр (Он)": "видел", "Эм (Она)": "видела", "Дунд (Оно)": "видело", "Олон (Они)": "видели" };
-    } 
-    else if (cleanRaw === "давать" || cleanRaw === "отдавать") {
-        let p = cleanRaw === "отдавать" ? "отд" : "д";
-        presentForms = { "Я": p+"аю", "Ты": p+"аешь", "Он/Она": p+"ает", "Мы": p+"аем", "Вы": p+"аете", "Они": p+"ают" };
-        pastForms = { "Эр (Он)": baseVerb.slice(0,-2)+"л", "Эм (Она)": baseVerb.slice(0,-2)+"ла", "Дунд (Оно)": baseVerb.slice(0,-2)+"ло", "Олон (Они)": baseVerb.slice(0,-2)+"ли" };
-    } 
-    else if (cleanRaw === "создавать") {
-        presentForms = { "Я": "создаю", "Ты": "создаёшь", "Он/Она": "создаёт", "Мы": "создаём", "Вы": "создаёте", "Они": "создают" };
-        pastForms = { "Эр (Он)": "создавал", "Эм (Она)": "создавала", "Дунд (Оно)": "создавало", "Олон (Они)": "создавали" };
-    } 
-    else if (cleanRaw === "становиться") {
-        presentForms = { "Я": "становлюсь", "Ты": "становишься", "Он/Она": "становится", "Мы": "становимся", "Вы": "становитесь", "Они": "становятся" };
-        pastForms = { "Эр (Он)": "становился", "Эм (Она)": "становилась", "Дунд (Оно)": "становилось", "Олон (Они)": "становились" };
-    } 
-    else if (cleanRaw === "учиться") {
-        presentForms = { "Я": "учусь", "Ты": "учишься", "Он/Она": "учится", "Мы": "учимся", "Вы": "учитесь", "Они": "учатся" };
-        pastForms = { "Эр (Он)": "учился", "Эм (Она)": "училась", "Дунд (Оно)": "училось", "Олон (Они)": "учились" };
-    } 
-    else if (cleanRaw === "готовить") {
-        presentForms = { "Я": "готовлю", "Ты": "готовишь", "Он/Она": "котовит", "Мы": "готовим", "Вы": "готовите", "Они": "готовят" };
-        pastForms = { "Эр (Он)": "готовил", "Эм (Она)": "готовила", "Дунд (Оно)": "готовило", "Олон (Они)": "готовили" };
-    }
-    else {
-        let stem = baseVerb.slice(0, -2); 
-        let ending = baseVerb.slice(-2);
-
-        if (baseVerb.endsWith("ить")) {
-            stem = baseVerb.slice(0, -3);
-            presentForms = { "Я": stem+"ю", "Ты": stem+"ишь", "Он/Она": stem+"ит", "Мы": stem+"им", "Вы": stem+"ите", "Они": stem+"ят" };
-        } else if (baseVerb.endsWith("ать")) {
-            stem = baseVerb.slice(0, -3);
-            presentForms = { "Я": stem+"аю", "Ты": stem+"аешь", "Он/Она": stem+"ает", "Мы": stem+"аем", "Вы": stem+"аете", "Они": stem+"ают" };
-        } else {
-            presentForms = { "Я": stem+"ю", "Ты": stem+"ешь", "Он/Она": stem+"ет", "Мы": stem+"ем", "Вы": stem+"ете", "Они": stem+"ют" };
-        }
-        pastForms = { "Эр (Он)": stem+"л", "Эм (Она)": stem+"ла", "Дунд (Оно)": stem+"ло", "Олон (Они)": stem+"ли" };
-    }
-
-    loading.classList.add('hidden');
-    result.innerHTML = `
-        <div class="bg-blue-50/50 p-6 rounded-2xl border-l-4 border-blue-900 mb-6">
-            <span class="text-xs font-black text-blue-900 tracking-widest uppercase">Үндсэн үг:</span>
-            <div class="text-2xl font-black text-slate-800">${foundVerb.pair}</div>
-            <div class="text-slate-600 font-bold text-sm mt-1">Орчуулга: ${foundVerb.mn}</div>
-        </div>
-        ${createConjBox("Настоящее время (Одоо цаг)", presentForms)}
-        ${createConjBox("Прошедшее время (Өнгөрсөн цаг)", pastForms)}
-        ${createConjBox("Будущее время (Ирээдүй цаг)", futureForms)}
-    `;
-}
-
-    function createConjBox(title, forms) {
-        let rows = '';
-        for (let p in forms) {
-            rows += `<tr><td class="w-1/3 text-slate-400 font-bold">${p}</td><td class="text-blue-900 font-black text-base">${forms[p]}</td></tr>`;
-        }
-        return `
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">📌 ${title}</h3>
-                <table class="w-full text-left font-sans text-sm space-y-2">${rows}</table>
-            </div>`;
-    }
-
-    function renderPracticeMenu(el) {
-        el.innerHTML = `
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl font-black text-slate-800 mb-2">🎯 Дасгал ажиллах горим</h2>
-                <p class="text-slate-400 text-sm mb-10 font-medium">Өөрийн мэдлэгийг баталгаажуулах тоглоомын хэлбэрийг сонгоно уу.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div onclick="startGame('quiz')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-900 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-blue-900 group-hover:text-white transition-all">A</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Сонгох тест</h3>
-                        <p class="text-slate-400 text-xs font-medium">Орос үг өгөгдөхөд зөв орчуулгыг 4 сонголтоос олно.</p>
-                    </div>
-                    <div onclick="startGame('write')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-red-600 group-hover:text-white transition-all">✏️</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Үг бөглөх</h3>
-                        <p class="text-slate-400 text-xs font-medium">Монгол орчуулгад тохирох орос үгийг гарнаас бичнэ.</p>
-                    </div>
-                    <div onclick="startGame('listen')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-green-600 group-hover:text-white transition-all">🎧</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Сонсоод олох</h3>
-                        <p class="text-slate-400 text-xs font-medium">Үгийн дуудлагыг сонсоод зөв үгийг сонгоно.</p>
-                    </div>
-                    <div onclick="startGame('scrambled')" class="glass p-8 rounded-3xl cursor-pointer hover:border-blue-900 transition-all text-left group">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 font-black flex items-center justify-center text-xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-all">🔠</div>
-                        <h3 class="font-black text-slate-800 text-lg mb-1">Үсэг эвлүүлэх</h3>
-                        <p class="text-slate-400 text-xs font-medium">Үсгүүдийг зөв дараалалд оруулж орос үгийг бүтээгээрэй.</p>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    function startGame(mode) {
-        gameMode = mode;
-        gameState = { score: 0, current: 0, total: 10, wrongs: [] };
-        let pool = verbs.length > 0 ? [...verbs] : [];
-        gameState.questions = pool.sort(() => 0.5 - Math.random()).slice(0, 10);
-        render();
-    }
-
-    function renderQuiz(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let options = [q.mn];
-        while(options.length < 4) {
-            let rand = verbs[Math.floor(Math.random()*verbs.length)].mn;
-            if(!options.includes(rand)) options.push(rand);
-        }
-        options.sort(() => 0.5 - Math.random());
-
-        let cleanQWord = q.pair ? q.pair.replace(/́/g, "") : q.raw.replace(/́/g, "");
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Тест: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-10 bg-blue-50/50 rounded-2xl mb-6"><span class="text-xs font-black text-blue-600 uppercase tracking-wider block mb-2">Орос үг:</span><h2 class="text-3xl font-black text-slate-800">${cleanQWord}</h2></div>
-                <div class="grid grid-cols-1 gap-3">
-                    ${options.map(o => `<button onclick="submitAnswer('${o.replace(/'/g, "\\'")}', '${q.mn.replace(/'/g, "\\'")}')" class="w-full p-4 text-left font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-xl transition-all text-sm">${o}</button>`).join('')}
-                </div>
-            </div>`;
-    }
-
-    function renderWrite(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Бичих: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-10 bg-red-50/30 rounded-2xl mb-6"><span class="text-xs font-black text-red-500 uppercase tracking-wider block mb-2">Монгол утга:</span><h2 class="text-xl font-black text-slate-800">${q.mn}</h2></div>
-                <div class="space-y-4">
-                    <input type="text" id="writeAns" placeholder="Орос үгийг бичнэ үү..." class="w-full p-4 rounded-xl border-2 border-slate-100 font-bold text-slate-700 outline-none" onkeypress="if(event.key==='Enter') submitWrite()">
-                    <button onclick="submitWrite()" class="w-full py-4 bg-blue-900 text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all">Шалгах</button>
-                </div>
-            </div>`;
-        setTimeout(() => document.getElementById('writeAns')?.focus(), 100);
-    }
-
-    function submitWrite() {
-        let input = document.getElementById('writeAns').value.trim().toLowerCase();
-        let q = gameState.questions[gameState.current];
-        
-        let cleanRaw = q.raw ? q.raw.toLowerCase().replace(/́/g, "").trim() : "";
-        let cleanInput = input.toLowerCase().replace(/́/g, "").trim();
-
-        if (cleanInput === cleanRaw) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: q.raw, your: input });
-            showFeedback(`Буруу! Зөв нь: ${q.raw}`, "error");
-        }
-        gameState.current++;
-        render();
-    }
-
-    function renderListen(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let options = [q.pair];
-        while(options.length < 4) {
-            let rand = verbs[Math.floor(Math.random()*verbs.length)].pair;
-            if(!options.includes(rand)) options.push(rand);
-        }
-        options.sort(() => 0.5 - Math.random());
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl text-center">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest text-left">Сонсох: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded text-right">Оноо: ${gameState.score}</span></div>
-                <button onclick="playAudio(${q.id})" class="mx-auto w-24 h-24 rounded-full bg-green-50 text-green-600 flex items-center justify-center shadow-lg hover:scale-105 transition-all mb-8">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"></path></svg>
-                </button>
-                <div class="grid grid-cols-1 gap-3 text-left">
-                    ${options.map(o => {
-                        let cleanO = o.replace(/́/g, "");
-                        let cleanQ = q.pair.replace(/́/g, "");
-                        return `<button onclick="submitAnswer('${cleanO.replace(/'/g, "\\'")}', '${cleanQ.replace(/'/g, "\\'")}')" class="w-full p-4 font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-xl transition-all text-sm">${cleanO}</button>`;
-                    }).join('')}
-                </div>
-            </div>`;
-        playAudio(q.id);
-    }
-
-    function renderScrambled(el) {
-        if (gameState.current >= gameState.total) { renderGameResult(el); return; }
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.replace(/́/g, "");
-        
-        if (!gameState.scrambledLetters) {
-            gameState.scrambledLetters = cleanRaw.split('').sort(() => 0.5 - Math.random());
-            gameState.userLetters = [];
-        }
-
-        el.innerHTML = `
-            <div class="max-w-xl mx-auto game-card glass p-8 rounded-3xl">
-                <div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-slate-400 uppercase tracking-widest">Эвлүүлэх: ${gameState.current+1}/${gameState.total}</span><span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded">Оноо: ${gameState.score}</span></div>
-                <div class="text-center py-6 bg-purple-50/30 rounded-2xl mb-6"><span class="text-xs font-black text-purple-600 uppercase tracking-wider block mb-1">Утга:</span><h2 class="text-xl font-black text-slate-800">${q.mn}</h2></div>
-                
-                <div class="flex flex-wrap justify-center gap-2 min-h-[60px] p-4 bg-slate-50 rounded-xl mb-6 border-2 border-dashed">
-                    ${gameState.userLetters.map((l, i) => `<button onclick="removeLetter(${i})" class="w-12 h-12 rounded-xl bg-blue-900 text-white font-black text-lg shadow-md">${l}</button>`).join('')}
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-2 mb-6">
-                    ${gameState.scrambledLetters.map((l, i) => `<button onclick="addLetter(${i})" class="w-12 h-12 rounded-xl bg-white hover:bg-slate-100 border-2 font-black text-lg text-slate-700 shadow-sm">${l}</button>`).join('')}
-                </div>
-
-                <div class="flex gap-2">
-                    <button onclick="clearScrambled()" class="w-1/3 py-4 bg-slate-100 text-slate-600 font-black rounded-xl text-xs uppercase tracking-wider">Цэвэрлэх</button>
-                    <button onclick="submitScrambled()" class="w-2/3 py-4 bg-blue-900 text-white font-black rounded-xl text-xs uppercase tracking-wider shadow-lg">Илгээх</button>
-                </div>
-            </div>`;
-    }
-
-    function addLetter(idx) {
-        let l = gameState.scrambledLetters.splice(idx, 1)[0];
-        gameState.userLetters.push(l);
-        render();
-    }
-
-    function removeLetter(idx) {
-        let l = gameState.userLetters.splice(idx, 1)[0];
-        gameState.scrambledLetters.push(l);
-        render();
-    }
-
-    function clearScrambled() {
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.replace(/́/g, "");
-        gameState.scrambledLetters = cleanRaw.split('').sort(() => 0.5 - Math.random());
-        gameState.userLetters = [];
-        render();
-    }
-
-    function submitScrambled() {
-        let q = gameState.questions[gameState.current];
-        let cleanRaw = q.raw.toLowerCase().replace(/́/g, "").trim();
-        let userWord = gameState.userLetters.join('').toLowerCase().trim();
-
-        if (userWord === cleanRaw) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: q.raw, your: userWord || "---" });
-            showFeedback(`Буруу! Зөв нь: ${q.raw}`, "error");
-        }
-        gameState.scrambledLetters = null;
-        gameState.current++;
-        render();
-    }
-
-    function submitAnswer(selected, correct) {
-        let q = gameState.questions[gameState.current];
-        
-        let cleanSel = selected.toLowerCase().replace(/́/g, "").trim();
-        let cleanCorr = correct.toLowerCase().replace(/́/g, "").trim();
-
-        if (cleanSel === cleanCorr) {
-            gameState.score++;
-            showFeedback("Зөв хариуллаа!", "success");
-        } else {
-            gameState.wrongs.push({ word: q.pair, right: correct, your: selected });
-            showFeedback("Буруу хариуллаа!", "error");
-        }
-        gameState.current++;
-        render();
-    }
-
-    function renderGameResult(el) {
-        el.innerHTML = `
-            <div class="max-w-md mx-auto text-center game-card glass p-10 rounded-[2.5rem]">
-                <span class="text-5xl">🎉</span>
-                <h2 class="text-2xl font-black text-slate-800 mt-4 mb-1">Дасгал дууслаа!</h2>
-                <p class="text-slate-400 text-xs font-bold mb-6 uppercase tracking-wider">Амжилтын хураангуй</p>
-                <div class="bg-blue-50/50 p-6 rounded-2xl mb-6">
-                    <span class="text-xs font-black text-blue-900 uppercase tracking-widest block mb-1">Нийт оноо:</span>
-                    <div class="text-4xl font-black text-blue-950">${gameState.score} <span class="text-lg text-slate-400 font-bold">/ ${gameState.total}</span></div>
-                </div>
-                ${gameState.wrongs.length > 0 ? `
-                    <div class="text-left bg-red-50/50 p-4 rounded-xl mb-6 text-xs text-red-700 max-h-40 overflow-y-auto">
-                        <p class="font-black uppercase tracking-wider mb-2">❌ Алдсан үгс:</p>
-                        ${gameState.wrongs.map(w => `<p class="mb-1"><strong>${w.word}</strong> - Зөв: ${w.right} (Та: ${w.your})</p>`).join('')}
-                    </div>` : ''}
-                <button onclick="setTab('practice')" class="w-full py-4 bg-blue-900 text-white font-black rounded-xl text-xs uppercase tracking-widest shadow-lg hover:bg-black transition-all">Цэс рүү буцах</button>
-            </div>`;
-    }
-
-    // ========================================================
-    // ШАЛГАЛТЫН СИСТЕМ БА GOOGLE SHEETS-ТЭЙ ХОЛБОХ ХЭСЭГ
-    // ========================================================
-    function renderExamMenu(el) {
-        el.innerHTML = `
-            <div id="exam" class="tab-content py-4 animate-fade-in">
-                <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl max-w-2xl mx-auto border border-blue-50">
-                    <h2 class="text-2xl font-black text-slate-800 mb-2 flex items-center gap-2">
-                        <span>📋 IX Ангийн Орос Хэлний Шалгалт</span>
-                    </h2>
-                    <p class="text-slate-500 text-sm mb-6"Шалгалт дуусахад дүн багш руу автоматаар илгээгдэнэ.</p>
-
-                    <div id="exam-register" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Сурагчийн Овог Нэр:</label>
-                            <input type="text" id="student-name" placeholder="Жишээ нь: Болдын Тэмүүлэн" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Анги / Бүлэг:</label>
-                            <input type="text" id="student-class" placeholder="Жишээ нь: 9А" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
-                        </div>
-                        <button onclick="startExam()" class="w-full py-4 bg-blue-950 text-white font-black rounded-2xl shadow-lg hover:bg-black transition-all uppercase tracking-wider text-sm">Шалгалт эхлүүлэх 🚀</button>
-                    </div>
-
-                    <div id="exam-area" class="hidden">
-                        <div class="flex justify-between items-center mb-6 bg-slate-50 p-4 rounded-2xl">
-                            <span id="exam-progress" class="font-black text-blue-950 text-sm">Асуулт: 1 / 10</span>
-                            <span id="exam-score-live" class="font-bold text-green-600 text-sm">Зөв: 0</span>
-                        </div>
-                        
-                        <div class="mb-6 text-center py-8 bg-blue-50/50 rounded-2xl border border-blue-100">
-                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wide block mb-1">Орос үг:</span>
-                            <div id="exam-question-word" class="text-3xl font-black text-slate-800">---</div>
-                        </div>
-
-                    <div id="exam-options" class="grid grid-cols-1 gap-3">
-                        </div>
-                </div>
-
-                <div id="exam-result" class="hidden text-center space-y-6 py-6">
-                    <div class="inline-flex p-4 bg-green-50 rounded-full text-green-500 text-4xl font-bold">🎉</div>
-                    <h3 class="text-2xl font-black text-slate-800">Шалгалт амжилттай дууслаа!</h3>
-                    <div class="bg-slate-50 p-6 rounded-2xl max-w-md mx-auto space-y-2">
-                        <p class="text-slate-600 font-medium">Сурагч: <span id="res-name" class="font-black text-slate-800">---</span></p>
-                        <p class="text-slate-600 font-medium">Анги: <span id="res-class" class="font-black text-slate-800">---</span></p>
-                        <p class="text-xl font-bold text-blue-950">Нийт оноо: <span id="res-score" class="text-2xl font-black text-green-600">0</span> / 10</p>
-                    </div>
-                    <div id="exam-wrong-list" class="text-left max-w-md mx-auto text-xs bg-red-50 text-red-700 p-4 rounded-2xl hidden">
-                        <p class="font-bold mb-2">❌ Алдсан үгсээ дахин давтаарай:</p>
-                        <ul id="wrong-words-ul" class="list-disc pl-4 space-y-1"></ul>
-                    </div>
-                    <p class="text-xs text-slate-400 animate-pulse mt-4">📊 Дүн багшийн Google Sheet рүү илгээгдэж байна...</p>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-let examQuestions = [];
-let currentExamIndex = 0;
-let examScore = 0;
-let studentName = "";
-let studentClass = "";
-let wrongWords = [];
-
-function startExam() {
-    studentName = document.getElementById('student-name').value.trim();
-    studentClass = document.getElementById('student-class').value.trim();
-
-    if (!studentName || !studentClass) {
-        alert("Овог нэр, ангиа заавал бөглөнө үү!");
-        return;
-    }
-
-    let shuffled = [...verbs].sort(() => 0.5 - Math.random());
-    examQuestions = shuffled.slice(0, 10);
-    
-    currentExamIndex = 0;
-    examScore = 0;
-    wrongWords = [];
-
-    document.getElementById('exam-register').classList.add('hidden');
-    document.getElementById('exam-area').classList.remove('hidden');
-    document.getElementById('exam-result').classList.add('hidden');
-
-    showExamQuestion();
-}
-
-function showExamQuestion() {
-    if (currentExamIndex >= 10) {
-        finishExam();
-        return;
-    }
-
-    document.getElementById('exam-progress').innerText = `Асуулт: ${currentExamIndex + 1} / 10`;
-    document.getElementById('exam-score-live').innerText = `Зөв: ${examScore}`;
-
-    let currentQuestion = examQuestions[currentExamIndex];
-    let cleanQWord = currentQuestion.pair ? currentQuestion.pair.replace(/́/g, "") : currentQuestion.raw.replace(/́/g, "");
-    document.getElementById('exam-question-word').innerText = cleanQWord;
-
-    let correctAnswer = currentQuestion.mn;
-    let wrongAnswers = verbs
-        .filter(v => v.mn !== correctAnswer)
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3)
-        .map(v => v.mn);
-
-    let options = [correctAnswer, ...wrongAnswers].sort(() => 0.5 - Math.random());
-    let optionsDiv = document.getElementById('exam-options');
-    optionsDiv.innerHTML = '';
-
-    options.forEach(opt => {
-        let btn = document.createElement('button');
-        btn.className = "w-full p-4 text-left font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-2xl transition-all text-sm";
-        btn.innerText = opt;
-        btn.onclick = () => checkExamAnswer(opt, correctAnswer, currentQuestion);
-        optionsDiv.appendChild(btn);
-    });
-}
-
-function checkExamAnswer(selected, correct, questionObj) {
-    if (selected === correct) {
-        examScore++;
-    } else {
-        let cleanQWord = questionObj.pair ? questionObj.pair.replace(/́/g, "") : questionObj.raw.replace(/́/g, "");
-        wrongWords.push(`${cleanQWord} (${correct})`);
-    }
-    currentExamIndex++;
-    showExamQuestion();
-}
-
-function finishExam() {
-    document.getElementById('exam-area').classList.add('hidden');
-    document.getElementById('exam-result').classList.remove('hidden');
-
-    document.getElementById('res-name').innerText = studentName;
-    document.getElementById('res-class').innerText = studentClass;
-    document.getElementById('res-score').innerText = examScore;
-
-    let wrongDiv = document.getElementById('exam-wrong-list');
-    let wrongUl = document.getElementById('wrong-words-ul');
-    wrongUl.innerHTML = '';
-    
-    if (wrongWords.length > 0) {
-        wrongDiv.classList.remove('hidden');
-        wrongWords.forEach(w => {
-            let li = document.createElement('li');
-            li.innerText = w;
-            wrongUl.appendChild(li);
-        });
-    } else {
-        wrongDiv.classList.add('hidden');
-    }
-
-    sendDataToGoogleSheet();
-}
-
-function sendDataToGoogleSheet() {
-    // Та өөрийн Google Form-ын URL болон entry ID-нуудыг энд сольж тавина
-    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXXX/formResponse"; 
-    let formData = new FormData();
-    formData.append("entry.1111111111", studentName);   
-    formData.append("entry.2222222222", studentClass);  
-    formData.append("entry.3333333333", examScore);     
-    formData.append("entry.4444444444", wrongWords.join(', ') || "Бүгд зөв"); 
-
-    fetch(formURL, { method: "POST", mode: "no-cors" })
-    .then(() => console.log("Дүн амжилттай илгээгдлээ"))
-    .catch((e) => console.error(e));
-}
-
-    // Эхлэл хуудас ачаалахад дэлгэцийг зурах
-    document.addEventListener("DOMContentLoaded", () => {
-        setTab('dict');
-    });
-</script>
-</body>
-</html>
+    // ========================================================
+    // 1. ТАНЫ 100 ҮГНЭЭС ДҮРМИЙН БУС ОНЦГОЙ ҮГСИЙГ ТОХИРУУЛАХ ХЭСЭГ
+    // ========================================================
+    
+    // 1.1 Хөдөлгөөний болон Төгс/Төгс бус хос нь зөрдөг үгс (Прийти, Ездить, Ходить)
+    if (cleanRaw === "прийти" || cleanRaw === "приходить") {
+        presentForms = { "Я": "прихожу", "Ты": "приходишь", "Он/Она": "приходит", "Мы": "приходим", "Вы": "приходите", "Они": "приходят" };
+        pastForms = { "Эр (Он)": "приходил", "Эм (Она)": "приходила", "Дунд (Оно)": "приходило", "Олон (Они)": "приходили" };
+    } 
+    else if (cleanRaw === "ездить") {
+        presentForms = { "Я": "езжу", "Ты": "ездишь", "Он/Она": "ездит", "Мы": "ездим", "Вы": "ездите", "Они": "ездят" };
+        pastForms = { "Эр (Он)": "ездил", "Эм (Она)": "ездила", "Дунд (Оно)": "ездило", "Олон (Они)": "ездили" };
+    } 
+    else if (cleanRaw === "ходить") {
+        presentForms = { "Я": "хожу", "Ты": "ходишь", "Он/Она": "ходит", "Мы": "ходим", "Вы": "ходите", "Они": "ходят" };
+        pastForms = { "Эр (Он)": "ходил", "Эм (Она)": "ходила", "Дунд (Оно)": "ходило", "Олон (Они)": "ходили" };
+    }
+    // 1.2 Төгсгөл нь -чь, -ть гэж өөрчлөгддөг хэцүү үгс
+    else if (cleanRaw === "беречь") {
+        presentForms = { "Я": "берегу", "Ты": "бережёшь", "Он/Она": "бережёт", "Мы": "бережём", "Вы": "бережёте", "Они": "берегут" };
+        pastForms = { "Эр (Он)": "берёг", "Эм (Она)": "берегла", "Дунд (Оно)": "берегло", "Олон (Они)": "берегли" };
+    } 
+    else if (cleanRaw === "мочь") {
+        presentForms = { "Я": "могу", "Ты": "можешь", "Он/Она": "может", "Мы": "можем", "Вы": "можете", "Они": "могут" };
+        pastForms = { "Эр (Он)": "мог", "Эм (Она)": "могла", "Дунд (Оно)": "могло", "Олон (Они)": "могли" };
+    } 
+    else if (cleanRaw === "есть") {
+        presentForms = { "Я": "ем", "Ты": "ешь", "Он/Она": "ест", "Мы": "едим", "Вы": "едите", "Они": "едят" };
+        pastForms = { "Эр (Он)": "ел", "Эм (Она)": "ела", "Дунд (Оно)": "ело", "Олон (Они)": "ели" };
+    } 
+    else if (cleanRaw === "жить") {
+        presentForms = { "Я": "живу", "Ты": "живёшь", "Он/Она": "живёт", "Мы": "живём", "Вы": "живёте", "Они": "живут" };
+        pastForms = { "Эр (Он)": "жил", "Эм (Она)": "жила", "Дунд (Оно)": "жило", "Олон (Они)": "жили" };
+    }
+    // 1.3 Гээгдэх болон хувирах эгшиг/гийгүүлэгчтэй үгс
+    else if (cleanRaw === "брать") {
+        presentForms = { "Я": "беру", "Ты": "берёшь", "Он/Она": "берёт", "Мы": "берём", "Вы": "берёте", "Они": "берут" };
+        pastForms = { "Эр (Он)": "брал", "Эм (Она)": "брала", "Дунд (Оно)": "брало", "Олон (Они)": "брали" };
+    } 
+    else if (cleanRaw === "пить") {
+        presentForms = { "Я": "пью", "Ты": "пьёшь", "Он/Она": "пьёт", "Мы": "пьём", "Вы": "пьёте", "Они": "пьют" };
+        pastForms = { "Эр (Он)": "пил", "Эм (Она)": "пила", "Дунд (Оно)": "пило", "Олон (Они)": "пили" };
+    } 
+    else if (cleanRaw === "петь") {
+        presentForms = { "Я": "пою", "Ты": "поёшь", "Он/Она": "поёт", "Мы": "поём", "Вы": "поёте", "Они": "поют" };
+        pastForms = { "Эр (Он)": "пел", "Эм (Она)": "пела", "Дунд (Оно)": "пело", "Олон (Они)": "пели" };
+    } 
+    else if (cleanRaw === "писать") {
+        presentForms = { "Я": "пишу", "Ты": "пишешь", "Он/Она": "пишет", "Мы": "пишем", "Вы": "пишете", "Они": "пишут" };
+        pastForms = { "Эр (Он)": "писал", "Эм (Она)": "писала", "Дунд (Оно)": "писало", "Олон (Они)": "писали" };
+    } 
+    else if (cleanRaw === "хотеть") {
+        presentForms = { "Я": "хочу", "Ты": "хочешь", "Он/Она": "хочет", "Мы": "хотим", "Вы": "хотите", "Они": "хотят" };
+        pastForms = { "Эр (Он)": "хотел", "Эм (Она)": "хотела", "Дунд (Оно)": "хотело", "Олон (Они)": "хотели" };
+    } 
+    else if (cleanRaw === "спать") {
+        presentForms = { "Я": "сплю", "Ты": "спишь", "Он/Она": "спит", "Мы": "спим", "Вы": "спите", "Они": "спят" };
+        pastForms = { "Эр (Он)": "спал", "Эм (Она)": "спала", "Дунд (Оно)": "спало", "Олон (Они)": "спали" };
+    } 
+    else if (cleanRaw === "любить") {
+        presentForms = { "Я": "люблю", "Ты": "любишь", "Он/Она": "любит", "Мы": "любим", "Вы": "любите", "Они": "любят" };
+        pastForms = { "Эр (Он)": "любил", "Эм (Она)": "любила", "Дунд (Оно)": "любило", "Олон (Они)": "любили" };
+    } 
+    else if (cleanRaw === "видеть" || cleanRaw === "увидеть") {
+        presentForms = { "Я": "вижу", "Ты": "видишь", "Он/Она": "видит", "Мы": "видим", "Вы": "видите", "Они": "видят" };
+        pastForms = { "Эр (Он)": "видел", "Эм (Она)": "видела", "Дунд (Оно)": "видело", "Олон (Они)": "видели" };
+    } 
+    else if (cleanRaw === "давать" || cleanRaw === "отдавать") {
+        let p = cleanRaw === "отдавать" ? "отд" : "д";
+        presentForms = { "Я": p+"аю", "Ты": p+"аешь", "Он/Она": p+"ает", "Мы": p+"аем", "Вы": p+"аете", "Они": p+"ают" };
+        pastForms = { "Эр (Он)": baseVerb.slice(0,-2)+"л", "Эм (Она)": baseVerb.slice(0,-2)+"ла", "Дунд (Оно)": baseVerb.slice(0,-2)+"ло", "Олон (Они)": baseVerb.slice(0,-2)+"ли" };
+    } 
+    else if (cleanRaw === "создавать") {
+        presentForms = { "Я": "создаю", "Ты": "создаёшь", "Он/Она": "создаёт", "Мы": "создаём", "Вы": "создаёте", "Они": "создают" };
+        pastForms = { "Эр (Он)": "создавал", "Эм (Она)": "создавала", "Дунд (Оно)": "создавало", "Олон (Они)": "создавали" };
+    } 
+    else if (cleanRaw === "становиться") {
+        presentForms = { "Я": "становлюсь", "Ты": "становишься", "Он/Она": "становится", "Мы": "становимся", "Вы": "становитесь", "Они": "становятся" };
+        pastForms = { "Эр (Он)": "становился", "Эм (Она)": "становилась", "Дунд (Оно)": "становилось", "Олон (Они)": "становились" };
+    } 
+    else if (cleanRaw === "учиться") {
+        presentForms = { "Я": "учусь", "Ты": "учишься", "Он/Она": "учится", "Мы": "учимся", "Вы": "учитесь", "Они": "учатся" };
+        pastForms = { "Эр (Он)": "учился", "Эм (Она)": "училась", "Дунд (Оно)": "училось", "Олон (Они)": "учились" };
+    } 
+    else if (cleanRaw === "готовить") {
+        presentForms = { "Я": "готовлю", "Ты": "готовишь", "Он/Она": "готовит", "Мы": "готовим", "Вы": "готовите", "Они": "готовят" };
+        pastForms = { "Эр (Он)": "готовил", "Эм (Она)": "готовила", "Дунд (Оно)": "готовило", "Олон (Они)": "готовили" };
+    }
+    // 1.4 -овать, -евать төгсгөлтэй үгс (Рисовать, Путешествовать г.м -> ую, уешь болно)
+    else if (cleanRaw.endsWith("овать") 
