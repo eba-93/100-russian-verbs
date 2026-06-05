@@ -581,6 +581,174 @@ function createConjBox(title, forms, color) {
         </div>
     `;
 }
+   // Шалгалтын цэсийг дэлгэц дээр хэвлэх функц
+function renderExamMenu(el) {
+    el.innerHTML = `
+        <div id="exam" class="tab-content py-4 animate-fade-in">
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl max-w-2xl mx-auto border border-blue-50">
+                <h2 class="text-2xl font-black text-slate-800 mb-2 flex items-center gap-2">
+                    <span>📋 IX Ангийн Орос Хэлний Шалгалт</span>
+                </h2>
+                <p class="text-slate-500 text-sm mb-6">Сурах бичгийн 100 үйл үгнээс санамсаргүй 10 үг ирнэ. Шалгалт дуусахад дүн багш руу автоматаар илгээгдэнэ.</p>
+
+                <div id="exam-register" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Сурагчийн Овог Нэр:</label>
+                        <input type="text" id="student-name" placeholder="Жишээ нь: Болдын Тэмүүлэн" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Анги / Бүлэг:</label>
+                        <input type="text" id="student-class" placeholder="Жишээ нь: 9А" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-blue-950 outline-none font-bold text-slate-700">
+                    </div>
+                    <button onclick="startExam()" class="w-full py-4 bg-blue-950 text-white font-black rounded-2xl shadow-lg hover:bg-black transition-all uppercase tracking-wider text-sm">Шалгалт эхлүүлэх 🚀</button>
+                </div>
+
+                <div id="exam-area" class="hidden">
+                    <div class="flex justify-between items-center mb-6 bg-slate-50 p-4 rounded-2xl">
+                        <span id="exam-progress" class="font-black text-blue-950 text-sm">Асуулт: 1 / 10</span>
+                        <span id="exam-score-live" class="font-bold text-green-600 text-sm">Зөв: 0</span>
+                    </div>
+                    
+                    <div class="mb-6 text-center py-8 bg-blue-50/50 rounded-2xl border border-blue-100">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wide block mb-1">Орос үг:</span>
+                        <div id="exam-question-word" class="text-3xl font-black text-slate-800">---</div>
+                    </div>
+
+                    <div id="exam-options" class="grid grid-cols-1 gap-3">
+                        </div>
+                </div>
+
+                <div id="exam-result" class="hidden text-center space-y-6 py-6">
+                    <div class="inline-flex p-4 bg-green-50 rounded-full text-green-500 text-4xl font-bold">🎉</div>
+                    <h3 class="text-2xl font-black text-slate-800">Шалгалт амжилттай дууслаа!</h3>
+                    <div class="bg-slate-50 p-6 rounded-2xl max-w-md mx-auto space-y-2">
+                        <p class="text-slate-600 font-medium">Сурагч: <span id="res-name" class="font-black text-slate-800">---</span></p>
+                        <p class="text-slate-600 font-medium">Анги: <span id="res-class" class="font-black text-slate-800">---</span></p>
+                        <p class="text-xl font-bold text-blue-950">Нийт оноо: <span id="res-score" class="text-2xl font-black text-green-600">0</span> / 10</p>
+                    </div>
+                    <div id="exam-wrong-list" class="text-left max-w-md mx-auto text-xs bg-red-50 text-red-700 p-4 rounded-2xl hidden">
+                        <p class="font-bold mb-2">❌ Алдсан үгсээ дахин давтаарай:</p>
+                        <ul id="wrong-words-ul" class="list-disc pl-4 space-y-1"></ul>
+                    </div>
+                    <p class="text-xs text-slate-400 animate-pulse mt-4">📊 Дүн багшийн Google Sheet рүү илгээгдэж байна...</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+let examQuestions = [];
+let currentExamIndex = 0;
+let examScore = 0;
+let studentName = "";
+let studentClass = "";
+let wrongWords = [];
+
+function startExam() {
+    studentName = document.getElementById('student-name').value.trim();
+    studentClass = document.getElementById('student-class').value.trim();
+
+    if (!studentName || !studentClass) {
+        alert("Овог нэр, ангиа заавал бөглөнө үү!");
+        return;
+    }
+
+    let shuffled = [...verbs].sort(() => 0.5 - Math.random());
+    examQuestions = shuffled.slice(0, 10);
+    
+    currentExamIndex = 0;
+    examScore = 0;
+    wrongWords = [];
+
+    document.getElementById('exam-register').classList.add('hidden');
+    document.getElementById('exam-area').classList.remove('hidden');
+    document.getElementById('exam-result').classList.add('hidden');
+
+    showExamQuestion();
+}
+
+function showExamQuestion() {
+    if (currentExamIndex >= 10) {
+        finishExam();
+        return;
+    }
+
+    document.getElementById('exam-progress').innerText = `Асуулт: ${currentExamIndex + 1} / 10`;
+    document.getElementById('exam-score-live').innerText = `Зөв: ${examScore}`;
+
+    let currentQuestion = examQuestions[currentExamIndex];
+    let cleanQWord = currentQuestion.pair ? currentQuestion.pair.replace(/́/g, "") : currentQuestion.raw.replace(/́/g, "");
+    document.getElementById('exam-question-word').innerText = cleanQWord;
+
+    let correctAnswer = currentQuestion.mn;
+    let wrongAnswers = verbs
+        .filter(v => v.mn !== correctAnswer)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map(v => v.mn);
+
+    let options = [correctAnswer, ...wrongAnswers].sort(() => 0.5 - Math.random());
+    let optionsDiv = document.getElementById('exam-options');
+    optionsDiv.innerHTML = '';
+
+    options.forEach(opt => {
+        let btn = document.createElement('button');
+        btn.className = "w-full p-4 text-left font-bold text-slate-700 bg-slate-50 hover:bg-blue-50 border-2 border-slate-100 hover:border-blue-300 rounded-2xl transition-all text-sm";
+        btn.innerText = opt;
+        btn.onclick = () => checkExamAnswer(opt, correctAnswer, currentQuestion);
+        optionsDiv.appendChild(btn);
+    });
+}
+
+function checkExamAnswer(selected, correct, questionObj) {
+    if (selected === correct) {
+        examScore++;
+    } else {
+        let cleanQWord = questionObj.pair ? questionObj.pair.replace(/́/g, "") : questionObj.raw.replace(/́/g, "");
+        wrongWords.push(`${cleanQWord} (${correct})`);
+    }
+    currentExamIndex++;
+    showExamQuestion();
+}
+
+function finishExam() {
+    document.getElementById('exam-area').classList.add('hidden');
+    document.getElementById('exam-result').classList.remove('hidden');
+
+    document.getElementById('res-name').innerText = studentName;
+    document.getElementById('res-class').innerText = studentClass;
+    document.getElementById('res-score').innerText = examScore;
+
+    let wrongDiv = document.getElementById('exam-wrong-list');
+    let wrongUl = document.getElementById('wrong-words-ul');
+    wrongUl.innerHTML = '';
+    
+    if (wrongWords.length > 0) {
+        wrongDiv.classList.remove('hidden');
+        wrongWords.forEach(w => {
+            let li = document.createElement('li');
+            li.innerText = w;
+            wrongUl.appendChild(li);
+        });
+    } else {
+        wrongDiv.classList.add('hidden');
+    }
+
+    sendDataToGoogleSheet();
+}
+
+function sendDataToGoogleSheet() {
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXXX/formResponse"; 
+    let formData = new FormData();
+    formData.append("entry.1111111111", studentName);   
+    formData.append("entry.2222222222", studentClass);  
+    formData.append("entry.3333333333", examScore);     
+    formData.append("entry.4444444444", wrongWords.join(', ') || "Бүгд зөв"); 
+
+    fetch(formURL, { method: "POST", mode: "no-cors" })
+    .then(() => console.log("Илгээгдлээ"))
+    .catch((e) => console.error(e));
+}
     function renderPracticeMenu(el) {
         const modes = [
             { id: 'quiz', icon: '📝', title: 'Орчуулга сонгох', desc: 'Зөв монгол орчуулгыг нь сонгоно уу' },
