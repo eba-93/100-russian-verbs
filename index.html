@@ -364,7 +364,7 @@
         `;
     }
 
-// ШИНЭЧЛЭГДСЭН: Ухаалаг хувиргагч систем (100 үгэнд зориулав)
+// ШИНЭЧЛЭГДСЭН: Бүрэн зассан ухаалаг хувиргагч систем
 function handleConjugate() {
     let val = document.getElementById('conjInput').value.trim().toLowerCase();
     if (!val) return;
@@ -376,7 +376,10 @@ function handleConjugate() {
     result.innerHTML = '';
 
     // Орос хэлний өргөлтийн тэмдэгийг арилгах туслах функц
-    const cleanWord = (word) => word.toLowerCase().replace(/́/g, "");
+    const cleanWord = (word) => {
+        if (!word) return "";
+        return word.toLowerCase().replace(/́/g, "").trim();
+    };
 
     // 100 үг дотроос хайж буй үгийг олох
     let foundVerb = verbs.find(v => cleanWord(v.raw) === cleanWord(val) || cleanWord(v.pair).includes(cleanWord(val)));
@@ -391,26 +394,32 @@ function handleConjugate() {
         return;
     }
 
-    let rawVerb = foundVerb.raw; // Жишээ нь: "Делать"
-    let stem = "";
-    let type = 1; // Спряжение 1 эсвэл 2
+    // Өргөлтгүй цэвэрлэсэн хувилбарыг авна (Ижилсүүлэхэд амар)
+    let cleanRaw = cleanWord(foundVerb.raw); 
+    let baseVerb = foundVerb.raw; // Дэлгэцэнд харуулах эх үг
 
-    // Төгсгөлөөс хамаарч үндсийг салгах
-    if (rawVerb.endsWith("ить")) {
-        stem = rawVerb.slice(0, -3);
-        type = 2;
-    } else {
-        stem = rawVerb.slice(0, -3);
-        type = 1;
-    }
+    // 1. ӨНГӨРСӨН ЦАГИЙН СУУРЬ (Ть-ийг хасна)
+    let pastStem = baseVerb.endsWith("ть") ? baseVerb.slice(0, -2) : baseVerb;
+    let pastForms = { 
+        "Эр (Он)": pastStem + "л", 
+        "Эм (Она)": pastStem + "ла", 
+        "Дунд (Оно)": pastStem + "ло", 
+        "Олон (Они)": pastStem + "ли" 
+    };
 
-    // ДҮРМИЙН БУС ОНЦГОЙ ҮГСИЙГ (Исключения) ГАРААР ТОХИРУУЛАХ ХЭСЭГ
+    // Ирээдүй цагийн суурь
+    let futureForms = { 
+        "Я": "буду " + baseVerb.toLowerCase(), 
+        "Ты": "будешь " + baseVerb.toLowerCase(), 
+        "Он/Она": "будет " + baseVerb.toLowerCase(), 
+        "Мы": "будем " + baseVerb.toLowerCase(), 
+        "Вы": "будете " + baseVerb.toLowerCase(), 
+        "Они": "будут " + baseVerb.toLowerCase() 
+    };
+
     let presentForms = {};
-    let pastForms = { "Эр (Он)": stem + "л", "Эм (Она)": stem + "ла", "Дунд (Оно)": stem + "ло", "Олон (Они)": stem + "ли" };
-    let futureForms = { "Я": "буду " + rawVerb, "Ты": "будешь " + rawVerb, "Он/Она": "будет " + rawVerb, "Мы": "будем " + rawVerb, "Вы": "будете " + rawVerb, "Они": "будут " + rawVerb };
 
-    // Жишээ онцгой үгс (Таны 100 үгнээс хамгийн чухал хэдэн үгийг тохируулав)
-    let cleanRaw = cleanWord(rawVerb);
+    // 2. ОНЦГОЙ ҮГСИЙГ ЗӨВ ХУВИРГАХ ХЭСЭГ
     if (cleanRaw === "жить") {
         presentForms = { "Я": "живу", "Ты": "живёшь", "Он/Она": "живёт", "Мы": "живём", "Вы": "живёте", "Они": "живут" };
         pastForms = { "Эр (Он)": "жил", "Эм (Она)": "жила", "Дунд (Оно)": "жило", "Олон (Они)": "жили" };
@@ -422,7 +431,7 @@ function handleConjugate() {
         presentForms = { "Я": "беру", "Ты": "берёшь", "Он/Она": "берёт", "Мы": "берём", "Вы": "берёте", "Они": "берут" };
     } else if (cleanRaw === "есть") {
         presentForms = { "Я": "ем", "Ты": "ешь", "Он/Она": "ест", "Мы": "едим", "Вы": "едите", "Они": "едят" };
-        pastForms = { "Эр (Он)": "ел", "Эм (Она)": "ела", "Дунд (Оно)": "ело", "Олон (Они)": "ели" };
+        pastForms = { "Эр (Он)": "ел", "Эм (Она)": "eла", "Дунд (Оно)": "eло", "Олон (Они)": "eли" };
     } else if (cleanRaw === "мочь") {
         presentForms = { "Я": "могу", "Ты": "можешь", "Он/Она": "может", "Мы": "можем", "Вы": "можете", "Они": "могут" };
         pastForms = { "Эр (Он)": "мог", "Эм (Она)": "могла", "Дунд (Оно)": "могло", "Олон (Они)": "могли" };
@@ -432,21 +441,28 @@ function handleConjugate() {
         presentForms = { "Я": "сплю", "Ты": "спишь", "Он/Она": "спит", "Мы": "спим", "Вы": "спите", "Они": "спят" };
     } else if (cleanRaw === "любить") {
         presentForms = { "Я": "люблю", "Ты": "любишь", "Он/Она": "любит", "Мы": "любим", "Вы": "любите", "Они": "любят" };
+    } else if (cleanRaw === "идти") {
+        presentForms = { "Я": "иду", "Ты": "идёшь", "Он/Она": "идёт", "Мы": "идём", "Вы": "идёте", "Они": "идут" };
+        pastForms = { "Эр (Он)": "шёл", "Эм (Она)": "шла", "Дунд (Оно)": "шло", "Олон (Они)": "шли" };
     } else {
-        // Стандарт дүрмээр хувирах үгс (Делать, работать, читать г.м)
-        if (type === 1) {
-            presentForms = { "Я": stem + "аю", "Ты": stem + "аешь", "Он/Она": stem + "ает", "Мы": stem + "аем", "Вы": stem + "аете", "Они": stem + "ают" };
+        // СТАНДАРТ ҮГСИЙГ ХУВИРГАХ (Делать, работать, читать, говорить г.м)
+        if (cleanRaw.endsWith("ить")) {
+            // 2-р хувирал (Ить-ийг хасаж үндсийг авна)
+            let stem = baseVerb.slice(0, -3);
+            presentForms = { "Я": stem + "ю", "Ты": stem + "ишь", "Он/Она": "шит", "Мы": stem + "им", "Вы": stem + "ите", "Они": stem + "ят" };
         } else {
-            presentForms = { "Я": stem + "ю", "Ты": stem + "ишь", "Он/Она": stem + "ит", "Мы": stem + "им", "Вы": stem + "ите", "Они": stem + "ят" };
+            // 1-р хувирал (Ть-ийг хасаж үндсийг авна. Жишээ нь: дела-ть -> дела-)
+            let stem = baseVerb.slice(0, -2);
+            presentForms = { "Я": stem + "ю", "Ты": stem + "ешь", "Он/Она": stem + "ет", "Мы": stem + "ем", "Вы": stem + "ете", "Они": stem + "ют" };
         }
     }
 
     // Үр дүнг дэлгэцэнд үзүүлэх HTML
     setTimeout(() => {
-        loading.add ? loading.classList.add('hidden') : loading.className += " hidden";
+        if(loading) loading.classList.add('hidden');
         result.innerHTML = `
             <div class="bg-blue-50 p-6 rounded-2xl border-l-8 border-blue-900 shadow-sm mb-6">
-                <div class="text-3xl font-black text-slate-800 mb-1">${foundVerb.pair} <span class="text-red-500 text-sm font-bold">${foundVerb.upr}</span></div>
+                <div class="text-3xl font-black text-slate-800 mb-1">${foundVerb.pair} <span class="text-red-500 text-sm font-bold">${foundVerb.upr || ''}</span></div>
                 <div class="text-slate-600 font-bold text-lg">Орчуулга: ${foundVerb.mn}</div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -455,7 +471,30 @@ function handleConjugate() {
                 ${createConjBox('Будущее время (Ирээдүй)', futureForms, 'purple')}
             </div>
         `;
-    }, 500); // 0.5 секунд ачааллах эффект харуулна
+    }, 400);
+}
+
+function createConjBox(title, forms, color) {
+    let colorClasses = {
+        blue: { bg: 'bg-blue-50/50', border: 'border-blue-100', text: 'text-blue-700' },
+        green: { bg: 'bg-green-50/50', border: 'border-green-100', text: 'text-green-700' },
+        purple: { bg: 'bg-purple-50/50', border: 'border-purple-100', text: 'text-purple-700' }
+    };
+    let c = colorClasses[color] || colorClasses.blue;
+
+    return `
+        <div class="p-5 rounded-2xl ${c.bg} border ${c.border}">
+            <h4 class="text-xs font-black ${c.text} mb-3 uppercase tracking-wider text-center">${title}</h4>
+            <table class="w-full text-sm">
+                ${Object.entries(forms).map(([k, v]) => `
+                    <tr class="border-b border-gray-100 last:border-0">
+                        <th class="w-20 text-left py-2 text-gray-400 font-bold uppercase text-[11px]">${k}</th>
+                        <td class="py-2 text-slate-800 font-extrabold text-right">${v}</td>
+                    </tr>
+                `).join('')}
+            </table>
+        </div>
+    `;
 }
 
 function createConjBox(title, forms, color) {
